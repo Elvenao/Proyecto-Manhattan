@@ -1,0 +1,23 @@
+<table id="meinTable">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($this->datos as $registro): ?>
+        <tr>
+            <td><?php echo $registro["id_producto"]?></td>
+            <td><?php echo $registro["nombre"]?></td>
+            <td><?php echo $registro["precio"]?></td>
+            <td>
+                <a href="javascript:void(0)"><a href="javascript:Editar()">Editar</a></a>
+                <a href="javascript:void(0)"><a href="javascript:Eliminar()">Eliminar</a></a>
+            </td>
+        </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>
