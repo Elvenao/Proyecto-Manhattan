@@ -1,4 +1,2 @@
 "# Proyecto Manhattan" 
-"# Proyecto Manhattan " 
-"a" 
-"Este repositorio es para hacer el Proyecto Manhattan" 
+Hola viajero, este repositorio es para el proyecto
