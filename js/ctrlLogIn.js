@@ -6,10 +6,10 @@ function formulario_submit(e) {
     e.preventDefault();
     //alert("submit anulado, haz lo que quieras :)");
     //preparar los datos del formulario
-    let action = document.getElementById("action");
+    let action = document.getElementById("login");
     let id = document.getElementById("Id");
-    let nombre = document.getElementById("Nombre");
-    let precio = document.getElementById("Precio");
+    let nombre = document.getElementById("user");
+    let precio = document.getElementById("precio");
     //llamada a sweetalert
     let datos = JSON.stringify({action,id,nombre,precio})
     llamadaASweetAlert(datos, SITE_URL + "/_controller/AjaxProducto.php");
