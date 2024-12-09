@@ -1,61 +1,3 @@
-/*
-//Anular el submit del formulario
-let formulario = document.getElementById("formulario");
-formulario.addEventListener("submit", formulario_submit);
-
-function formulario_submit(e) {
-    e.preventDefault();
-    //alert("submit anulado, haz lo que quieras :)");
-    //preparar los datos del formulario
-    console.log("PreventDefault")
-    let user = document.getElementById("user").value;
-    let pass = document.getElementById("pass").value;
-    //llamada a sweetalert
-    
-    let datos = JSON.stringify({user,pass})
-    llamadaASweetAlert(datos,"_controller/AjaxLogin.php");
-}
-
-async function llamadaASweetAlert(json, actionUrl) {
-
-  try {
-    console.log(json);
-    const response = await fetch(actionUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: json
-    });
-    console.log('Datos enviados');
-
-    if (!response.ok) {
-      console.log("PARTE2");
-      throw new Error(`Error: ${response.statusText}`);
-      
-  }
-  
-  const data = await response.json();
-  console.log(data);
-  
-  if (data.resultado !== 1) {
-    Swal.showValidationMessage("Hubo un problema al insertar los datos");
-    console.log("PARTE2");
-  }
-  console.log('Hola');
-  return data;
-  } catch (error) {
-    console.log(json);
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: `Error en la solicitud: ${error.message}`,
-    });
-  }
-    
-}
-*/
-
 // Anular el submit del formulario
 let formulario = document.getElementById("formulario");
 formulario.addEventListener("submit", formulario_submit);
@@ -74,19 +16,26 @@ function formulario_submit(e) {
   llamadaASweetAlert(datos, "_controller/AjaxLogin.php")
     .then(data => {
       console.log("Respuesta del servidor:", data);
+      console.log("Resultado: ", data.resultado);
 
       // Validar el resultado y mostrar mensajes con SweetAlert
+
       if (data.resultado !== 1) {
         Swal.fire({
           icon: "warning",
           title: "Error",
-          text: "Hubo un problema al insertar los datos",
-        });
+          text: "No se ha podido iniciar Sesión",
+        })
       } else {
         Swal.fire({
           icon: "success",
           title: "Éxito",
-          text: "Datos enviados correctamente",
+          text: "Inicio de Sesión Exitoso",
+        }).then(() => {
+          //Redirigir a Principal segun el rol i guess no se veamos que se hace aqui
+          //window.location.replace("localhost/proyecto/producto");
+          window.history.pushState(null, "Sesion Iniciada", "producto/");
+          location.reload(true);
         });
       }
     })
@@ -98,6 +47,7 @@ function formulario_submit(e) {
       });
     });
 }
+
 
 function llamadaASweetAlert(json, actionUrl) {
   return new Promise((resolve, reject) => {
@@ -114,7 +64,7 @@ function llamadaASweetAlert(json, actionUrl) {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        return response.text(); // Convertir la respuesta a JSON
+        return response.json();
       })
       .then(data => {
         console.log("Respuesta procesada:", data);

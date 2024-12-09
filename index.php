@@ -1,9 +1,9 @@
 <?php
-    ini_set("display_errors", E_ALL);
-    
     require_once "config/global.php";
+
     $controlSesion = 0;
     $control = 0;
+
     if($control == 0){
         $queryString = isset($_GET["querystring"]) ? $_GET["querystring"] : RUTA_DEFAULT_UNLOGGED;
     }else{
@@ -14,7 +14,7 @@
     $queryString = str_ends_with($queryString, "/") ? $queryString : $queryString."/";
 
     $peticion = explode("/",$queryString);
-    if(isset($_COOKIE["LoggedIn"])){
+    if(isset($_COOKIE["LoggedIN"])){
         $control = 1;
     }
    
@@ -54,16 +54,12 @@
                 echo "HOLA PEPE";
             break;
             default:
-                include "_view/404.html";
+                echo $control;
+                include "_view/master.html";
                 die();
         }
         include "_view/master.html";
+
     }
-    
-    
-    
-    
-    
-    
 
 ?>
