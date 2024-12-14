@@ -21,7 +21,7 @@ try {
     $usuario = $model->getDataRows("usuario", ["user", "password"], "user = ?;", [$user]);
 
     if ($usuario && $usuario[0]['user'] === $user && $usuario[0]['password'] === $pass) {
-        echo json_encode(["resultado" => 4, "mensaje" => "Inicio de sesion exitoso"]);
+        echo json_encode(["resultado" => 1, "mensaje" => "Inicio de sesion exitoso"]);
         setcookie("LoggedIN", "true", 0, "/");
         exit;
     } else {
