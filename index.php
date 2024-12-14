@@ -3,6 +3,9 @@
 
     $controlSesion = 0;
     $control = 0;
+    if(isset($_COOKIE["LoggedIN"])){
+        $control = 1;
+    }
 
     if($control == 0){
         $queryString = isset($_GET["querystring"]) ? $_GET["querystring"] : RUTA_DEFAULT_UNLOGGED;
@@ -14,9 +17,7 @@
     $queryString = str_ends_with($queryString, "/") ? $queryString : $queryString."/";
 
     $peticion = explode("/",$queryString);
-    if(isset($_COOKIE["LoggedIN"])){
-        $control = 1;
-    }
+    
    
 
     $controlador = isset($peticion[0]) ? $peticion[0] : "";
@@ -61,7 +62,7 @@
                 
             break;
             default:
-                echo $control;
+                echo $controlador;
                 include "_view/master.html";
                 die();
         }
