@@ -53,6 +53,12 @@
             font-weight: bold;
 
         }
+
+        input[type="checkbox"]:checked{
+            background-color: #363636; /* Fondo al marcar */
+            border-color: #363636;
+        }
+        
     </style>
 </head>
 <body>
@@ -77,11 +83,35 @@
                 <label for="pass" class="form-label">Contraseña:</label>
                 <input type="password" class="form-control" id="pass" placeholder="Contraseña" name="pass" required>
             </div>
+            <div class="mb-3">
+                <input type="checkbox" class="form-check-input" id="showPasswd">
+                <label for="pass" class="form-label">Mostrar Contraseña</label>
+            </div>
+            
             <div class="mb-3 text-end">
-                <a href="#" class="small text-muted">¿Olvidaste tu contraseña?</a>
+                <a href="#" class="small text-muted" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">¿Olvidaste tu contraseña?</a>
             </div>
             <input type="submit" class="btn btn-dark w-100" value="Iniciar Sesión">
         </form>
+    </div>
+
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="forgotPasswordModalLabel">Recuperar Contraseña</h5>
+                    
+                </div>
+                <div class="modal-body">
+                    <p>Por favor, ingresa tu usuario para recuperar tu contraseña.</p>
+                    <input type="email" class="form-control" id="recoveryUser" placeholder="Usuario" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-outline-dark" onclick="enviarRecuperacion()" data-bs-dismiss="modal" >Enviar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap JS -->
@@ -90,5 +120,15 @@
     <script src="<?php echo SITE_URL; ?>utils/datatables/datatables.min.js"></script>
     <script src="<?php echo SITE_URL; ?>utils/sweetAlert2/sweetalert2.min.js"></script>
     <script src="<?php echo SITE_URL; ?>js/ctrlLogIn.js"></script>
+    <script src="<?php echo SITE_URL; ?>js/login.js"></script>
+    <script src="<?php echo SITE_URL; ?>utils/emailJS/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+           emailjs.init({
+             publicKey: "9nDqI1y6mUnqn72dg",
+           });
+        })();
+    </script>
+    
 </body>
 </html>

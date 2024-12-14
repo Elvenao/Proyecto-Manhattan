@@ -8,7 +8,7 @@
         
         public function getDataRows($tabla, $campos, $condicion = null, $params = null){
             //Conectar la BD
-            $mysql = new MySQLAux("10.0.1.3", "basedatos","Zoroark","renamon");
+            $mysql = new MySQLAux("localhost", "usuarios","root","Bloodborn3");
             $datos = $mysql->selectRows($tabla, $campos, $condicion, $params);
             return $datos;
         }

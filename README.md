@@ -19,3 +19,4 @@
 
 4. **Database:**
    - If you decide to use a local database, make sure to create the necessary tables and load the required data according to the project specifications.
+   -New SQL file database has been added, please check the SQL file before, this file is not the definitive.

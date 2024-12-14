@@ -50,8 +50,15 @@
                     $ctrl = new MtoProductoController();
                 }
             break;
-            case "pepe":
-                echo "HOLA PEPE";
+            case "notas":
+                if($accion == ""){
+                    require_once "_controller/NotasMenuController.php";
+                $ctrl = new NotasMenuController();
+                }else if($accion == "pos"){
+                    require_once "_controller/posController.php";
+                    $ctrl = new posController();
+                }
+                
             break;
             default:
                 echo $control;
