@@ -60,8 +60,7 @@
                 
             break;
             default:
-                echo $controlador;
-                include "_view/master.html";
+                include "_view/404.html";
                 die();
         }
         include "_view/master.html";

@@ -14,26 +14,24 @@ function formulario_submit(e) {
   // Llamar a la función para enviar los datos
   llamadaASweetAlert(datos, "_controller/AjaxLogin.php")
     .then(data => {
-      console.log("Respuesta del servidor:", data);
+      console.log("Respuesta del servidora:", data);
       console.log("Resultado: ", data.resultado);
 
       // Validar el resultado y mostrar mensajes con SweetAlert
 
       if (data.resultado !== 1) {
         Swal.fire({
-          imageUrl:"/img/wrong.webp",
-          imageWidth: 100,
-          imageHeight:100,
-          title: "Errorsd",
-          text: data.message,
+          icon: "error",
+          title: "Error",
+          text: "Credenciales incorrectas",
         })
-        console.log("AQUIO")
+
       } else {
-        console.log("AQUIasdfadsO")
+
         Swal.fire({
           icon: "success",
           title: "Éxito",
-          text: "Inicio de Sesión Exitosoafasdfasd",
+          text: "Inicio de Sesión Exitoso",
           
         }).then(() => {
           //Redirigir a Principal segun el rol i guess no se veamos que se hace aqui
