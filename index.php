@@ -18,8 +18,6 @@
 
     $peticion = explode("/",$queryString);
     
-   
-
     $controlador = isset($peticion[0]) ? $peticion[0] : "";
     $accion = isset($peticion[1]) ? $peticion[1] : "";
     $id = isset($peticion[2]) ? $peticion[2] : "";

@@ -3,8 +3,7 @@ let formulario = document.getElementById("formulario");
 formulario.addEventListener("submit", formulario_submit);
 
 function formulario_submit(e) {
-  e.preventDefault(); // Previene el comportamiento por defecto del formulario
-  console.log("PreventDefault");
+  e.preventDefault(); // Previene el comportamiento por defecto del formulario=
 
   // Preparar los datos del formulario
   let user = document.getElementById("user").value;
@@ -22,19 +21,24 @@ function formulario_submit(e) {
 
       if (data.resultado !== 1) {
         Swal.fire({
-          icon: "warning",
-          title: "Error",
-          text: "No se ha podido iniciar Sesión",
+          imageUrl:"/img/wrong.webp",
+          imageWidth: 100,
+          imageHeight:100,
+          title: "Errorsd",
+          text: data.message,
         })
+        console.log("AQUIO")
       } else {
+        console.log("AQUIasdfadsO")
         Swal.fire({
           icon: "success",
           title: "Éxito",
-          text: "Inicio de Sesión Exitoso",
+          text: "Inicio de Sesión Exitosoafasdfasd",
+          
         }).then(() => {
           //Redirigir a Principal segun el rol i guess no se veamos que se hace aqui
           //window.location.replace("localhost/proyecto/producto");
-          window.history.pushState(null, "Sesion Iniciada", "producto/");
+          window.history.pushState(null, "Sesion Iniciada", "");
           location.reload(true);
         });
       }
