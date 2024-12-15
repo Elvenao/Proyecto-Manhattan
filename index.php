@@ -64,7 +64,5 @@
                 die();
         }
         include "_view/master.html";
-
     }
-
 ?>

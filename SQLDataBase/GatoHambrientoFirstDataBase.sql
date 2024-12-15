@@ -64,8 +64,8 @@ INSERT INTO roles VALUES(2,'Usuario');
 
 CREATE TABLE usuarios (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    nombre_usuario TEXT NOT NULL,
-    contraseña TEXT NOT NULL,
+    user TEXT NOT NULL,
+    password TEXT NOT NULL,
     rol_id INTEGER NOT NULL,
     FOREIGN KEY (rol_id) REFERENCES roles(id)
 );
@@ -73,6 +73,7 @@ CREATE TABLE usuarios (
 INSERT INTO usuarios VALUES(1,'super','sup1',1);
 INSERT INTO usuarios VALUES(2,'user','admin',2);
 INSERT INTO usuarios VALUES(1, 'Niamky', 'Zorua570');
+INSERT INTO usuarios VALUES(1,'elvenao','DarkSouls');
 
 CREATE TABLE Hamburguesas ( id_alimento INTEGER PRIMARY KEY, alimento TEXT, precio REAL, prod_desch TEXT );
 
