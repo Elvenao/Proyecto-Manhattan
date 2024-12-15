@@ -1,8 +1,13 @@
 <?php
+    session_start();
     require_once "config/global.php";
 
     $controlSesion = 0;
     $control = 0;
+    if(!isset($_COOKIE["LoggedIN"]) && isset($_SESSION["LoggedIN"])){
+        setcookie("LoggedIN", "true", time()+7200, "/");
+        $control = 1;
+    }
     if(isset($_COOKIE["LoggedIN"])){
         $control = 1;
     }

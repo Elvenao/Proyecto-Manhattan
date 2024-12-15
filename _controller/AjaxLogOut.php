@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 header("Content-Type: application/plain");
 
 try {
@@ -9,6 +9,8 @@ try {
     // Validar datos
     if (isset($_COOKIE["LoggedIN"]) && isset($input)){
         setcookie("LoggedIN", "true", time()-7200, "/");
+        session_unset();
+        session_destroy();
         echo json_encode(["resultado" => 1, "mensaje" => "Sesión Cerrada"]);
         exit;
     }

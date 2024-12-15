@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once '../_model/MainModel.php';
 
 header("Content-Type: application/json");
@@ -23,6 +24,7 @@ try {
     if ($usuario && $usuario[0]['user'] === $user && $usuario[0]['password'] === $pass) {
         echo json_encode(["resultado" => 1, "mensaje" => "Inicio de sesion exitoso"]);
         setcookie("LoggedIN", "true", time()+7200, "/");
+        $_SESSION["LoggedIN"] = "true";
         exit;
     } else {
         echo json_encode(["resultado" => 0, "mensaje" => "Credenciales incorrectas"]);
