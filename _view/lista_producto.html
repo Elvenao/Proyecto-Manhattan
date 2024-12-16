@@ -45,16 +45,18 @@
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
-                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Categoria</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($this->datos as $registro): ?>
                     <tr>
-                        <td><?php echo $registro["id_producto"]?></td>
-                        <td><?php echo $registro["nombre"]?></td>
-                        <td><?php echo $registro["precio"]?></td>
+                        <td><?php echo $registro["Id_Inventario"]?></td>
+                        <td><?php echo $registro["Nombre"]?></td>
+                        <td><?php echo $registro["Stock"]?></td>
+                        <td><?php echo $registro["IC_Id"]?></td>
                         <td>
                             <a href="javascript:void(0)"><a href="javascript:Editar()">Editar</a></a>
                             <a href="javascript:void(0)"><a href="javascript:Eliminar()">Eliminar</a></a>

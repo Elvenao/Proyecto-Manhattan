@@ -4,7 +4,7 @@
         private $datos;
         public function __construct(){
             $model = new MainModel();
-            $this->datos = $model->getDataRows("producto",["id_producto","nombre","precio"]);
+            $this->datos = $model->getDataRows("Inventario",["Id_Inventario","Nombre","Stock", "IC_Id"]);
         }
 
         public function renderContent(){
