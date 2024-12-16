@@ -71,6 +71,7 @@
                 require_once "_controller/ReportesController.php";
                 $ctrl = new ReportesController();
                 break;
+            break;
             case "perfil":
                 if($accion == ""){
                     require_once "_controller/perfilController.php";
