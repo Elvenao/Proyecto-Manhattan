@@ -19,9 +19,9 @@
         let MesEdad = 0
         
         let MesesArray = ['Jan', 'Feb', 'Mar','Apr' ,'May', 'Jun', 'Jul', 'Aug' , 'Sep', 'Oct', 'Nov', 'Dec']
-        for(let i = 0; i < 11; i++){
+        for(let i = 0; i < 12; i++){
             if(fechaHoy[1] == MesesArray[i]){
-                mesHoy = Number(i + 1)
+                mesHoy = i + 1
             }  
         }
         let diaEdad = Number(fechaHoy[2]) - Number(day)
