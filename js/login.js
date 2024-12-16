@@ -32,7 +32,7 @@ function enviarRecuperacion(){
     let templateParams = {
         to_name: "Administrador",
         from_name: document.getElementById("recoveryUser").value,
-        message: document.getElementById("recoveryUser").value + " olvido su contraseña"
+        message: document.getElementById("recoveryUser").value + " ha olvidado su contraseña y pide que le configures una nueva."
     
     }
     
