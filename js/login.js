@@ -1,24 +1,30 @@
-
 let checkbox = document.getElementById("showPasswd")
 let pass = document.getElementById("pass")
 let label = document.getElementById("showPasswdLbl")
 
-label.addEventListener('click',function(){
-  let checkbox = document.getElementById("showPasswd")
-  if(checkbox.checked){
-    checkbox.checked = false
-  }else{
-    checkbox.checked = true
-  }
-})
 
-checkbox.addEventListener('change',function(){
+function A(){
+  label.addEventListener('click',function(){
+    let checkbox = document.getElementById("showPasswd")
+    if(checkbox.checked){
+      checkbox.checked = false
+      pass.setAttribute("type","password")
+    }else{
+      checkbox.checked = true
+      pass.setAttribute("type","text")
+    }
+  })
+  checkbox.addEventListener('change',function(){
     if(checkbox.checked){
         pass.setAttribute("type","text")
     }else{
         pass.setAttribute("type","password")
     }
-})
+  })
+}
+
+A()
+
 
 
 

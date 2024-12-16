@@ -67,9 +67,11 @@
                 }
                 
             break;
-            case "reportes":
-                require_once "_controller/ReportesController.php";
-                $ctrl = new ReportesController();
+            case "perfil":
+                if($accion == ""){
+                    require_once "_controller/perfilController.php";
+                    $ctrl = new perfilController();
+                }
             break;
             default:
                 include "_view/404.html";
