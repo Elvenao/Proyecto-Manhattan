@@ -1,176 +1,516 @@
-CREATE TABLE inventario (
-    id INTEGER PRIMARY KEY,
-    producto TEXT NOT NULL,
-    cantidad INTEGER NOT NULL
-);
-INSERT INTO inventario VALUES(1,'Carne de hamburguesa',8);
-INSERT INTO inventario VALUES(2,'Tiras de pollo',47);
-INSERT INTO inventario VALUES(3,'Carne de pollo hamburguesa',25);
-INSERT INTO inventario VALUES(4,'Boneless',20);
-INSERT INTO inventario VALUES(5,'Alitas',30);
-INSERT INTO inventario VALUES(6,'Papa waffle',22);
-INSERT INTO inventario VALUES(7,'Papa Gajo',30);
-INSERT INTO inventario VALUES(8,'Piña en almíbar',4);
-INSERT INTO inventario VALUES(9,'Champiñones en lata',8);
-INSERT INTO inventario VALUES(10,'Frijoles en lata',12);
-INSERT INTO inventario VALUES(11,'Pepinillos en frasco',4);
-INSERT INTO inventario VALUES(12,'Chiles jalapeños en bolsa',4);
-INSERT INTO inventario VALUES(13,'Mayonesa',3);
-INSERT INTO inventario VALUES(14,'Mostaza',3);
-INSERT INTO inventario VALUES(15,'Catsup',4);
-INSERT INTO inventario VALUES(16,'Caguama Corona',12);
-INSERT INTO inventario VALUES(17,'Caguama Victoria',12);
-INSERT INTO inventario VALUES(18,'Cerveza de latón modelo',9);
-INSERT INTO inventario VALUES(19,'Cerveza de latón victoria',9);
-INSERT INTO inventario VALUES(20,'Cerveza de latón Heineken',9);
-INSERT INTO inventario VALUES(21,'Boing de mango',12);
-INSERT INTO inventario VALUES(22,'Boing de guayaba',6);
-INSERT INTO inventario VALUES(23,'Boing de manzana',9);
-INSERT INTO inventario VALUES(24,'Coca cola de vidrio',15);
-INSERT INTO inventario VALUES(25,'Coca cola de lata',12);
-INSERT INTO inventario VALUES(26,'Coca cola botella',12);
-INSERT INTO inventario VALUES(27,'Fanta',10);
-INSERT INTO inventario VALUES(28,'Delaware',8);
-INSERT INTO inventario VALUES(29,'Sprite',7);
-INSERT INTO inventario VALUES(30,'Sidral Mundet',9);
-INSERT INTO inventario VALUES(31,'Coca cola sin azúcar',12);
-INSERT INTO inventario VALUES(32,'Naranja y nada',6);
-INSERT INTO inventario VALUES(33,'Limón y nada',6);
-INSERT INTO inventario VALUES(34,'Peñafiel',20);
-INSERT INTO inventario VALUES(35,'Sangría',12);
-INSERT INTO inventario VALUES(36,'Leche entera',12);
-INSERT INTO inventario VALUES(37,'Queso americano',4);
-INSERT INTO inventario VALUES(38,'Queso cheddar',3);
-INSERT INTO inventario VALUES(39,'Queso manchego',3);
-INSERT INTO inventario VALUES(40,'Queso Oaxaca',4);
-INSERT INTO inventario VALUES(41,'Salchicha de pavo',4);
-INSERT INTO inventario VALUES(42,'Tocino',2);
-INSERT INTO inventario VALUES(43,'Bisteck',3);
-INSERT INTO inventario VALUES(44,'Jamón',4);
-INSERT INTO inventario VALUES(45,'Pan para hot dog',6);
-INSERT INTO inventario VALUES(46,'Bollo para hamburguesa',8);
-INSERT INTO inventario VALUES(47,'Costillas',20);
-INSERT INTO inventario VALUES(48,'Aros de cebolla',12);
-INSERT INTO inventario VALUES(49,'Nuggets',18);
-INSERT INTO inventario VALUES(50,'Tortilla de burrito',10);
+use basedatos;
 
 CREATE TABLE roles (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    nombre_rol TEXT NOT NULL
+  id_rol int NOT NULL AUTO_INCREMENT,
+  descripcion varchar(20) DEFAULT NULL,
+  PRIMARY KEY (id_rol)
 );
 
-INSERT INTO roles VALUES(1,'Supervisor');
-INSERT INTO roles VALUES(2,'Usuario');
+INSERT INTO roles VALUES (1,'Admin');
 
-CREATE TABLE usuarios (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    user TEXT NOT NULL,
-    password TEXT NOT NULL,
-    rol_id INTEGER NOT NULL,
-    FOREIGN KEY (rol_id) REFERENCES roles(id)
+CREATE TABLE `usuario` (
+  `id_usuario` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `apellidos` varchar(50) NOT NULL,
+  `user` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date DEFAULT NULL,
+  `rol_id` int NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  KEY `rol_id` (`rol_id`),
+  FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id_rol`)
 );
 
-INSERT INTO usuarios VALUES(1,'super','sup1',1);
-INSERT INTO usuarios VALUES(2,'user','admin',2);
-INSERT INTO usuarios VALUES(1, 'Niamky', 'Zorua570');
-INSERT INTO usuarios VALUES(1,'elvenao','DarkSouls');
+INSERT INTO usuario VALUES (16,'Emilio','Hernandez Sosa','elvenao','Darksouls','2004-12-17','2023-09-18',NULL,1);
+INSERT INTO usuario VALUES (17,'Niamky','Mendoza Olvera','Niamky','Zorua570','2004-02-24','2023-09-01',NULL,1);
 
-CREATE TABLE Hamburguesas ( id_alimento INTEGER PRIMARY KEY, alimento TEXT, precio REAL, prod_desch TEXT );
+CREATE TABLE post (
+  id_post int NOT NULL AUTO_INCREMENT,
+  contenido text NOT NULL,
+  PRIMARY KEY (id_post)
+);
 
-INSERT INTO Hamburguesas VALUES(101,'Clásica',65.0,'');
-INSERT INTO Hamburguesas VALUES(102,'Sencilla',75.0,'');
-INSERT INTO Hamburguesas VALUES(103,'3 quesos',85.0,'');
-INSERT INTO Hamburguesas VALUES(104,'4 quesos',90.0,'');
-INSERT INTO Hamburguesas VALUES(105,'Doble carne',115.0,'');
-INSERT INTO Hamburguesas VALUES(106,'Hawaiana 2q',85.0,'');
-INSERT INTO Hamburguesas VALUES(107,'Hawaiana 4q',95.0,'');
-INSERT INTO Hamburguesas VALUES(108,'Tocino 2q',85.0,'');
-INSERT INTO Hamburguesas VALUES(109,'Tocino 4q',95.0,'');
-INSERT INTO Hamburguesas VALUES(110,'4 quesos',0.0,NULL);
-INSERT INTO Hamburguesas VALUES(111,'Champiñones 4q',95.0,'');
-INSERT INTO Hamburguesas VALUES(112,'Fried chicken',125.0,'');
-INSERT INTO Hamburguesas VALUES(113,'Deluxe',120.0,'');
-INSERT INTO Hamburguesas VALUES(114,'Mango habanero',120.0,'');
+Create Table Productos_Categorias(
+	Id_PC int  PRIMARY KEY Auto_increment, 
+    Categoria varchar(100) not null
+    );
+    
+CREATE TABLE Inventario_Categorias(
+Id_IC INT PRIMARY KEY AUTO_INCREMENT,
+Categoria varchar(100) not null
+);
 
-CREATE TABLE Snaks ( id_alimento INTEGER PRIMARY KEY, alimento TEXT, precio REAL, prod_desch TEXT );
+INSERT INTO Inventario_Categorias (Categoria) VALUES 
+('congelados'),
+('lateria'),
+('Condimentos y salsas'),
+('Jarabes'),
+('Licores'),
+('Jugos'),
+('Granel'),
+('Desechable'),
+('Lacteos y dulces'),
+('Refrigerados'),
+('Otros');
 
-INSERT INTO Snaks VALUES(201,'Papas ch',50.0,'');
-INSERT INTO Snaks VALUES(202,'Papas md',70.0,'');
-INSERT INTO Snaks VALUES(203,'Papas grd',90.0,'');
-INSERT INTO Snaks VALUES(204,'Papas gajo',65.0,'');
-INSERT INTO Snaks VALUES(205,'Papas waffle',70.0,'');
-INSERT INTO Snaks VALUES(206,'Nuggets',65.0,'');
-INSERT INTO Snaks VALUES(207,'Aros de cebolla',75.0,'');
-INSERT INTO Snaks VALUES(208,'Papas especiales',120.0,'');
-INSERT INTO Snaks VALUES(209,'Salchipapas',90.0,'');
-INSERT INTO Snaks VALUES(210,'Salchipulpos',60.0,'');
+INSERT INTO Productos_Categorias (Categoria) VALUES
+('Hamburguesas'), -- 1
+('Extra Hamburguesas'), -- 2
+('Papas fritas'), -- 3
+('Extra papas'), -- 4
+('Pollo'), -- 5
+('Extra pollo'), -- 6
+('Burritos'), -- 7
+('Hot dogs'), -- 8
+('Costillas'), -- 9
+('Extra costillas'), -- 10
+('Bebidas'),  -- 11
+('Cocteleria'), -- 12
+('Cerveza'), -- 13
+('Extra cerveza'), -- 14
+('Cafés'), -- 15
+('Extra café'), -- 16
+('Waffles'), -- 17
+('Crepas'), -- 18
+('Extra crepas'); -- 19
 
-CREATE TABLE Pollo ( id_alimento INTEGER PRIMARY KEY, alimento TEXT, precio REAL, prod_desch TEXT );
+CREATE TABLE Inventario(
+Id_Inventario INT PRIMARY KEY AUTO_INCREMENT,
+Nombre VARCHAR(100) NOT NULL,
+Stock Int NOT NULL,
+Informacion varchar(255),
+Costo DECIMAL(10,2) ,
+status VARCHAR(20) not null,
+IC_Id INT,
+FOREIGN KEY (IC_Id) References Inventario_Categorias(Id_IC)
+);
 
-INSERT INTO Pollo VALUES(301,'Alitas',105.0,'');
-INSERT INTO Pollo VALUES(302,'Alitas con nachos',115.0,'');
-INSERT INTO Pollo VALUES(303,'Alitas con papas',125.0,'');
-INSERT INTO Pollo VALUES(304,'Boneless',110.0,'');
-INSERT INTO Pollo VALUES(305,'Boneless con nachos',120.0,'');
-INSERT INTO Pollo VALUES(306,'Boneless con papas',125.0,'');
-INSERT INTO Pollo VALUES(307,'K-tiras',110.0,'');
-INSERT INTO Pollo VALUES(308,'K-tiras con nachos',120.0,'');
-INSERT INTO Pollo VALUES(309,'K-tiras con papas',125.0,'');
+CREATE TABLE Productos(
+Id_Productos INT PRIMARY KEY AUTO_INCREMENT,
+Nombre VARCHAR(100) NOT NULL,
+Informacion varchar(255),
+Precio DECIMAL(10,2) ,
+Costo DECIMAL(10,2),
+status VARCHAR(20) not null,
+PC_Id INT,
+FOREIGN KEY (PC_Id) References Productos_Categorias(Id_PC)
+);
 
-CREATE TABLE Burritos ( id_alimento INTEGER PRIMARY KEY, alimento TEXT, precio REAL, prod_desch TEXT );
+DELIMITER //
+CREATE TRIGGER giveStatusInv
+BEFORE INSERT ON Inventario
+FOR EACH ROW
+BEGIN
+    IF NEW.Nombre IS NOT NULL THEN
+        SET NEW.Status = 'TRUE';
+    ELSE
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'ERROR';
+    END IF;
+END //
+DELIMITER ;
 
-INSERT INTO Burritos VALUES(401,'Burro bisteck',115.0,'');
-INSERT INTO Burritos VALUES(402,'Burro longaniza',115.0,'');
-INSERT INTO Burritos VALUES(403,'Burro tocino',115.0,'');
-INSERT INTO Burritos VALUES(404,'Burro champiñones',115.0,'');
-INSERT INTO Burritos VALUES(405,'Burro hawaiano',115.0,'');
-INSERT INTO Burritos VALUES(406,'Burro campechano',120.0,'');
-INSERT INTO Burritos VALUES(407,'Burro bisteck tocino',120.0,'');
-INSERT INTO Burritos VALUES(408,'Burro bisteck champiñones',120.0,'');
-INSERT INTO Burritos VALUES(410,'Burro arrachera',0.0,NULL);
-CREATE TABLE Refrescos ( id_alimento INTEGER PRIMARY KEY, alimento TEXT, precio REAL, prod_desch TEXT );
-INSERT INTO Refrescos VALUES(701,'Coca cola lata',35.0,'25');
-INSERT INTO Refrescos VALUES(702,'Coca cola 600ml',35.0,'26');
-INSERT INTO Refrescos VALUES(703,'Coca cola vidrio',35.0,'24');
-INSERT INTO Refrescos VALUES(704,'Coca cola zero',35.0,'31');
-INSERT INTO Refrescos VALUES(705,'Fanta',35.0,'5');
-INSERT INTO Refrescos VALUES(706,'Sprite',35.0,'29');
-INSERT INTO Refrescos VALUES(707,'Delaware',35.0,'28');
-INSERT INTO Refrescos VALUES(708,'Sidral Mundet',35.0,'30');
-INSERT INTO Refrescos VALUES(709,'Naranja y nada',35.0,'32');
-INSERT INTO Refrescos VALUES(710,'Limón y nada',35.0,'33');
-INSERT INTO Refrescos VALUES(711,'Sangría',35.0,'35');
-INSERT INTO Refrescos VALUES(712,'Boing mango',20.0,'21');
-INSERT INTO Refrescos VALUES(713,'Boing manzana',20.0,'23');
-INSERT INTO Refrescos VALUES(714,'Boing guayaba',22.0,'14');
-INSERT INTO Refrescos VALUES(715,'Sangría preparada',60.0,'35');
-INSERT INTO Refrescos VALUES(716,'Tehuacan preparada',60.0,'34');
+INSERT INTO Inventario ( Nombre, stock, IC_Id) VALUES
+( 'Carne de Hamburguesa', 216, 1),
+('Carne de Pollo', 120, 1),
+('Papa waffle',53,1),
+('Papa gajo', 72,1),
+('Aros de Cebolla',120,1),
+('Costillas',24,1),
+('Boneless',52,1),
+('Arrachera para hamburguesa',12,1),
+('Arrachera para burritos',15,1),
+('K-Tiras', 23, 1),
+('Nuggets', 15, 1),
+('Caja de waffles',72,1),
+('Bolsa de Hielo',4,1),
+('Mango congelado', 12,1),
+('Frutos rojos', 10,1),
+('Fresas congeladas',12,1),
+('Piña en almibar' ,15,2),
+('Mango en Almibar' ,12,2),
+('Champiñones en Lata',12,2),
+('Frijoles Bayos', 15,2),
+('Bolsa de chiles jalapñeos',5,2),
+('Frasco de Mayonesa',5,3),
+('Frasco de catsup',5,3),
+('Frasco de pepinillos',5,3),
+('Frasco de mostaza',5,3),
+('Valentina de Galón',5,3),
+('Salsa buffalo',5,3),
+('Salsa mango habanero',3,3),
+('Salsa mango habanero CC',3,3),
+('Salsa FrutiHot Mango Habanero',3,3),
+('Salsa FrutiHot Blueberry',3,3),
+('Salsa FrutiHot Tamarindo',3,3),
+('Salsa loltun',4,3),
+('Salsa verde',5,3),
+('Frasco de catsup',5,3),
+('Frasco de mostaza',5,3),
+('Frasco de valentina',5,3),
+('Sobre de mayonesa',300,3),
+('Sobre de catsup',300,3),
+('Sobre de mostaza',300,3),
+('Sobre de salsa',900,3),
+('Salsa parmesano',3,3),
+('Salsa bbq Aval',3,3),
+('Aderezo Ranch',3,3),
+('Aderezo cesar',2,3),
+('Aderezo Blue cheese',2,3),
+('Aderezo de Guacamole',4,3),
+('Mermelada de Mango',3,3),
+('Mermelada de Fresa',3,3),
+('Mermelada de Zarzamora',3,3),
+('Sirope de Fresa',2,4),
+('Sirope de Mango',2,4),
+('Sirope de Cereza',2,4),
+('Sirope de Lychee',2,4),
+('Sirope de Blueberry',2,4),
+('Sirope de manzana verde',2,4),
+('Sirope de Frambuesa',2,4),
+('Sirope de Naranja',2,4),
+('Sirope de Piña',2,4),
+('Granadina',4,4),
+('Sirope de crema irlandesa',2,4),
+('Couli de Fresa',2,4),
+('FrutiMich de mango',2,4),
+('FrutiMich de Tamarindo',2,4),
+('FrutiMich Cubano',2,4),
+('LIcor de Hierbas',4,5),
+('Licor de Curasao',2,5),
+('Tequila',1,5),
+('Ron',2,5),
+('Vodka',2,5), 
+('Baileys',3,5),
+('Crema de Coco',2,4),
+('Rompope',3,5),
+('Jugo de piña',4,6),
+('Jugo de naranja',6,6),
+('Clamato de galón',2,6),
+('Peñafiel',12,6),
+('Azucar blanca',10,7),
+('Azucar glass',10,7),
+('Sal',10,7),
+('Miguelito',2,7),
+('Tajín',2,7),
+('Ajonjolí caramelizado',10,7),
+('Granillo chocolate turín',3,7),
+('Azucar sobre',100,7),
+('Splenda sobre', 100,7),
+('Sobre de Moka',30,7),
+('Sobre de capuccino',100,7),
+('Polvo para café vanilla francesa',2,7),
+('Bolsa de polvo taro',2,7),
+('Chocolate Nesquik',3,7),
+('Chocolate Abuelita',3,7),
+('Leche Malta en polvo',4,7),
+('Galleta oreo base 1kg',4,7),
+('Polvo de chocolate blanco',4,7),
+('Canela molida',3,7),
+('Azucar glass',3,7),
+('Bolsa de Asa no.0',5,8),
+('Bolsa de Asa no.1',5,8),
+('Bolsa de Asa no.2',5,8),
+('Bolsa de Asa no.3',5,8),
+('Rollo de bolsa 1kg',4,8),
+('Rollo de bolsa 2kg',4,8),
+('Rollo de bolsa 3kg',4,8),
+('Hoja de Polipapel',1500,8),
+('Papel de mantel',100,8),
+('Palito de brocheta',100,8),
+('Palito de Hamburguesa',100,8),
+('Palillos',500,8),
+('Bolsa de basura grande',3,8),
+('Bolsa de basura Jumbo',3,8),
+('Popote grueso',20,8),
+('Popote delgado',20,8),
+('Tenedor grande',50,8),
+('Cuchillo grande',75,8),
+('Servitoallas',200,8),
+('Servilletas',500,8),
+('Sanitas', 40,8),
+('Servilletas de barra',240,8),
+('Vaso de malteada 16oz', 25,8),
+('Tapa tp no.12', 100,8),
+('Vaso de cartón para café 16oz',25,8),
+('Tapa vaso de cafe',50,8),
+('Portavaso de carton',20,8),
+('Tenedor chico' ,4,8),
+('Vaso para cerveza',5,8),
+('vaso de 20 oz', 100,8),
+('Tapa plana', 100,8),
+('Tapa souffle', 100,8),
+('Vaso souffle' ,100,8),
+('Vaso no 0', 100,8),
+('Tapa no 0', 100,8),
+('Charola 855 ',500,8),
+('Contenedor 7x7 ',400,8),
+('Contenedor de hamburguesa',400,8),
+('Charola 066',400,8),
+('Contenedor de hotdog',100,8),
+('Vaso 1lt',25,8),
+('Tapa de Vaso 1lt', 25,8),
+('Popote de café',25,8),
+('Cajeta',3,9),
+('Lechera',2,9),
+('Chocolate hersheys liquido',2,9),
+('Crema de cacahuate',2,9),
+('Escarchado de tamarindo',2,9),
+('Escarchado de Mango',2,9),
+('Gomita de tiburon',8,9),
+('Gomita de Aros',9,9),
+('Banderillas de tamarindo',100,9),
+('Banderillas de Blueberry',100,9),
+('Leche Entera',24,9),
+('Leche deslactosada',24,9),
+('Caramelos',125,9),
+('Crema de Avellana',3,9),
+('Perlas de Blueberry',3,9),
+('Perlas de Mango',3,9),
+('Perlas de Lychee',3,9),
+('Perlas de Fresa',3,9),
+('Perlas de Cereza',3,9),
+('Perlas de Manzana verde',3,9),
+('Perlas de Frutos rojos',3,9),
+('Perlas de Naranja',3,9),
+('Frasco de cerezas',4,9),
+('Mazapan',60,9),
+('Conejito turin',24,9),
+('galletas oreo',28,9),
+('Queso americano',72,10),
+('Burrera',12,10),
+('Crema batida',4,10),
+('Barra de queso cheddar',5,10),
+('Barra de queso manchego',5,10),
+('Bola de queso oaxaca',5,10),
+('Imitación queso líquido',10,10),
+('Salchicha de pavo',53,10),
+('Tocino',4,10),
+('Tortillinas',4,10),
+('Paquete de jamón',8,10),
+('Jitomate',28,10),
+('Lechuga',8,10),
+('Longaniza',5,10),
+('Bisteck',5,10),
+('Cochinita',5,10),
+('Limón',4,10),
+('Gas Butano',2,11),
+('Aceite para freidora',2,11),
+('Botella de aceite',8,11),
+('Bulto de carbón 10kg',2,11),
+('Pan para hotdog',28,11),
+('Bollos para hamburguesa',72,11),
+('Mango',6,11),
+('Manzana',6,11),
+('Plátano',6,11),
+('Guayaba',6,11),
+('Bulto de papa',6,11),
+('Cebolla',8,11),
+('Caja de nachos',3,11),
+('Manojo de hierbabuena',2,11),
+('Coco rallado',2,11),
+('Tanque de gas',2,11),
+('Condimento montreal',1,11),
+('Garrafon de agua',2,11);
 
-CREATE TABLE Cerveza ( id_alimento INTEGER PRIMARY KEY, alimento TEXT, precio REAL, prod_desch TEXT );
+DESCRIBE Productos;
 
-INSERT INTO Cerveza VALUES(801,'Cerveza de Latón Victoria',45.0,'19');
-INSERT INTO Cerveza VALUES(802,'Cerveza de Latón Modelo',45.0,'18');
-INSERT INTO Cerveza VALUES(804,'Cerveza de Latón Heineken',45.0,'20');
-INSERT INTO Cerveza VALUES(805,'Cerillito Victoria',50.0,'19');
-INSERT INTO Cerveza VALUES(806,'Cerillito Modelo',50.0,'18');
-INSERT INTO Cerveza VALUES(807,'Caguama mega Victoria',95.0,'17');
-INSERT INTO Cerveza VALUES(808,'Caguama mega Corna',16.0,'');
-INSERT INTO Cerveza VALUES(809,'Michelada de sabor Corona',120.0,'16');
-INSERT INTO Cerveza VALUES(810,'Michelada de sabor Victoria',120.0,'17');
-INSERT INTO Cerveza VALUES(811,'Michelada ClamatoCorona',120.0,'16');
-INSERT INTO Cerveza VALUES(812,'Michelada Clamato Victoria',120.0,'17');
-INSERT INTO Cerveza VALUES(813,'MicheladaCorona',100.0,NULL);
-INSERT INTO Cerveza VALUES(814,'Michelada Victoria',100.0,'17');
-
-CREATE TABLE Hotdogs ( id_alimento INTEGER PRIMARY KEY, alimento TEXT, precio REAL, prod_desch TEXT );
-
-INSERT INTO Hotdogs VALUES(501,'Hot dog sencillo',25.0,'');
-INSERT INTO Hotdogs VALUES(502,'Hot dog sencillo ord',70.0,'');
-INSERT INTO Hotdogs VALUES(503,'Hot dog c queso',35.0,'');
-INSERT INTO Hotdogs VALUES(504,'Hot dog c queso ord',90.0,'');
-INSERT INTO Hotdogs VALUES(505,'Hot dog c tocino',35.0,'');
-INSERT INTO Hotdogs VALUES(506,'Hot dog c tocino ord',90.0,'');
-INSERT INTO Hotdogs VALUES(507,'Hot dog especial',40.0,'');
-INSERT INTO Hotdogs VALUES(508,'Hot dog especial ord',110.0,'');
-INSERT INTO Hotdogs VALUES(509,'Hot dog hawaiano',40.0,'');
-INSERT INTO Hotdogs VALUES(510,'Hot dog hawaiano ord',110.0,'');
+INSERT INTO Productos(Nombre,precio,PC_Id) VALUES
+( 'H clásica',70,1),
+('H sencilla',80,1),
+('H 3 quesos',90,1),
+('H 4 quesos', 100,1),
+('H doble', 120,1),
+('H hawaina 2 quesos',95,1),
+('H hawaina 4 quesos',105,1),
+('H tocino 2 quesos',95,1),
+('H Tocino 4 quesos',105,1),
+('H champiñones 2 quesos',95,1),
+('H champiñones 4 quesos',105,1),
+('H hawaina arrachera ',130,1),
+('H de pollo ',130,1),
+('H de pollo endiablada ',130,1),
+('H deluxe ',125,1),
+('H Mexicana ',125,1),
+('H Mango habanero ',125,1),
+('Piña',15,2),
+('Tocino',20,2),
+('Champiñones',20,2),
+('Queso oaxaca',20,2),
+('3 aros de cebolla',30,2),
+('Pepinillos',10,2),
+('Chiles rellenos',35,2),
+('Salsa bbq',10,2),
+('Carne extra',40,2),
+('Pollo extra',50,2),
+('Papas chicas',55,3),
+('Papas medianas',70,3),
+('Papas grandes',90,3),
+('Papas gajo',70,3),
+('Papas waffle',70,3),
+('Aros de cebolla',80,3),
+('Papas especiales',120,3),
+('Salchipapas',95,3),
+('Salchipulpos',65,3),
+('Nachos',75,3),
+('Nachos con bisteck',135,3),
+('Nachos con cochinita',135,3),
+('ingrediente extra',5,4),
+('Nuggets',70,5),
+('Alitas',110,5),
+('Alitas con nachos',120,5),
+('Alitas con nachos',125,5),
+('Boneless',120,5),
+('Boneless con nachos',130,5),
+('Boneless con papas',135,5),
+('K-tiras',120,5),
+('K-tiras con nachos',130,5),
+('K-tiras con papas',135,5),
+('Salsa extra',15,6),
+('Queso para nachos',10,6),
+(' papas',10,6),
+('aderezo ranch',10,6),
+('Aderezo blue cheese',10,6),
+('B bisteck',125,7),
+('B longaniza',125,7),
+('B tocino',125,7),
+('B champiñones',125,7),
+('B Hawaiano',125,7),    
+('B bisteck y longaniza',125,7),    
+('B bisteck y tocino',125,7),    
+('B bisteck y champiñones',125,7),
+('B arrachera',135,7),
+('B cochinita',125,7),
+('HD sencillo',30,8),
+('Orden de HD sencillo',80,8),
+('HD con queso',35,8),
+('orden de HD con queso',95,8),
+('HD con tocino',35,8),
+('orden de HD con tocino',95,8),
+('HD especial',40,8),
+('Orden de HD especiales',110,8),
+('HD hawaiano',40,8),
+('Orden de HD Hawaianos',110,8),
+('1/2 kg de costillas' ,185,9),
+('1 kg de costillas', 360,9),
+('Salsa extra' ,15,10),
+('Queso liquido', 10,10),
+('Coca-cola',37,11),
+('Coca-cola zero',37,11),
+('Fanta',37,11),
+('Sprite',37,11),
+('Sidral Mundet',37,11),
+('Delaware',37,11),
+('Sangría',37,11),
+('Naranja y nada',37,11),
+('Limon y nada',37,11),
+('Boing ',37,11),
+('Sangría preparada', 65,11),
+('Tehuacan preparado',65, 11),
+('Malteada de chocolate',95,11),
+('Malteada de Fresa',95,11),
+('Malteada de galleta',95,11),
+('Malteada de Vainilla',95,11),
+('Malteada de oreo',105,11),
+('Malteada de nutella',105,11),
+('Malteada de conejito turin',105,11),
+('Malteada de Taro',105,11),
+('Malteada de chocolate blanco',105,11),
+('Malteada de oreo',105,11),
+('Frappe de capuccino',95,11),
+('Frappe de Moka',95,11),
+('Frappe de chocolate',95,11),
+('Frappe de vainilla francesa',95,11),
+('Frappe de Taro',105,11),
+('Frappe de Oreo',105,11),
+('Frappe de Nutella',105,11),
+('Frappe de Cajeta',105,11),
+('Frappe de Mazapan',105,11),
+('Soda Italiana Manzana verde',70,11),
+('Soda Italiana Zarzamora',70,11),
+('Soda Italiana Naranja',70,11),
+('Soda Italiana Frambuesa',70,11),
+('Soda Italiana Cereza',70,11),
+('Soda Italiana Fresa',70,11),
+('Soda Italiana Maracuya',70,11),
+('Soda Italiana Mora azul',70,11),
+('Soda Italiana Frutos rojos',70,11),
+('Soda Italiana Lichi',70,11),
+('Soda Italiana Mango',70,11),
+('Soda Italiana Manzana Piña',70,11),
+('Soda molecular Manzana verde',80,11),
+('Soda molecular Zarzamora',80,11),
+('Soda molecular Naranja',80,11),
+('Soda molecular Frambuesa',80,11),
+('Soda molecular Cereza',80,11),
+('Soda molecular Fresa',80,11),
+('Soda molecular Maracuya',80,11),
+('Soda molecular Mora azul',80,11),
+('Soda molecular Frutos rojos',80,11),
+('Soda molecular Lichi',80,11),
+('Soda molecular Mango',80,11),
+('Pitufo 1/2L',90,11),
+('Pitufo 1L',130,11),
+('Tequila Sunrise 1/2L',90,12),
+('Tequila Sunrise 1L',130,12),
+('Mojito Cubano 1/2L',100,12),
+('Mojito Cubano 1L',145,12),
+('Mojito de mango 1/2L',105,12),
+('Mojito de mango 1L',150,12),
+('Mojito de Fresa 1/2L',105,12),
+('Mojito de Fresa 1L',150,12),
+('Mojito de Frutos rojos 1/2L',110,12),
+('Mojito de Frutos rojos 1L',160,12),
+('Piña colada 1/2L',105,12),
+('Piña colada 1L',150,12),
+('Perla negra 1/2L',120,12),
+('Perla negra 1L',170,12),
+('Cerveza de Latón Victoria',47,13),
+('Cerveza de Latón Heineken',47,13),
+('Cerveza de Latón Modelo',47,13),
+('Cerilito de Latón Victoria',55,13),
+('Cerilito de Latón Modelo',55,13),
+('Cerilito de Latón Heineken',55,13),
+('Caguama Mega',100,13),
+('Michelada 1L',110,13),
+('Michelada de sabor',125,13),
+('Michelada clamato',130,13),
+('Tarro escarchado',10,14),
+('Clamato',25,14),
+('Café americano 16oz',35,15),
+('Café capuccino 16oz',55,15),
+('Café mocca 16oz',55,15),
+('Café capuccino vainilla francesa 16oz',55,15),
+('Café latte frio 16oz',70,15),
+('Café capuchino de sabor 16oz',65,15),
+('chocolate',45,15),
+('cold brew latte',90,15),
+('Leche deslactosada',5,16),
+('waffle 1 topping',50,17),
+('waffle 1 topping y 1 fruta',75,17),
+('waffle 1 topping y bola de helado',75,17),
+('Crepa 1 untable',50,18),
+('Crepa 2 untables',60,18),
+('Crepa 3 untables',65,18),
+('Crepa Oreo',95,18),
+('Crepa Carlos V',95,18),
+('Crepa kitkat',100,18),
+('Crepa hawaiana',95,18),
+('Crepa huevo kinder',105,18),
+('Crepa de jamón',90,18),
+('Crepa rey de chocolate',135,18),
+('Crepa de champiñones',110,18),
+('Nuez',25,19),
+('Bola de helado',30,19),
+('platano',20,19),
+('Fresa',30,19),
+('Durazno',30,19),
+('Untable extra',10,19),
+('Galleta oreo',15,19),
+('Chocolate kit kat',25,19),
+('Huevo kinder',30,19),
+('Jamon de pavo',20,19),
+('Queso manchego',25,19),
+('Champiñones ',25,19),
+('piña',20,19);
