@@ -1,6 +1,12 @@
 <div>
     <h1><?php echo $this->datos[0]['nombre']. " " .$this->datos[0]['apellidos'] ;?></h1>
-    <p id="insert"></p>
+    <div class="input-group mb-3 w-25">
+        <span class="input-group-text">Edad: </span> <input type="text" readonly id="insert" class="form-control">
+    </div>
+    <div class="input-group mb-3 w-25">
+        <span class="input-group-text">Fecha de Inicio: </span> <input type="text" readonly id="insert2" class="form-control">
+    </div>
+    <input type="hidden" value="<?php echo $this->datos[0]['fecha_inicio'];?>" id="fecha_inicio">
     <input type="hidden" value="<?php echo $this->datos[0]['fecha_nacimiento'];?>" id="fecha">
 </div>
 
@@ -39,7 +45,8 @@
         }
         let AnioEdad = anioHoy - Number(year)
 
-        document.getElementById("insert").innerHTML = "Edad: " + AnioEdad
+        document.getElementById("insert").value = AnioEdad
+        document.getElementById("insert2").value = document.getElementById("fecha_inicio").value
     })
 
     
