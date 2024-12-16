@@ -10,7 +10,7 @@ function LogOutBtn(){
         }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-            LogOutAjax("_controller/AjaxLogOut.php",dato)
+            LogOutAjax("/ElGatoHambriento/_controller/AjaxLogOut.php",dato)
             Swal.fire({
                 title:"Cerrando Sesión",
             }).then(()=>{
