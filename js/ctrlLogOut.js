@@ -15,7 +15,7 @@ function LogOutBtn(){
                 title:"Cerrando Sesión",
             }).then(()=>{
                 
-                window.history.pushState(null, "Sesion Iniciada", "");
+                window.history.pushState(null, "Sesion Iniciada", "/ElGatoHambriento");
                 location.reload(true);
             })
             

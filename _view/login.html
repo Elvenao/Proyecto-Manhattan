@@ -25,25 +25,61 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            top: 4%;
+            top: 5.5%;
         }
         .login-container {
             position: absolute;
             top: 35%;
             left: 50%;
             transform: translateX(-50%);
-            max-width: 400px;
-            width: 100%;
-            padding: 20px;
+            width: 90%; /* Ocupa el 90% de la pantalla en móviles */
+            max-width: 400px; /* Máximo en pantallas grandes */
+            padding: 2vh 3vw; /* Padding adaptativo */
             border: 1px solid #ddd;
             border-radius: 8px;
             background: #fff;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1rem; /* Tamaño base del texto */
         }
         #logo{
             width: 30vh;
             height: auto;
         }
+        @media (max-width: 768px) {
+            .login-logo {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 13%;
+            }
+            .Titulo-container{
+                font-size: 5vw; /* Texto más pequeño en pantallas pequeñas */
+                text-align: center;
+            }
+            .login-container {
+                font-size: 1rem; /* Reduce el tamaño de texto */
+                padding: 3vh 5vw; /* Más padding en pantallas pequeñas */
+            }
+            #logo{
+                width: 30vh;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #logo{
+                width: 20vh;
+                height: auto;
+                top: 35%;
+            }
+            .Titulo-container{
+                font-size: 6vw;
+            }
+            .login-container {
+                font-size: 0.9rem;
+            }
+        }
+        
         .Titulo-container{
             position: absolute;
             left: 50%;
@@ -67,7 +103,7 @@
         <img src="<?php SITE_URL;?>img/Logo.png" alt="Logo" id="logo">
         
     </div>
-    <div class=" Titulo-container">
+    <div class="Titulo-container">
         El Gato Hambriento
     </div>
 
