@@ -45,7 +45,7 @@
         
     }else{
         switch($controlador){
-            case "producto":
+            case "inventario":
                 if($accion == ""){
                     require_once "_controller/ListaProductoController.php";
                     $ctrl = new ListaProductoController();
@@ -61,8 +61,15 @@
                 }else if($accion == "pos"){
                     require_once "_controller/posController.php";
                     $ctrl = new posController();
+                }else if($accion == "consultar"){
+                    require_once "_controller/ConsultarNotasController.php";
+                    $ctrl = new ConsultarNotasController();
                 }
                 
+            break;
+            case "reportes":
+                require_once "_controller/ReportesController.php";
+                $ctrl = new ReportesController();
             break;
             default:
                 include "_view/404.html";

@@ -1,15 +1,33 @@
+<style>
+    .custom-button {
+        background-color: #e0e0e0; /* Fondo gris claro */
+        border-radius: 8px; /* Bordes redondeados */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        transition: background-color 0.3s, transform 0.2s; /* Transiciones */
+    }
+
+    .custom-button:hover {
+        background-color: #d6d6d6; /* Gris más oscuro al pasar el mouse */
+        transform: translateY(-2px); /* Efecto de elevación */
+    }
+
+    .custom-button p {
+        font-size: 1.2rem; /* Tamaño del texto */
+        color: #333; /* Color del texto */
+    }
+</style>
+
 <div class="row vh-100 d-flex justify-content-center align-items-center">
     <!-- Box 1 -->
     <div class="col-5">
-        <button class="border bg-light d-flex justify-content-center align-items-center w-100" style="height: 300px;">
+        <button onclick="btn_gotoConsultarNotas()" class="custom-button d-flex justify-content-center align-items-center w-100" style="height: 300px;">
             <p class="fw-bold m-0">Consultar Notas</p>
         </button>
     </div>
     <!-- Box 2 -->
     <div class="col-5">
-        <button class="border bg-light d-flex justify-content-center align-items-center w-100" style="height: 300px;">
+        <button onclick="btn_gotoPOS()" class="custom-button d-flex justify-content-center align-items-center w-100" style="height: 300px;">
             <p class="fw-bold m-0">Punto de Venta</p>
         </button>
     </div>
-</div>
 </div>

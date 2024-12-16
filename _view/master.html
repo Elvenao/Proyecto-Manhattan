@@ -82,7 +82,7 @@
     <div class="">
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center bg-light p-2 border-bottom">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center btn" onclick="gotoHome()">
                 <img src="<?php echo SITE_URL; ?>img/Logo.png" alt="G" class="me-2" style="width: 50px; height: 50px; border-radius: 50%;">
 
                 <h1 class="fs-4 m-0">Gato Hambriento</h1>
@@ -109,15 +109,15 @@
             <!-- Sidebar -->
             <div class="col-2 border-end bg-light">
                 <div class="d-flex flex-column h-200">
-                    <button class="btn btn-light  text-start py-4">Reportes</button>
-                    <button class="btn btn-light  text-start py-3">Notas</button>
-                    <button class="btn btn-light  text-start py-3">Inventario</button>
-                    <button class="btn btn-light text-start py-3">Configuración</button>
+                    <button class="btn btn-light  text-start py-4" onclick="btn_gotoReportes()">Reportes</button>
+                    <button class="btn btn-light  text-start py-3" onclick="btn_gotoNotas()">Notas</button>
+                    <button class="btn btn-light  text-start py-3" onclick="btn_gotoInventario()">Inventario</button>
+                    <button class="btn btn-light text-start py-3" onclick="btn_gotoConfiguracion()">Configuración</button>
                 </div>
             </div>
 
             <!-- Main Content Area -->
-            <div class="col-8">
+            <div class="col-10">
                 <?php $ctrl->renderContent(); ?>
             </div>
         </div>
@@ -127,54 +127,8 @@
     <script src="<?php echo SITE_URL; ?>utils/datatables/datatables.min.js"></script>
     <script src="<?php echo SITE_URL; ?>utils/sweetAlert2/sweetalert2.min.js"></script>
     <script src="<?php echo SITE_URL; ?>js/ctrlLogOut.js"></script>
-    <script>
-        let meinTable = new DataTable('#meinTable');
-        let posTable = new DataTable('#tablapos');
-        function Editar(){
-            Swal.fire({
-            title: "¿Seguro que quieres guardar los cambios?",
-            showDenyButton: true,
-            showCancelButton: false,
-            input: true,
-            confirmButtonText: "Guardar",
-            denyButtonText: `Cancelado`
-            }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                Swal.fire("Guardado", "", "success");
-            } else if (result.isDenied) {
-                Swal.fire("Cancelado", "", "success");
-            }
-            });
-        }
-        function Eliminar(Id,fila){
-            fila = Number(fila)
-            Swal.fire({
-            title: "¿Seguro que quieres borrar el registro?",
-            text: "No serás capaz de revertir los cambios",
-            icon: "warning",
-            showCancelButton: true,
-            allowOutsideClick: false,
-            inputLabel: "Hla",
-            inputPlaceholder: "Gola",
-            cancelButtonText: "Cancelar",
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Si, borrar"
-            }).then((result) => {
-            if (result.isConfirmed) {
-                meinTable.row(fila).remove().draw()
-                eliminarOnClick(Id)
-                
-                Swal.fire({
-                title: "Borrado",
-                text: "Tu registro ha sido borrado",
-                icon: "success"
-                });
-            }
-            });
-        }
-    </script>
+    <script src="<?php echo SITE_URL; ?>js/tables.js"></script>
+    <script src="<?php echo SITE_URL; ?>js/master.js"></script>
     <script>
         <?php $ctrl->renderJS(); ?>
     </script>

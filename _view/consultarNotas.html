@@ -1,19 +1,61 @@
-<table id="tablanotas">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Hora y Fecha</th>
-            <th>Total</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Nose</td>
-            <td>123.00</td>
-             <!-- Eliminar solo se vera para los admins -->
-            <td><a href="#">Ver </a><a href="#"> Elimiar</a></td>
-        </tr>
-    </tbody>
-</table>
+<style>
+    /* Ajuste adicional para evitar superposición y asegurar la flecha */
+    .filter-container label {
+        white-space: nowrap;
+        margin-right: 8px;
+    }
+
+    .filter-container select {
+        min-width: 150px; 
+        padding-right: 30px; 
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+        background-size: 16px;
+    }
+</style>
+<div class="container-fluid p-3">
+    <!-- Encabezado -->
+    <div class="row align-items-center border-bottom">
+        <!-- Etiqueta Notas -->
+        <div class="col-6">
+            <h4 class="fw-bold m-0">Inventario</h4>
+        </div>
+        <!-- Selector Filtrar -->
+        <div class="col-6 text-end">
+            <div class="d-flex justify-content-end align-items-center filter-container">
+                <label for="filtro" class="mb-0">Filtrar</label>
+                <select id="filtro" class="form-select form-select-sm ms-2">
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido de las notas -->
+    <div class="row">
+        <div class="col-12 p-3" style="height: 80vh; overflow-y: auto; background-color: #f8f9fa;">
+            <table id="tablanotas">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Hora y Fecha</th>
+                        <th>Total</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Nose</td>
+                        <td>123.00</td>
+                         <!-- Eliminar solo se vera para los admins -->
+                        <td><a href="#">Ver </a><a href="#"> Elimiar</a></td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+    </div>
+</div>
