@@ -1,6 +1,6 @@
 <?php 
     require_once "_model/MainModel.php";
-    class MtoProductoController{
+    class MtoInventarioController{
         private $datos;
         public function __construct(){
             // $model = new MainModel();

@@ -82,7 +82,7 @@
     <div class="">
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center bg-light p-2 border-bottom">
-            <div class="d-flex align-items-center btn" onclick="gotoHome()">
+            <div class="d-flex align-items-center btn" onclick="javascript:location.replace('<?php echo SITE_URL; ?>')">
                 <img src="<?php echo SITE_URL; ?>img/Logo.png" alt="G" class="me-2" style="width: 50px; height: 50px; border-radius: 50%;">
 
                 <h1 class="fs-4 m-0">Gato Hambriento</h1>
@@ -108,10 +108,10 @@
             <!-- Sidebar -->
             <div class="col-2 border-end bg-light">
                 <div class="d-flex flex-column h-200">
-                    <button class="btn btn-light  text-start py-4" onclick="btn_gotoReportes()">Reportes</button>
-                    <button class="btn btn-light  text-start py-3" onclick="btn_gotoNotas()">Notas</button>
-                    <button class="btn btn-light  text-start py-3" onclick="btn_gotoInventario()">Inventario</button>
-                    <button class="btn btn-light text-start py-3" onclick="btn_gotoConfiguracion()">Configuración</button>
+                    <button class="btn btn-light  text-start py-4" onclick="javascript:location.replace('<?php echo SITE_URL; ?>reportes/')">Reportes</button>
+                    <button class="btn btn-light  text-start py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>notas/')">Notas</button>
+                    <button class="btn btn-light  text-start py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inventario/')">Inventario</button>
+                    <button class="btn btn-light text-start py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>settings/')">Configuración</button>
                 </div>
             </div>
 

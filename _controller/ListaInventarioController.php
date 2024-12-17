@@ -1,6 +1,6 @@
 <?php 
     require_once "_model/MainModel.php";
-    class ListaProductoController{
+    class ListaInventarioController{
         private $datos;
         public function __construct(){
             $model = new MainModel();
@@ -11,4 +11,3 @@
             include "_view/lista_producto.html";
         }
     }
-

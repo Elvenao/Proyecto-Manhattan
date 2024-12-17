@@ -24,13 +24,14 @@
     $peticion = explode("/",$queryString);
     
     $controlador = isset($peticion[0]) ? $peticion[0] : "";
-    $accion = isset($peticion[1]) ? $peticion[1] : "";
-    $id = isset($peticion[2]) ? $peticion[2] : "";
+    $lista = isset($peticion[1]) ? $peticion[1] : "";
+    $accion = isset($peticion[2]) ? $peticion[2] : "";
+    $id = isset($peticion[3]) ? $peticion[3] : "";
     //Procesar la petición
     if($control == 0){
         switch($controlador){
             case "login":
-                if($accion == ""){
+                if($lista == ""){
                     include "_view/login.html";
                     
                 }else {
@@ -45,33 +46,45 @@
         
     }else{
         switch($controlador){
-            case "inventario":
-                if($accion == ""){
-                    require_once "_controller/ListaProductoController.php";
-                    $ctrl = new ListaProductoController();
-                }else if($accion == "agregar"){
-                    require_once "_controller/MtoProductoController.php";
-                    $ctrl = new MtoProductoController();
-                }
-            break;
-            case "notas":
-                if($accion == ""){
-                    require_once "_controller/NotasMenuController.php";
-                $ctrl = new NotasMenuController();
-                }else if($accion == "pos"){
-                    require_once "_controller/posController.php";
-                    $ctrl = new posController();
-                }else if($accion == "consultar"){
-                    require_once "_controller/ConsultarNotasController.php";
-                    $ctrl = new ConsultarNotasController();
-                }
-                
-            break;
             case "reportes":
                 require_once "_controller/ReportesController.php";
                 $ctrl = new ReportesController();
-                break;
-
+            break;
+            case "notas":
+                switch($lista){
+                    case "":
+                        require_once "_controller/NotasMenuController.php";
+                        $ctrl = new NotasMenuController();
+                    break;
+                    case "pos":
+                        require_once "_controller/posController.php";
+                        $ctrl = new posController();
+                    break;
+                    case "consultar":
+                        if($accion == ""){
+                            require_once "_controller/ConsultarNotasController.php";
+                            $ctrl = new ConsultarNotasController();
+                        }
+                    break;
+                }
+            break;
+            case "inventario":
+                switch($lista){
+                    case "" :
+                        require_once "_controller/InventarioMenuController.php";
+                        $ctrl = new InventarioMenuController();
+                    break;
+                    case "almacen":
+                        if($accion == ""){
+                            require_once "_controller/ListaInventarioController.php";
+                            $ctrl = new ListaInventarioController();
+                        }else if($accion == "agregar"){
+                            require_once "_controller/MtoInventarioController.php";
+                            $ctrl = new MtoInventarioController();
+                        }
+                    break;
+                }
+            break;
             case "perfil":
                 if($accion == ""){
                     require_once "_controller/perfilController.php";

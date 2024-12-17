@@ -514,3 +514,12 @@ INSERT INTO Productos(Nombre,precio,PC_Id) VALUES
 ('Queso manchego',25,19),
 ('Champiñones ',25,19),
 ('piña',20,19);
+
+CREATE TABLE Notas(
+Id_Notas INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
+Contenido JSON NOT NULL,
+Total DOUBLE NOT NULL);
+
+CREATE TABLE Recetas(
+	Id_Receta INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL, 
+    Receta JSON NOT NULL);
