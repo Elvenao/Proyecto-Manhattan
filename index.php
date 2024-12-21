@@ -4,11 +4,11 @@
 
     $controlSesion = 0;
     $control = 0;
-    if(!isset($_COOKIE["LoggedIN"]) && isset($_SESSION["LoggedIN"])){
+    if(!isset($_COOKIE["LoggedIN"]) && isset($_SESSION["LoggedIN"]) && $_SESSION["LoggedIN"] === CLAVE_SECRETA){
         setcookie("LoggedIN", "true", time()+7200, "/");
         $control = 1;
     }
-    if(isset($_COOKIE["LoggedIN"])){
+    if(isset($_COOKIE["LoggedIN"]) ){
         $control = 1;
     }
 

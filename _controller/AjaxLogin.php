@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require_once '../_model/MainModel.php';
+require_once '../config/global.php';
 
 header("Content-Type: application/json");
 
@@ -23,8 +24,9 @@ try {
 
     if ($usuario && $usuario[0]['user'] === $user && $usuario[0]['password'] === $pass) {
         echo json_encode(["resultado" => 1, "mensaje" => "Inicio de sesion exitoso"]);
-        setcookie("LoggedIN", "true", time()+7200, "/");
-        $_SESSION["LoggedIN"] = $user;
+        setcookie("LoggedIN", CLAVE_SECRETA, time()+7200, "/");
+        $_SESSION["USER"] = $user;
+        $_SESSION["LoggedIN"] = CLAVE_SECRETA;
         $_SESSION["rol"] = $usuario[0]["rol_id"];
         exit;
     } else {
