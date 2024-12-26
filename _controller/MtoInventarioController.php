@@ -14,5 +14,9 @@
         public function renderJS(){
             include "js/ctrlMtoProducto.js";
         }
+
+        public function renderCSS(){
+            
+        }
     }
 

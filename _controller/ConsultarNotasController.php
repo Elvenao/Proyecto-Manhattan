@@ -6,4 +6,7 @@
         public function renderContent(){
             include "_view/consultarNotas.html";
         }
+        public function renderCSS(){
+            
+        }
     }

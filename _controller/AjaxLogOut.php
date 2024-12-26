@@ -7,8 +7,8 @@ try {
     $input =  file_get_contents("php://input");
 
     // Validar datos
-    if (isset($_COOKIE["LoggedIN"]) && isset($input)){
-        setcookie("LoggedIN", "true", time()-7200, "/");
+    if (isset($_SESSION["LoggedIn"]) && isset($input)){
+        
         session_unset();
         session_destroy();
         echo json_encode(["resultado" => 1, "mensaje" => "Sesión Cerrada"]);

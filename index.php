@@ -1,18 +1,7 @@
 <?php
     session_start();
     require_once "config/global.php";
-
-    $controlSesion = 0;
-    $control = 0;
-    if(!isset($_COOKIE["LoggedIN"]) && isset($_SESSION["LoggedIN"]) && $_SESSION["LoggedIN"] === CLAVE_SECRETA){
-        setcookie("LoggedIN", "true", time()+7200, "/");
-        $control = 1;
-    }
-    if(isset($_COOKIE["LoggedIN"]) ){
-        $control = 1;
-    }
-
-    if($control == 0){
+    if(!isset($_SESSION["LoggedIn"]) ){
         $queryString = isset($_GET["querystring"]) ? $_GET["querystring"] : RUTA_DEFAULT_UNLOGGED;
     }else{
         $queryString = isset($_GET["querystring"]) ? $_GET["querystring"] : RUTA_DEFAULT_LOGGED;
@@ -28,7 +17,7 @@
     $accion = isset($peticion[2]) ? $peticion[2] : "";
     $id = isset($peticion[3]) ? $peticion[3] : "";
     //Procesar la petición
-    if($control == 0){
+    if(!isset($_SESSION["LoggedIn"])){
         switch($controlador){
             case "login":
                 if($lista == ""){
@@ -83,14 +72,37 @@
                             $ctrl = new MtoInventarioController();
                         }
                     break;
+                    default:
+                        include "_view/404.html";
+                        die();
                 }
             break;
             case "perfil":
-                if($accion == ""){
+                if($lista == ""){
                     require_once "_controller/perfilController.php";
                     $ctrl = new perfilController();
-                }    
+                } else{
+                   include "_view/404.html";
+                        die();  
+                }  
             break;
+            case "configuracion":
+                if($_SESSION["role"] == "1"){
+                    if($lista == ""){
+                        require_once "_controller/ConfiguracionController.php";
+                        $ctrl = new configuracionController();
+                    }elseif($lista == "editar"){
+                        require_once "_controller/editarUsuario.php";
+                        $ctrl = new editarUsuario($accion);
+                    }else{
+                        include "_view/404.html";
+                        die(); 
+                    } 
+                }else{
+                    include "_view/404.html";
+                    die(); 
+                }
+                break;
             default:
                 include "_view/404.html";
                 die();

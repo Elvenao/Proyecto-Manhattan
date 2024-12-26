@@ -6,4 +6,8 @@
         public function renderContent(){
             include "_view/notasMenu.html";
         }
+
+        public function renderCSS(){
+            
+        }
     }

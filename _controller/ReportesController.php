@@ -6,4 +6,7 @@
         public function renderContent(){
             include "_view/reporte.html";
         }
+        public function renderCSS(){
+            
+        }
     }

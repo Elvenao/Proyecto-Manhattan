@@ -1,0 +1,36 @@
+<div>
+    <h1>Editar a <?php echo $this->datos[0]["nombre"]?></h1>
+    <div class="input-group mb-3 w-50">
+        <span class="input-group-text" id="basic-addon1">Nombre</span>
+        <input type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["nombre"]?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <span class="input-group-text" id="basic-addon1">Apellidos</span>
+        <input type="text" class="form-control" placeholder="Apellidos" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["apellidos"]?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <span class="input-group-text" id="basic-addon1">Usuario</span>
+        <input type="text" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["user"]?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <span class="input-group-text" id="basic-addon1">Contraseña</span>
+        <input type="text" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["password"]?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <span class="input-group-text" id="basic-addon1">Fecha de Nacimiento</span>
+        <input type="date" class="form-control" placeholder="Fecha de Nacimiento" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["fecha_nacimiento"]?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <span class="input-group-text" id="basic-addon1">Fecha de Inicio</span>
+        <input type="date" class="form-control" placeholder="Fecha de Inicio" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["fecha_inicio"]?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <span class="input-group-text" id="basic-addon1">Fecha de Terminación</span>
+        <input type="<?php $tipo = isset($this->datos[0]["fecha_fin"]) ? "date" : "text"; echo $tipo;?>" class="form-control" placeholder="Fecha de Terminación" aria-label="Username" aria-describedby="basic-addon1" value="<?php $fecha = isset($this->datos[0]["fecha_fin"]) ? $this->datos[0]["fecha_fin"] : "En vigencia"; echo $fecha;?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <span class="input-group-text" id="basic-addon1">Rol</span>
+        <input type="text" class="form-control text-end" placeholder="Rol" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["rol_id"]?>">
+    </div>
+    
+</div>

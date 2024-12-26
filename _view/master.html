@@ -15,6 +15,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="icon" href="<?php echo SITE_URL; ?>img/Logo.png">
     <style>
+        <?php $ctrl->renderCSS();?>
+    </style>
+        
+    <style>
+        
+        
         body {
             font-family: Arial, sans-serif;
         }
@@ -111,7 +117,9 @@
                     <button class="btn btn-light  text-start py-4" onclick="javascript:location.replace('<?php echo SITE_URL; ?>reportes/')">Reportes</button>
                     <button class="btn btn-light  text-start py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>notas/')">Notas</button>
                     <button class="btn btn-light  text-start py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inventario/')">Inventario</button>
-                    <button class="btn btn-light text-start py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>settings/')">Configuración</button>
+
+                    <?php if ($_SESSION["role"] == "1") echo "<button class='btn btn-light text-start py-3' onclick=\"javascript:location.replace('" . SITE_URL . "configuracion/')\">Configuración</button>";?>
+
                 </div>
             </div>
 

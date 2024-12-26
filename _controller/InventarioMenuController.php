@@ -6,4 +6,11 @@
         public function renderContent(){
             include "_view/inventarioMenu.html";
         }
+
+        public function renderCSS(){
+            
+        }
+        public function renderJS(){
+            
+        }
     }

@@ -6,10 +6,14 @@
         private $datos;
         public function __construct(){
             $model = new MainModel();
-            $user = $_SESSION["LoggedIN"];
+            $user = $_SESSION["usr"];
             $this->datos = $model->getDataRows("usuario",["nombre","apellidos","fecha_nacimiento","fecha_inicio"], "user = ?;",[$user]);
         }
         public function renderContent(){
             include "_view/perfil.html";
+        }
+
+        public function renderCSS(){
+            
         }
     }

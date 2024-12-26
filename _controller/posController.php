@@ -6,4 +6,7 @@
         public function renderContent(){
             include "_view/puntodeventa.html";
         }
+        public function renderCSS(){
+            
+        }
     }

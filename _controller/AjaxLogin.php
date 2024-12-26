@@ -24,10 +24,9 @@ try {
 
     if ($usuario && $usuario[0]['user'] === $user && $usuario[0]['password'] === $pass) {
         echo json_encode(["resultado" => 1, "mensaje" => "Inicio de sesion exitoso"]);
-        setcookie("LoggedIN", CLAVE_SECRETA, time()+7200, "/");
-        $_SESSION["USER"] = $user;
-        $_SESSION["LoggedIN"] = CLAVE_SECRETA;
-        $_SESSION["rol"] = $usuario[0]["rol_id"];
+        $_SESSION["usr"] = $usuario[0]['user'];
+        $_SESSION["LoggedIn"] = CLAVE_SECRETA;
+        $_SESSION["role"] = $usuario[0]["rol_id"];
         exit;
     } else {
         echo json_encode(["resultado" => 0, "mensaje" => "Credenciales incorrectas"]);

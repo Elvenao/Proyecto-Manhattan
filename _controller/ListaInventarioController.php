@@ -10,4 +10,8 @@
         public function renderContent(){
             include "_view/lista_producto.html";
         }
+
+        public function renderCSS(){
+            
+        }
     }

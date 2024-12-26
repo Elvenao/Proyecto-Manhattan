@@ -1,5 +1,5 @@
 <?php
-    if(isset($_COOKIE["LoggedIN"]) || isset($_SESSION["LoggedIN"]) ){
+    if(isset($_SESSION["LoggedIn"]) ){
         require_once  "class/MySQLAux.php";
     }else {
         require_once  "../class/MySQLAux.php";
