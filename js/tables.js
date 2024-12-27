@@ -2,7 +2,8 @@ $(document).ready(function () {
     $('#meinTable').DataTable({
         searching: false, 
         lengthChange: false, 
-        info: false
+        info: false,
+        order: []
     });
 });
 $(document).ready(function () {

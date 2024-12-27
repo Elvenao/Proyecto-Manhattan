@@ -1,36 +1,60 @@
 <div>
     <h1>Editar a <?php echo $this->datos[0]["nombre"]?></h1>
     <div class="input-group mb-3 w-50">
-        <span class="input-group-text" id="basic-addon1">Nombre</span>
-        <input type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["nombre"]?>">
+        <label for="nombre" class="input-group-text" id="basic-addon1">Nombre</label>
+        <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["nombre"]?>">
     </div>
     <div class="input-group mb-3 w-50">
-        <span class="input-group-text" id="basic-addon1">Apellidos</span>
-        <input type="text" class="form-control" placeholder="Apellidos" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["apellidos"]?>">
+        <label for="apellidos" class="input-group-text" id="basic-addon1">Apellidos</label>
+        <input name="apellidos" id="apellidos" type="text" class="form-control" placeholder="Apellidos" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["apellidos"]?>">
     </div>
     <div class="input-group mb-3 w-50">
-        <span class="input-group-text" id="basic-addon1">Usuario</span>
-        <input type="text" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["user"]?>">
+        <label for="user" class="input-group-text" id="basic-addon1">Usuario</label>
+        <input name="user" id="user" type="text" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["user"]?>">
     </div>
-    <div class="input-group mb-3 w-50">
-        <span class="input-group-text" id="basic-addon1">Contraseña</span>
-        <input type="text" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["password"]?>">
-    </div>
-    <div class="input-group mb-3 w-50">
-        <span class="input-group-text" id="basic-addon1">Fecha de Nacimiento</span>
-        <input type="date" class="form-control" placeholder="Fecha de Nacimiento" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["fecha_nacimiento"]?>">
-    </div>
-    <div class="input-group mb-3 w-50">
-        <span class="input-group-text" id="basic-addon1">Fecha de Inicio</span>
-        <input type="date" class="form-control" placeholder="Fecha de Inicio" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["fecha_inicio"]?>">
-    </div>
-    <div class="input-group mb-3 w-50">
-        <span class="input-group-text" id="basic-addon1">Fecha de Terminación</span>
-        <input type="<?php $tipo = isset($this->datos[0]["fecha_fin"]) ? "date" : "text"; echo $tipo;?>" class="form-control" placeholder="Fecha de Terminación" aria-label="Username" aria-describedby="basic-addon1" value="<?php $fecha = isset($this->datos[0]["fecha_fin"]) ? $this->datos[0]["fecha_fin"] : "En vigencia"; echo $fecha;?>">
-    </div>
-    <div class="input-group mb-3 w-50">
-        <span class="input-group-text" id="basic-addon1">Rol</span>
-        <input type="text" class="form-control text-end" placeholder="Rol" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["rol_id"]?>">
+    <div class="input-group">
+        <div class="input-group mb-3 w-50">
+            <label for="password" class="input-group-text" id="basic-addon1">Contraseña</label>
+        <input id="password" id="password" name="password" type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["password"]?>">
+        </div>
+        <i id="eye-icon" class="bi bi-eye-slash"></i>
     </div>
     
+    <div class="input-group mb-3 w-50">
+        <label for="fecha_nacimiento" class="input-group-text" id="basic-addon1">Fecha de Nacimiento</label>
+        <input name="fecha_nacimiento" id="fecha_nacimiento" type="date" class="form-control" placeholder="Fecha de Nacimiento" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["fecha_nacimiento"]?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="fecha_inicio" class="input-group-text" id="basic-addon1">Fecha de Inicio</label>
+        <input name="fecha_inicio" id="fecha_inicio" type="date" class="form-control" placeholder="Fecha de Inicio" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["fecha_inicio"]?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="fecha_fin" class="input-group-text" id="basic-addon1">Fecha de Terminación</label>
+        <input name="fecha_fin" id="fecha_fin" type="<?php $tipo = isset($this->datos[0]["fecha_fin"]) ? "date" : "text"; echo $tipo;?>" class="form-control" placeholder="Fecha de Terminación" aria-label="Username" aria-describedby="basic-addon1" value="<?php $fecha = isset($this->datos[0]["fecha_fin"]) ? $this->datos[0]["fecha_fin"] : "En vigencia"; echo $fecha;?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="rol_id" class="input-group-text" id="basic-addon1">Rol</label>
+        <select name="rol_id" id="rol_id" class="form-select">
+            <option value="1">Administrador</option>
+            <option value="2">Empleado</option>
+        </select>
+    </div>
+    <div class="w-50 position-relative end-24">
+        <button class="btn btn-success" onclick="confirmarBtn()">Confirmar</button>
+        <button class="btn btn-primary" onclick="restablecerBtn()">Restablecer</button>
+        <button class="btn btn-danger" onclick="cancelarBtn()">Cancelar</button>
+    </div>
+    <style>
+        .end-24{
+            left: 24%;
+        }
+        #eye-icon{
+            position:relative;
+            right: 2.5%;
+            padding-top: 0.7%;
+        }
+        #eye-icon:hover{
+            cursor: pointer;
+        }
+    </style>
 </div>

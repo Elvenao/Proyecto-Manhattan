@@ -6,6 +6,7 @@
         public function __construct(){
             $model = new MainModel();
             $this->datos = $model->getDataRows("usuario",["nombre","apellidos","user","password","fecha_nacimiento","fecha_inicio","fecha_fin","rol_id"],"user !=  ?;",[$_SESSION["usr"]]); 
+            $this->datos = $model->getDataRowsOrdered("usuario",["nombre","apellidos","user","password","fecha_nacimiento","fecha_inicio","fecha_fin","rol_id"],["user != ?","id_usuario","DESC"],[$_SESSION["usr"]]); 
         }
         public function renderContent(){
             include "_view/configuracion.html";

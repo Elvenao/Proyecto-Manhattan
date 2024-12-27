@@ -24,11 +24,11 @@
                     <td><?php echo $registro["fecha_inicio"]?></td>
                     <td><?php $fecha = isset($registro["fecha_fin"]) ? $registro["fecha_fin"] : "En vigencia"; echo $fecha;?></td>
                     <td><?php echo $registro["rol_id"]?></td>
-                    
                 </tr>
                 <?php endforeach ?>
             </tbody>
         </table> 
     </div>
-    <button class="btn btn-primary" disabled id="editBtn" onclick="editBtn()">Editar</button>
+    <button class="btn btn-primary" id="editarBtn" onclick="editarBtn()" disabled>Editar</button>
+    <button class="btn btn-success" onclick="agregarBtn()">Agregar</button>
 </div>

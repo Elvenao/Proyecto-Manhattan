@@ -76,6 +76,48 @@ class MySQLAux {
 		}
     }
 
+	public function selectRowsOrderBy ($tabla, $campos, $condicion = null, $params = null) {
+        $res = [];
+		
+		$strCampos = implode(',', $campos); // Une los campos con comas
+        $query = "SELECT $strCampos FROM $tabla";
+		if(!empty($condicion[0]) && isset($condicion[0])){
+			$query .= " WHERE $condicion[0]";
+		}
+		if(!empty($condicion[1]) && isset($condicion[1])){
+			$query .= " ORDER BY $condicion[1]";
+			if(!empty($condicion[2]) && isset($condicion[2])){
+				$query .= " $condicion[2]";
+			}
+		}
+		
+        setcookie("Quuery",$query,time()+20,'/');
+        try{
+            $cnx = $this->getConnection();
+            $pcmd = $cnx->prepare($query);
+            
+            if ($params) {
+				foreach ($params as $index => $param) {
+					$pcmd->bindValue($index + 1, $param, PDO::PARAM_STR);
+				}
+			}
+            
+            $pcmd->execute();
+
+			while ($row = $pcmd->fetch(PDO::FETCH_ASSOC)) {
+				$res[] = $row; // Cada fila es un arreglo asociativo
+			}
+
+			$pcmd = null; // Cierra el statement/command
+			$cnx = null; // Cierra la conexión
+
+			return $res;
+		} catch (PDOException $ex) {
+			error_log("Error al ejecutar la consulta: " . $ex->getMessage());
+			return null;
+		}
+    }
+
     /**
 	 * Inserta una fila en la tabla especificada y devuelve el ID generado automáticamente.
 	 *
@@ -101,9 +143,9 @@ class MySQLAux {
 			foreach ($params as $index => $param) {
 				$pcmd->bindValue($index + 1, $param, PDO::PARAM_STR); // Vincula cada parámetro.
 			}
-
+			
 			$pcmd->execute();
-			$lastInsertId = $pdo->lastInsertId(); // Obtén el ID generado.
+			$lastInsertId = $cnx->lastInsertId(); // Obtén el ID generado.
 
 			$cnx->commit(); // Confirma la transacción.
 

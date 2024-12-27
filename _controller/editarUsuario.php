@@ -16,4 +16,8 @@
 
         }
 
+        public function renderJS(){
+            include "js/editarUsuario.js";
+        }
+
     }

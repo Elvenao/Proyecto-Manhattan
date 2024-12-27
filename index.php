@@ -92,9 +92,24 @@
                         require_once "_controller/ConfiguracionController.php";
                         $ctrl = new configuracionController();
                     }elseif($lista == "editar"){
-                        require_once "_controller/editarUsuario.php";
-                        $ctrl = new editarUsuario($accion);
-                    }else{
+                        if($accion != $_SESSION["usr"]){
+                            require_once "_controller/editarUsuario.php";
+                            $ctrl = new editarUsuario($accion);
+                        }else{
+                            include "_view/404.html";
+                            die(); 
+                        } 
+                    }elseif($lista == "agregar"){
+                        if($accion == ""){
+                            require_once "_controller/agregarUsuarioController.php";
+                            $ctrl = new agregarUsuarioController();
+                        }else{
+                            include "_view/404.html";
+                            die(); 
+                        }
+                        
+                    }
+                    else{
                         include "_view/404.html";
                         die(); 
                     } 
