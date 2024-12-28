@@ -92,7 +92,7 @@
                         require_once "_controller/ConfiguracionController.php";
                         $ctrl = new configuracionController();
                     }elseif($lista == "editar"){
-                        if($accion != $_SESSION["usr"]){
+                        if($accion != $_SESSION["usr"] && $accion != ""){
                             require_once "_controller/editarUsuario.php";
                             $ctrl = new editarUsuario($accion);
                         }else{

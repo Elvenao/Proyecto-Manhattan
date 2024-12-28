@@ -6,7 +6,7 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Usuario</th>
-                    <th>Contraseña</th>
+                    <th class="column">Contraseña</th>
                     <th>Fecha de Nacimiento</th>
                     <th>Fecha de Inicio</th>
                     <th>Fecha de Termino</th>
@@ -17,13 +17,13 @@
             <tbody>
                 <?php foreach($this->datos as $registro): ?>
                 <tr>
-                    <td><?php echo $registro["nombre"]." ".$registro["apellidos"]?></td>
-                    <td><?php echo $registro["user"]?></td>
-                    <td><?php echo $registro["password"]?></td>
-                    <td><?php echo $registro["fecha_nacimiento"]?></td>
-                    <td><?php echo $registro["fecha_inicio"]?></td>
-                    <td><?php $fecha = isset($registro["fecha_fin"]) ? $registro["fecha_fin"] : "En vigencia"; echo $fecha;?></td>
-                    <td><?php echo $registro["rol_id"]?></td>
+                    <td class="column"><?php echo $registro["nombre"]." ".$registro["apellidos"]?></td>
+                    <td class="column"><?php echo $registro["user"]?></td>
+                    <td class="column"><input class="pass-label" type="password" value="<?php echo $registro["password"]?>" disabled></td>
+                    <td class="column"><?php echo $registro["fecha_nacimiento"]?></td>
+                    <td class="column"><?php echo $registro["fecha_inicio"]?></td>
+                    <td class="column"><?php $fecha = isset($registro["fecha_fin"]) ? $registro["fecha_fin"] : "En vigencia"; echo $fecha;?></td>
+                    <td class="column"><?php echo $registro["rol_id"]?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>
@@ -32,3 +32,22 @@
     <button class="btn btn-primary" id="editarBtn" onclick="editarBtn()" disabled>Editar</button>
     <button class="btn btn-success" onclick="agregarBtn()">Agregar</button>
 </div>
+
+<style>
+    #meinTable thead th {
+        text-align: center;
+        vertical-align: middle; /* Asegura que esté centrado verticalmente */
+    }
+    
+    .pass-label{
+        border: none;
+        width: 40%;
+        text-align: center;
+    }
+
+    #meinTable tbody td {
+        text-align: center;
+        vertical-align: middle; /* Opcional para centrado vertical */
+    }
+    
+</style>

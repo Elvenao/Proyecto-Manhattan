@@ -1,5 +1,7 @@
 <div>
     <h1>Editar a <?php echo $this->datos[0]["nombre"]?></h1>
+    <input type="hidden" id="id_usuario" value="<?php echo $this->datos[0]["id_usuario"]?>">
+    <form id="formEdit">
     <div class="input-group mb-3 w-50">
         <label for="nombre" class="input-group-text" id="basic-addon1">Nombre</label>
         <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["nombre"]?>">
@@ -30,7 +32,7 @@
     </div>
     <div class="input-group mb-3 w-50">
         <label for="fecha_fin" class="input-group-text" id="basic-addon1">Fecha de Terminación</label>
-        <input name="fecha_fin" id="fecha_fin" type="<?php $tipo = isset($this->datos[0]["fecha_fin"]) ? "date" : "text"; echo $tipo;?>" class="form-control" placeholder="Fecha de Terminación" aria-label="Username" aria-describedby="basic-addon1" value="<?php $fecha = isset($this->datos[0]["fecha_fin"]) ? $this->datos[0]["fecha_fin"] : "En vigencia"; echo $fecha;?>">
+        <input name="fecha_fin" id="fecha_fin" type="date" class="form-control" placeholder="Fecha de Terminación" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["fecha_fin"];?>">
     </div>
     <div class="input-group mb-3 w-50">
         <label for="rol_id" class="input-group-text" id="basic-addon1">Rol</label>
@@ -40,13 +42,19 @@
         </select>
     </div>
     <div class="w-50 position-relative end-24">
-        <button class="btn btn-success" onclick="confirmarBtn()">Confirmar</button>
+        <input type="submit" class="btn btn-success" value="Editar">
         <button class="btn btn-primary" onclick="restablecerBtn()">Restablecer</button>
         <button class="btn btn-danger" onclick="cancelarBtn()">Cancelar</button>
+        <button class="btn btn-warning end" onclick="borrarBtn()">Borrar <i class="bi bi-trash-fill"></i></button>
     </div>
+    </form>
     <style>
+        .end{
+            position:relative;
+            left: 37%;
+        }
         .end-24{
-            left: 24%;
+            right: 0;
         }
         #eye-icon{
             position:relative;

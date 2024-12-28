@@ -45,70 +45,10 @@ function agregar(e){
     let rol_id = document.getElementById("rol_id").value
 
     let datos = JSON.stringify({nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id})
-    llamadaASweetAlert(datos, "<?php echo SITE_URL;?>_controller/ajaxAgregarUsuario.php")
-    .then(data => {
-      console.log("Respuesta del servidor:", data);
-      console.log("Resultado: ", data.resultado);
-
-      // Validar el resultado y mostrar mensajes con SweetAlert
-
-      if (data.resultado !== 1) {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: data.mensaje,
-        })
-
-      } else {
-
-        Swal.fire({
-          icon: "success",
-          title: "Éxito",
-          text: "Usuario agregado exitosamente",
-          
-        }).then(() => {
-          //Redirigir a Principal segun el rol i guess no se veamos que se hace aqui
-          //window.location.replace("localhost/proyecto/producto");
-          location.replace("<?php echo SITE_URL;?>configuracion/")
-        });
-      }
-    })
-    .catch(error => {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: `Error en la solicitud: ${error.message}`,
-      });
-    });
+    let resultado = llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxAgregarUsuario.php","Agregar Usuario","¿Seguro que quieres agregar este usuario?","info","Agregar","Cancelar","Error agregando","Usuario agregado","Usuario agregado con exito",true,"<?php echo SITE_URL;?>configuracion/")
 }
 
-function llamadaASweetAlert(json, actionUrl){
-    return new Promise((resolve, reject) => {
-        console.log("Datos enviados:", json);
-    
-        fetch(actionUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: json,
-        })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-          })
-          .then(data => {
-            console.log("Respuesta procesada:", data);
-            resolve(data); // Resolver la promesa con los datos
-          })
-          .catch(error => {
-            console.error("Error al procesar la solicitud:", error);
-            reject(error); // Rechazar la promesa con el error
-          });
-      });
-}
+
 
 
 

@@ -24,6 +24,18 @@
             $datos = $mysql->selectRowsOrderBy($tabla, $campos, $condicion, $params);
             return $datos;
         }
+
+        public function updateData($tabla,$campos,$condicion = null, $params = null){
+            $mysql = new MySQLAux("10.0.1.3", "basedatos","Zoroark","renamon");
+            $datos = $mysql->updateRow($tabla,$campos,$condicion,$params);
+            return $datos;
+        }
+
+        public function deleteRow($tabla,$condicion = null, $params = null){
+            $mysql = new MySQLAux("10.0.1.3", "basedatos","Zoroark","renamon");
+            $datos = $mysql->deleteRow($tabla,$condicion,$params);
+            return $datos;
+        }
     }
     
 

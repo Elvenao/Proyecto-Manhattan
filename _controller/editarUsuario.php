@@ -5,7 +5,8 @@
         private $datos;
         public function __construct($usuario){
             $model = new MainModel();
-            $this->datos = $model->getDataRows("usuario",["nombre","apellidos","user","password","fecha_nacimiento","fecha_inicio","fecha_fin","rol_id"],"user = ?",[$usuario]);
+            $this->datos = $model->getDataRows("usuario",["id_usuario","nombre","apellidos","user","password","fecha_nacimiento","fecha_inicio","fecha_fin","rol_id"],"user = ?",[$usuario]);
+            
         }
 
         public function renderContent(){
