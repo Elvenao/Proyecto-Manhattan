@@ -72,8 +72,8 @@
                             $ctrl = new MtoInventarioController();
                         }else if($accion == 'editar'){
                             if($id != ''){
-                                require_once "_controller/editarProductoController.php";
-                                $ctrl = new editarProducto($id);
+                                require_once "_controller/editarAlmacenController.php";
+                                $ctrl = new editarAlmacen($id);
                             }else{
                                 include "_view/404.html";
                                 die();
