@@ -38,8 +38,7 @@
 
     <!-- Contenido de las notas -->
     <div class="row">
-        <div class="col-12 p-3" style="height: 80vh; overflow-y: auto; background-color: #f8f9fa;">
-            <button onclick="javascript:location.replace('<?php echo SITE_URL; ?>inventario/almacen/agregar/')" class="btn btn-primary">Añadir Nuevo Producto</button>
+        <div class="col-12 p-3" style="height: 81vh; overflow-y: auto; background-color: #f8f9fa;">
             <table id="meinTable">
                 <thead>
                     <tr>
@@ -47,7 +46,7 @@
                         <th>Nombre</th>
                         <th>Stock</th>
                         <th>Categoria</th>
-                        <th>Acciones</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -57,14 +56,13 @@
                         <td><?php echo $registro["Nombre"]?></td>
                         <td><?php echo $registro["Stock"]?></td>
                         <td><?php echo $registro["IC_Id"]?></td>
-                        <td>
-                            <a href="javascript:void(0)"><a href="javascript:Editar()">Editar</a></a>
-                            <a href="javascript:void(0)"><a href="javascript:Eliminar()">Eliminar</a></a>
-                        </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
             </table>    
+            <button onclick="agregarBtn()" class="btn btn-success">Añadir Nuevo Producto</button>
+            <button type="button" class="btn btn-primary" id="editarBtn" onclick="editarBtn()" disabled>Editar</button>
+            <button type="button" class="btn btn-danger" onclick="regresarBtn()">Regresar</button>
         </div>
     </div>
 </div>

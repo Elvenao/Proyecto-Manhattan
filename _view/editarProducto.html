@@ -1,0 +1,29 @@
+<div>
+    <h1>Editar Producto</h1>
+    <div class="input-group mb-3 w-50">
+        <label for="Id_producto" class="input-group-text" id="basic-addon1">Id</label>
+        <input name="Id_producto" id="nombre" type="text" class="form-control" placeholder="Id" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Id_Productos"]?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="producto" class="input-group-text" id="basic-addon1">Producto</label>
+        <input name="producto" id="producto" type="text" class="form-control" placeholder="Producto" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Nombre"]?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="categoria" class="input-group-text" id="basic-addon1">Informacion</label>
+        <input name="producto" id="producto" type="text" class="form-control" placeholder="Categoria" aria-label="Username" aria-describedby="basic-addon1" value="<?php $info = isset($this->datos[0]["Informacion"]) ? $this->datos[0]["Informacion"]:"Sin informacion"; echo $info; ?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="categoria" class="input-group-text" id="basic-addon1">Categoria</label>
+        <select name="" id="categoria">
+            <option value="0">----------</option>
+            <?php foreach($this->categorias as $categoria): ?>
+            <?php echo '<option value="'.$categoria["PC_Id"].'">'.$categoria["Categoria"].'</option>'?>
+            <?php endforeach ?>
+        </select>
+    </div>
+    
+    
+    <div>
+        <button type="button" class="btn btn-danger" onclick="regresarBtn()">Regresar</button>
+    </div>
+</div>

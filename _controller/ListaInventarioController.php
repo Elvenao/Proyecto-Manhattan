@@ -12,6 +12,9 @@
         }
 
         public function renderCSS(){
-            
+            include 'css/listaInventario.css';
+        }
+        public function renderJS(){
+            include "js/listaInventario.js";
         }
     }

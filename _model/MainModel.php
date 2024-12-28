@@ -13,6 +13,12 @@
             return $datos;
         }
 
+        public function getDataRowsJoin($tabla,$campos,$joinTable,$foreignKeys,$condicion = null, $params = null){
+            $mysql = new MySQLAux("10.0.1.3", "basedatos","Zoroark","renamon");
+            $datos = $mysql->selectRowsJoin($tabla, $campos, $joinTable, $foreignKeys,$condicion, $params);
+            return $datos;
+        }
+
         public function insertRow($tabla,$campos, $params = null){
             $mysql = new MySQLAux("10.0.1.3", "basedatos","Zoroark","renamon");
             $lastIdInsert = $mysql->insertRow($tabla,$campos,$params);

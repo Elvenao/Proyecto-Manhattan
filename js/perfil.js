@@ -1,0 +1,37 @@
+document.addEventListener('DOMContentLoaded', function (){
+    let insert = document.getElementById("insert")
+    let fecha_nacimiento = document.getElementById("fecha").value
+    let fechas = fecha_nacimiento.split('-')
+    let algo = Date()
+    let fechaHoy = algo.split(' ')
+    let mesHoy = 0
+    let anioHoy = Number(fechaHoy[3])
+    let year = Number(fechas[0])
+    let month = Number(fechas[1])
+    let day = Number(fechas[2])
+    let MesEdad = 0
+    
+    let MesesArray = ['Jan', 'Feb', 'Mar','Apr' ,'May', 'Jun', 'Jul', 'Aug' , 'Sep', 'Oct', 'Nov', 'Dec']
+    for(let i = 0; i < 12; i++){
+        if(fechaHoy[1] == MesesArray[i]){
+            mesHoy = i + 1
+        }  
+    }
+    let diaEdad = Number(fechaHoy[2]) - Number(day)
+
+    if(diaEdad < 0 ){
+        diaEdad = 31 + diaEdad
+        mesHoy--
+    }
+
+    MesEdad = Number(mesHoy) - Number(month)
+
+    if(MesEdad < 0){
+        MesEdad = 12 + MesEdad
+        anioHoy--
+    }
+    let AnioEdad = anioHoy - Number(year)
+
+    document.getElementById("insert").value = AnioEdad
+    document.getElementById("insert2").value = document.getElementById("fecha_inicio").value
+})
