@@ -45,7 +45,7 @@ function agregar(e){
     let rol_id = document.getElementById("rol_id").value
 
     let datos = JSON.stringify({nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id})
-    let resultado = llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxAgregarUsuario.php","Agregar Usuario","¿Seguro que quieres agregar este usuario?","info","Agregar","Cancelar","Error agregando","Usuario agregado","Usuario agregado con exito",true,"<?php echo SITE_URL;?>configuracion/")
+    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxAgregarUsuario.php","Agregar Usuario","¿Seguro que quieres agregar este usuario?","info","Agregar","Cancelar","Error agregando","Usuario agregado","Usuario agregado con exito",true,"<?php echo SITE_URL;?>configuracion/")
 }
 
 

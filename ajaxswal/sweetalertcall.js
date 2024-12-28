@@ -38,7 +38,8 @@ function llamadaASweetAlert(
 
                 const data = await response.json();
                 if (data.resultado !== 1) {
-                    Swal.showValidationMessage(errorResult);
+                    Swal.showValidationMessage(errorResult+" "+data.mensaje);
+                    console.log(data.mensaje)
                 }
                 return data; // Retorna los datos procesados
             } catch (error) {

@@ -10,7 +10,12 @@
         }
 
         public function renderContent(){
-            include "_view/editarUsuario.html";
+            if($this->datos != null){
+                include "_view/editarUsuario.html";    
+            }else{
+                include "_view/404.html";
+            }
+            
         }
 
         public function renderCSS(){

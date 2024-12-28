@@ -23,7 +23,7 @@
                     <td class="column"><?php echo $registro["fecha_nacimiento"]?></td>
                     <td class="column"><?php echo $registro["fecha_inicio"]?></td>
                     <td class="column"><?php $fecha = isset($registro["fecha_fin"]) ? $registro["fecha_fin"] : "En vigencia"; echo $fecha;?></td>
-                    <td class="column"><?php echo $registro["rol_id"]?></td>
+                    <td class="column"><?php switch($registro["rol_id"]){case 1: $rol = "Administrador";break;case 2: $rol="Empleado";break;} echo $rol; ?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>

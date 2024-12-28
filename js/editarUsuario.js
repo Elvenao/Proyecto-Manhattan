@@ -1,7 +1,6 @@
 
 
-let formulario = document.getElementById("formEdit")
-formulario.addEventListener('submit',editar)
+
 
 
 
@@ -15,8 +14,8 @@ let fecha_inicio = document.getElementById("fecha_inicio")
 let fecha_fin = document.getElementById("fecha_fin")
 let rol_id = document.getElementById("rol_id")
 
-function editar(e){
-    e.preventDefault();
+function editarBtn(){
+
     let nombre = document.getElementById("nombre").value
     let apellidos = document.getElementById("apellidos").value
     let user = document.getElementById("user").value
@@ -25,9 +24,10 @@ function editar(e){
     let fecha_inicio = document.getElementById("fecha_inicio").value
     let fecha_fin = document.getElementById("fecha_fin").value
     let rol_id = document.getElementById("rol_id").value
-    
-    let datos = JSON.stringify({nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id})
-
+    let id_usuario = document.getElementById("id_usuario").value
+    let datos = JSON.stringify({id_usuario,nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id})
+    console.log(datos)
+    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxEditarUsuario.php","Editar Usuario","¿Seguro que quieres realizar estos cambios?, no será posible deshacer los cambios.","warning","Confirmar","Cancelar","Errores editando","Usuario editado","Usuario editado con exito",true,"<?php echo SITE_URL;?>configuracion/")
 }
 
 
@@ -49,8 +49,7 @@ function cancelarBtn(){
 function borrarBtn(){
     let id_usuario = document.getElementById("id_usuario").value
     let datos = JSON.stringify({id_usuario})
-    let resultado = llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxBorrarUsuario.php","Seguro que quieres borrar este usuario","No podras recuperar los datos borrados","warning","Borrar","Cancelar","Error en el Borrado","Usuario eliminado","Usuario borrado con exito",true,"<?php echo SITE_URL;?>configuracion/")
-
+    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxBorrarUsuario.php","Seguro que quieres borrar este usuario","No podras recuperar los datos borrados","warning","Borrar","Cancelar","Error en el Borrado","Usuario eliminado","Usuario borrado con exito",true,"<?php echo SITE_URL;?>configuracion/")
 }
 
 
