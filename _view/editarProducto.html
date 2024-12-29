@@ -1,5 +1,6 @@
 <div>
     <h1>Editar Producto</h1>
+        
     <div class="input-group mb-3 w-50">
         <label for="Id_producto" class="input-group-text" id="basic-addon1">Id</label>
         <input name="Id_producto" id="nombre" type="text" class="form-control" placeholder="Id" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Id_Productos"]?>">
@@ -9,13 +10,20 @@
         <input name="producto" id="producto" type="text" class="form-control" placeholder="Producto" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Nombre"]?>">
     </div>
     <div class="input-group mb-3 w-50">
+        <label for="categoria" class="input-group-text" id="basic-addon1">Precio</label>
+        <input name="producto" id="producto" type="number" class="form-control" placeholder="Precio" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Precio"] ?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="categoria" class="input-group-text" id="basic-addon1">Costo</label>
+        <input name="producto" id="producto" type="number" class="form-control" placeholder="Costo" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Costo"] ?>">
+    </div>
+    <div class="input-group mb-3 w-50">
         <label for="categoria" class="input-group-text" id="basic-addon1">Informacion</label>
-        <input name="producto" id="producto" type="text" class="form-control" placeholder="Categoria" aria-label="Username" aria-describedby="basic-addon1" value="<?php $info = isset($this->datos[0]["Informacion"]) ? $this->datos[0]["Informacion"]:"Sin informacion"; echo $info; ?>">
+        <input name="producto" id="producto" type="text" class="form-control" placeholder="<?php $info = isset($this->datos[0]["Informacion"]) ? "Informacion":"Sin informacion"; echo $info; ?>" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Informacion"]?>">
     </div>
     <div class="input-group mb-3 w-50">
         <label for="categoria" class="input-group-text" id="basic-addon1">Categoria</label>
-        <select name="" id="categoria">
-            <option value="0">----------</option>
+        <select name="" id="categoria" class="form-select">
             <?php foreach($this->categorias as $categoria): ?>
             <?php echo '<option value="'.$categoria["PC_Id"].'">'.$categoria["Categoria"].'</option>'?>
             <?php endforeach ?>

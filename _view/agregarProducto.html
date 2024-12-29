@@ -1,0 +1,45 @@
+<div>
+    <h1>Agregar Producto</h1>
+    <form id="formulario">
+        <div class="input-group mb-3 w-25">
+            <label for="Id_producto" class="input-group-text" id="basic-addon1">Id</label>
+            <input name="Id_producto" id="nombre" type="text" class="form-control" placeholder="Id" aria-label="Username" aria-describedby="basic-addon1" value="">
+        </div>
+        <input type="hidden" id="action" value="mto">
+        <div class="input-group mb-3 w-25" >
+            <span class="input-group-text" id="Id">Producto</span>
+            <input type="text" class="form-control" placeholder="Producto" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3 w-25">
+            <span class="input-group-text" id="Nombre">Informacion</span>
+            <input type="text" class="form-control" placeholder="Informacion" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3 w-25">
+            <span class="input-group-text" id="Nombre">Precio</span>
+            <input type="number" class="form-control" placeholder="Precio" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3 w-25">
+            <span class="input-group-text" id="Nombre">Costo</span>
+            <input type="number" class="form-control" placeholder="Costo" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3 w-25">
+            <span class="input-group-text" id="Nombre">Disponibilidad</span>
+            <select name="" id="" class="form-select">
+                <option value="TRUE">Disponible</option>
+                <option value="FALSE">Sin Existencias</option>
+            </select>
+        </div>
+        <div class="input-group mb-3 w-25">
+            <span class="input-group-text" id="Nombre">Categoria</span>
+            <select name="" id="" class="form-select">
+                <?php foreach($this->categorias as $categoria): ?>
+            <?php echo '<option value="'.$categoria["PC_Id"].'">'.$categoria["Categoria"].'</option>'?>
+            <?php endforeach ?>
+            </select>
+        </div>
+        
+        <br> <input class="btn btn-primary" type="submit" value="Agregar">
+        <button type="button" class="btn btn-danger" onclick="regresarBtn()">Regresar</button>
+    
+    </form>
+</div>

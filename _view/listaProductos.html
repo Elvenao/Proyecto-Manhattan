@@ -44,7 +44,10 @@
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
-                        <th>Stock</th>
+                        <th>Informacion</th>
+                        <th>Precio</th>
+                        <th>Costo</th>
+                        <th>Disponibilidad</th>
                         <th>Categoria</th>
 
                     </tr>
@@ -52,9 +55,12 @@
                 <tbody>
                     <?php foreach($this->datos as $registro): ?>
                     <tr>
-                        <td><?php echo $registro["Id_Inventario"]?></td>
+                        <td><?php echo $registro["Id_Productos"]?></td>
                         <td><?php echo $registro["Nombre"]?></td>
-                        <td><?php echo $registro["Stock"]?></td>
+                        <td><?php $informacion = (isset($registro["Informacion"])) ? $registro["Informacion"] : "Sin Informacion"; echo $informacion;?></td>
+                        <td><?php echo $registro["Precio"]?></td>
+                        <td><?php $costo = (isset($registro["Costo"])) ? $registro["Costo"] : "Sin Costo"; echo $costo;?></td>
+                        <td><?php if($registro["status"] == TRUE){ $Status = "Disponible"; } {"Sin Existencias";} echo $Status;?></td>
                         <td><?php echo $registro["Categoria"]?></td>
                     </tr>
                     <?php endforeach ?>

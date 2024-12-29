@@ -1,5 +1,5 @@
 function regresarBtn(){
-    location.replace('<?php echo SITE_URL; ?>inventario/almacen/')
+    location.replace('<?php echo SITE_URL; ?>inventario/productos/')
 }
 
 document.addEventListener("DOMContentLoaded",function(){

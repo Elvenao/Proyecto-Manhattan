@@ -85,6 +85,27 @@
                             die();
                         }
                     break;
+                    case "productos":
+                        if($accion == ""){
+                            require_once "_controller/ListaProductosController.php";
+                            $ctrl = new ListaProductosController();
+                        }else if($accion == "editar"){
+                            if($id != ''){
+                                require_once "_controller/editarProductoController.php";
+                                $ctrl = new editarProducto($id);
+                            }else{
+                                include "_view/404.html";
+                                die();
+                            }
+                        }else if($accion == "agregar"){
+                            require_once "_controller/agregarProductoController.php";
+                            $ctrl = new agregarProductoController();
+                        }
+                        else{
+                            include "_view/404.html";
+                            die();
+                        }
+                        break;
                     default:
                         include "_view/404.html";
                         die();

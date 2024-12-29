@@ -19,7 +19,6 @@
     <div class="input-group mb-3 w-50">
         <label for="categoria" class="input-group-text"  id="basic-addon1">Categoria</label>
         <select name="" id="categoria" class="form-select">
-            <option value="0">--------------------------------</option>
             <?php foreach($this->categorias as $categoria): ?>
             <?php echo '<option value="'.$categoria["IC_Id"].'">'.$categoria["Categoria"].'</option>'?>
             <?php endforeach ?>

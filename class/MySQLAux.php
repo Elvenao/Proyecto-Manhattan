@@ -81,13 +81,16 @@ class MySQLAux {
 
 		$strCampos = implode(',', $campos); // Une los campos con comas
         $query = "SELECT $strCampos FROM $tabla fT" . " INNER JOIN $joinTable sT ON fT.".$foreignKeys[0]." = sT.".$foreignKeys[1];
-		$query .= (($condicion[0] != "") ? " WHERE $condicion[0]" : "");
+		if($condicion != null){
+			$query .= (($condicion[0] != null) ? " WHERE $condicion[0]" : "");
+		}
 		if(!empty($condicion[1]) && isset($condicion[1])){
 			$query .= " $condicion[1]";
 			if(!empty($condicion[2]) && isset($condicion[2])){
 				$query .= " $condicion[2]";
 			}
 		}
+		
 		setcookie("ASD",$query,time()+20,"/");
         
         try{
