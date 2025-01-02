@@ -12,7 +12,7 @@ function formulario_submit(e) {
   let datos = JSON.stringify({ user, pass });
 
   // Llamar a la función para enviar los datos
-  llamadaASweetAlert(datos, "_controller/AjaxLogin.php")
+  llamada(datos, "_controller/AjaxLogin.php")
     .then(data => {
       console.log("Respuesta del servidora:", data);
       console.log("Resultado: ", data.resultado);
@@ -51,7 +51,7 @@ function formulario_submit(e) {
 }
 
 
-function llamadaASweetAlert(json, actionUrl) {
+function llamada(json, actionUrl) {
   return new Promise((resolve, reject) => {
     console.log("Datos enviados:", json);
 

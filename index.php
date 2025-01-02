@@ -1,10 +1,13 @@
 <?php
     session_start();
+    require_once  "_model/MainModel.php";
     require_once "config/global.php";
     if(!isset($_SESSION["LoggedIn"]) ){
         $queryString = isset($_GET["querystring"]) ? $_GET["querystring"] : RUTA_DEFAULT_UNLOGGED;
+
     }else{
         $queryString = isset($_GET["querystring"]) ? $_GET["querystring"] : RUTA_DEFAULT_LOGGED;
+        
     }
     
 
@@ -22,10 +25,8 @@
             case "login":
                 if($lista == ""){
                     include "_view/login.html";
-                    
                 }else {
                     include "_view/404.html";
-                    
                 }
             break;
             default:
@@ -34,6 +35,8 @@
         }
         
     }else{
+        $model = new MainModel();
+        $rol = $model->getDataRows('usuario',['rol_id'],'user = ?',[$_SESSION["usr"]]);
         switch($controlador){
             case "reportes":
                 require_once "_controller/ReportesController.php";
@@ -121,7 +124,7 @@
                 }  
             break;
             case "configuracion":
-                if($_SESSION["role"] == "1"){
+                if($rol[0]['rol_id'] == 1){
                     if($lista == ""){
                         require_once "_controller/ConfiguracionController.php";
                         $ctrl = new configuracionController();

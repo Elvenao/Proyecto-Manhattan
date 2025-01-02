@@ -1,24 +1,40 @@
 <div>
     <h1>Editar Suministro</h1>
     <div class="input-group mb-3 w-50">
-        <label for="Id_producto" class="input-group-text" id="basic-addon1">Id</label>
-        <input name="Id_producto" id="nombre" type="text" class="form-control" placeholder="Id" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Id_Inventario"]?>" readonly>
+        <label for="Id_suministro" class="input-group-text" id="basic-addon1">Id</label>
+        <input name="Id_suministro" id="Id_suministro" type="text" class="form-control" placeholder="Id" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Id_Inventario"]?>" readonly>
     </div>
     <div class="input-group mb-3 w-50">
-        <label for="producto" class="input-group-text" id="basic-addon1">Suministro</label>
-        <input name="producto" id="producto" type="text" class="form-control" placeholder="Producto" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Nombre"]?>">
+        <label for="nombre" class="input-group-text" id="basic-addon1">Suministro</label>
+        <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Producto" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Nombre"]?>">
     </div>
     <div class="input-group mb-3 w-50">
-        <label for="categoria" class="input-group-text" id="basic-addon1">Informacion</label>
-        <input name="producto" id="producto" type="text" class="form-control" placeholder="Categoria" aria-label="Username" aria-describedby="basic-addon1" value="<?php $info = isset($this->datos[0]["Informacion"]) ? $this->datos[0]["Informacion"]:"Sin informacion"; echo $info; ?>">
+        <label for="informacion" class="input-group-text" id="basic-addon1">Informacion</label>
+        <input name="informacion" id="informacion" type="text" class="form-control" placeholder="<?php $info = isset($this->datos[0]["Informacion"]) ? "Informacion":"Sin informacion"; echo $info; ?>" aria-label="Username" aria-describedby="basic-addon1" value="">
     </div>
     <div class="input-group mb-3 w-50">
-        <label for="categoria" class="input-group-text" id="basic-addon1">Cantidad</label>
-        <input name="producto" id="producto" type="number" class="form-control" placeholder="Categoria" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Stock"]?>">
+        <label for="cantidad" class="input-group-text" id="basic-addon1">Cantidad</label>
+        <input name="cantidad" id="cantidad" type="number" class="form-control" placeholder="Cantidad" aria-label="Username" aria-describedby="basic-addon1" value="" readonly>
+        <button type="button" class="btn btn-outline-success" id="plus-button" onclick="incrementarBtn()">+</button>
+        <button type="button" class="btn btn-outline-primary" id="minus-button" onclick="decrementarBtn()">-</button>
+        <input type="number" placeholder="+/-" class="form-control" id="cantidadOpcional">
+        <button type="button" class="btn btn-outline-success fw-bold" onclick="agregarBtn()">Agregar</button>
+        <button type="button" class="btn btn-outline-primary fw-bold" onclick="restarBtn()">Restar</button>
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="costo" class="input-group-text" id="basic-addon1">Costo</label>
+        <input name="costo" id="costo" type="number" class="form-control" placeholder="<?php if($this->datos[0]['Costo'] == null){echo 'Sin costo';}else{echo 'Costo';}?>" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Costo"]?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="estado" class="input-group-text" id="basic-addon1">Estado</label>
+        <select name="estado" id="estado" class="form-select">
+            <option value="0">No Disponible</option>
+            <option value="1">Disponible</option>
+        </select>
     </div>
     <div class="input-group mb-3 w-50">
         <label for="categoria" class="input-group-text"  id="basic-addon1">Categoria</label>
-        <select name="" id="categoria" class="form-select">
+        <select name="categoria" id="categoria" class="form-select">
             <?php foreach($this->categorias as $categoria): ?>
             <?php echo '<option value="'.$categoria["IC_Id"].'">'.$categoria["Categoria"].'</option>'?>
             <?php endforeach ?>
@@ -27,7 +43,33 @@
     
     
     <div>
-        <button type="button" class="btn btn-primary">Editar</button>
+        <button type="button" class="btn btn-success" onclick="editarBtn()">Editar</button>
+        <button type="button" class="btn btn-primary" onclick="reestablecerBtn()">Reestablecer</button>
         <button type="button" class="btn btn-danger" onclick="regresarBtn()">Regresar</button>
     </div>
 </div>
+
+<style>
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    #plus-button{
+        margin-left: 10px;
+        padding-left: 3%;
+        padding-right: 3%;
+        font-size: 100%;
+        font-weight: bolder;
+    }
+    #minus-button{
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 3.5%;
+        padding-right: 3.5%;
+        font-size: 100%;
+        font-weight: bolder;
+    }
+    
+</style>

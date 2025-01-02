@@ -4,10 +4,13 @@
     class agregarProductoController{
         private $datos;
         private $categorias;
+        private $nextId;
 
         public function __construct(){
             $mysql = new MainModel();
             $this->categorias = $mysql->getDataRowsJoin("Productos",["PC_Id", "Categoria"],'Productos_Categorias',['PC_Id','Id_PC'],[null,"GROUP BY PC_Id"],);
+            $this->nextId = $mysql->getDataRows('Productos', ['MAX(Id_Productos) AS ID']);
+            
         }
 
         public function renderContent(){

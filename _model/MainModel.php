@@ -1,8 +1,9 @@
 <?php
+    $dir = realpath(__DIR__.'\\.\\');
     if(isset($_SESSION["LoggedIn"]) ){
-        require_once  "class/MySQLAux.php";
+        require_once realpath(__DIR__.'\\..\\') . "\\class\\MySQLAux.php";
     }else {
-        require_once  "../class/MySQLAux.php";
+        require_once realpath(__DIR__.'\\..\\') . "\\class\\MySQLAux.php";
     }
     class MainModel{
         

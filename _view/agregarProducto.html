@@ -3,7 +3,7 @@
     <form id="formulario">
         <div class="input-group mb-3 w-25">
             <label for="Id_producto" class="input-group-text" id="basic-addon1">Id</label>
-            <input name="Id_producto" id="nombre" type="text" class="form-control" placeholder="Id" aria-label="Username" aria-describedby="basic-addon1" value="">
+            <input name="Id_producto" id="nombre" type="text" class="form-control" placeholder="Id" aria-label="Username" aria-describedby="basic-addon1" value="<?php $Id = $this->nextId[0]['ID']; $Id++; echo $Id;?>" disabled>
         </div>
         <input type="hidden" id="action" value="mto">
         <div class="input-group mb-3 w-25" >

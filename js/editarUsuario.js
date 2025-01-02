@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 let nombre = document.getElementById("nombre")
 let apellidos = document.getElementById("apellidos")
 let user = document.getElementById("user")
@@ -25,9 +18,11 @@ function editarBtn(){
     let fecha_fin = document.getElementById("fecha_fin").value
     let rol_id = document.getElementById("rol_id").value
     let id_usuario = document.getElementById("id_usuario").value
+
+    let ruta = "<?php echo SITE_URL;?>configuracion/editar/" + user
     let datos = JSON.stringify({id_usuario,nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id})
     console.log(datos)
-    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxEditarUsuario.php","Editar Usuario","¿Seguro que quieres realizar estos cambios?, no será posible deshacer los cambios.","warning","Confirmar","Cancelar","Errores editando","Usuario editado","Usuario editado con exito",true,"<?php echo SITE_URL;?>configuracion/")
+    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxEditarUsuario.php","Editar Usuario","¿Seguro que quieres realizar estos cambios?, no será posible deshacer los cambios.","warning","Confirmar","Cancelar","Errores editando","Usuario editado","Usuario editado con exito",true,ruta)
 }
 
 

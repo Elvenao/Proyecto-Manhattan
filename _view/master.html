@@ -117,13 +117,13 @@
                     <button class="btn btn-light  text-start py-4" onclick="javascript:location.replace('<?php echo SITE_URL; ?>reportes/')">Reportes</button>
                     <button class="btn btn-light  text-start py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>notas/')">Notas</button>
                     <button class="btn btn-light  text-start py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inventario/')">Inventario</button>
-                    <?php if ($_SESSION["role"] == "1") echo "<button class='btn btn-light text-start py-3' onclick=\"javascript:location.replace('" . SITE_URL . "configuracion/')\">Configuración</button>";?>
+                    <?php if ($rol[0]['rol_id'] == 1) echo "<button class='btn btn-light text-start py-3' onclick=\"javascript:location.replace('" . SITE_URL . "configuracion/')\">Configuración</button>";?>
 
                 </div>
             </div>
 
             <!-- Main Content Area -->
-            <div class="col-10">
+            <div class="col-10" >
                 <?php $ctrl->renderContent(); ?>
             </div>
         </div>

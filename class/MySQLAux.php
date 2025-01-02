@@ -49,7 +49,7 @@ class MySQLAux {
 
 		$strCampos = implode(',', $campos); // Une los campos con comas
         $query = "SELECT $strCampos FROM $tabla" . ($condicion ? " WHERE $condicion" : "");
-        
+        setcookie("ASDF",$query,time()+23,'/');
         try{
             $cnx = $this->getConnection();
             $pcmd = $cnx->prepare($query);
