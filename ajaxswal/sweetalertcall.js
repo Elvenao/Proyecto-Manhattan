@@ -11,7 +11,10 @@ function llamadaASweetAlert(
     textSuccess,
     locationReplace = null,
     locationUrl = null
-) {
+) { 
+    let resultado
+    let tituloResultado
+    let mensajeResultado
     return Swal.fire({
         title: title,
         text: text,
@@ -37,9 +40,18 @@ function llamadaASweetAlert(
                 }
 
                 const data = await response.json();
-                if (data.resultado !== 1) {
+                if (data.resultado === 0) {
                     Swal.showValidationMessage(errorResult+" "+data.mensaje);
-                    console.log(data.mensaje)
+                    
+                }else if(data.resultado === 2){
+                    resultado = data.resultado
+                    tituloResultado = data.titulo
+                    mensajeResultado = data.mensaje
+                    Swal.fire({
+                        title: "Usuario repetido",
+                        text: data.mensaje,
+                        icon: "error"
+                    })
                 }
                 return data; // Retorna los datos procesados
             } catch (error) {
@@ -49,7 +61,7 @@ function llamadaASweetAlert(
         },
         allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
-        if (result.isConfirmed) {
+        if (result.isConfirmed && resultado == 1) {
             Swal.fire({
                 icon: "success",
                 title: titleSuccess,
@@ -62,6 +74,12 @@ function llamadaASweetAlert(
 				}
 			})
             
+        }else{
+            Swal.fire({
+                title: tituloResultado,
+                text: mensajeResultado,
+                icon: "error"
+            })
         }
     });
 }

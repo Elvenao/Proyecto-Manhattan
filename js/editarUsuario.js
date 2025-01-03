@@ -1,12 +1,3 @@
-let nombre = document.getElementById("nombre")
-let apellidos = document.getElementById("apellidos")
-let user = document.getElementById("user")
-let password = document.getElementById("password")
-let fecha_nacimiento = document.getElementById("fecha_nacimiento")
-let fecha_inicio = document.getElementById("fecha_inicio")
-let fecha_fin = document.getElementById("fecha_fin")
-let rol_id = document.getElementById("rol_id")
-
 function editarBtn(){
     let action = "Editar"
     let nombre = document.getElementById("nombre").value
@@ -27,17 +18,90 @@ function editarBtn(){
 
 
 document.addEventListener('DOMContentLoaded',function(){
-    nombre.value = "<?php echo $this->datos[0]['nombre'];?>" 
-    apellidos.value = "<?php echo $this->datos[0]['apellidos']?>"
-    user.value = "<?php echo $this->datos[0]['user']?>"
-    password.value = "<?php echo $this->datos[0]['password']?>"
-    fecha_nacimiento.value = "<?php echo $this->datos[0]['fecha_nacimiento']?>"
-    fecha_inicio.value = "<?php echo $this->datos[0]['fecha_inicio']?>"
-    fecha_fin.value = "<?php $fecha = isset($this->datos[0]["fecha_fin"]) ? $this->datos[0]["fecha_fin"] : "En vigencia"; echo $fecha;?>"
-    rol_id.value = "<?php echo $this->datos[0]['rol_id']; ?>"
+    let nombreInput = document.getElementById("nombre")
+    let apellidosInput = document.getElementById("apellidos")
+    let userInput = document.getElementById("user")
+    let passwordInput = document.getElementById("password")
+    let fecha_nacimientoInput = document.getElementById("fecha_nacimiento")
+    let fecha_inicioInput = document.getElementById("fecha_inicio")
+    let fecha_finInput = document.getElementById("fecha_fin")
+    let rol_idInput = document.getElementById("rol_id")
+
+    let nombre = "<?php echo $this->datos[0]['nombre'];?>" 
+    let apellidos = "<?php echo $this->datos[0]['apellidos']?>"
+    let user = "<?php echo $this->datos[0]['user']?>"
+    let password = "<?php echo $this->datos[0]['password']?>"
+    let fecha_nacimiento = "<?php echo $this->datos[0]['fecha_nacimiento']?>"
+    let fecha_inicio = "<?php echo $this->datos[0]['fecha_inicio']?>"
+    let fecha_fin = "<?php $fecha = isset($this->datos[0]["fecha_fin"]) ? $this->datos[0]["fecha_fin"] : ""; echo $fecha;?>"
+    let rol_id = "<?php echo $this->datos[0]['rol_id']; ?>"
+
+    if(localStorage.getItem("Nombre") == null || localStorage.getItem("Apellidos") == null || localStorage.getItem("User") == null || localStorage.getItem("Password") == null || localStorage.getItem("Fecha_Nacimiento") == null || localStorage.getItem("Fecha_Inicio") == null || localStorage.getItem("Fecha_Fin") == null || localStorage.getItem("Rol") == null){
+        localStorage.clear()
+        nombreInput.value = nombre
+        apellidosInput.value = apellidos
+        userInput.value = user
+        passwordInput.value = password
+        fecha_nacimientoInput.value = fecha_nacimiento
+        fecha_inicioInput.value = fecha_inicio
+        fecha_finInput.value = fecha_fin
+        rol_idInput.value = rol_id
+        
+        localStorage.setItem("Nombre",nombre)
+        localStorage.setItem("Apellidos",apellidos)
+        localStorage.setItem("User",user)
+        localStorage.setItem("Password",password)
+        localStorage.setItem("Fecha_Nacimiento",fecha_nacimiento)
+        localStorage.setItem("Fecha_Inicio",fecha_inicio)
+        localStorage.setItem("Fecha_Fin",fecha_fin)
+        localStorage.setItem("Rol",rol_id)
+    }else{
+        nombreInput.value = localStorage.getItem("Nombre")
+        apellidosInput.value = localStorage.getItem("Apellidos")
+        userInput.value = localStorage.getItem("User")
+        passwordInput.value = localStorage.getItem("Password")
+        fecha_nacimientoInput.value = localStorage.getItem("Fecha_Nacimiento")
+        fecha_inicioInput.value = localStorage.getItem("Fecha_Inicio") 
+        fecha_finInput.value = localStorage.getItem("Fecha_Fin")
+        rol_idInput.value = localStorage.getItem("Rol")
+    }
+    
+})
+
+document.getElementById("nombre").addEventListener('input',function(){
+    localStorage.setItem("Nombre",this.value)
+})
+
+document.getElementById("apellidos").addEventListener('input',function(){
+    localStorage.setItem("Apellidos",this.value)
+})
+
+document.getElementById("user").addEventListener('input',function(){
+    localStorage.setItem("User",this.value)
+})
+
+document.getElementById("password").addEventListener('input',function(){
+    localStorage.setItem("Password",this.value)
+})
+
+document.getElementById("fecha_nacimiento").addEventListener('input',function(){
+    localStorage.setItem("Fecha_Nacimiento",this.value)
+})
+
+document.getElementById("fecha_inicio").addEventListener('input',function(){
+    localStorage.setItem("Fecha_Inicio",this.value)
+})
+
+document.getElementById("fecha_fin").addEventListener('input',function(){
+    localStorage.setItem("Fecha_Fin",this.value)
+})
+
+document.getElementById("rol_id").addEventListener('input',function(){
+    localStorage.setItem("Rol",this.value)
 })
 
 function cancelarBtn(){
+    localStorage.clear()
     location.replace("<?php echo SITE_URL;?>configuracion/")
 }
 

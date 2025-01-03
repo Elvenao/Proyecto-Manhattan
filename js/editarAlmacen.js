@@ -1,11 +1,7 @@
 function regresarBtn(){
+    localStorage.clear()
     location.replace('<?php echo SITE_URL; ?>inventario/almacen/')
-    localStorage.removeItem("Cantidad")
-    localStorage.removeItem("Informacion")
-    localStorage.removeItem("Nombre")
-    localStorage.removeItem("Costo")
-    localStorage.removeItem("Estado")
-    localStorage.removeItem("Categoria")
+    
 }
 
 document.addEventListener("DOMContentLoaded",function(){
@@ -23,6 +19,7 @@ document.addEventListener("DOMContentLoaded",function(){
     
     let categoria = "<?php echo $this->datos[0]["IC_Id"];?>"
     if(localStorage.getItem("Cantidad") == null){
+        localStorage.clear()
         cantidadInput.value = cantidad
         informacionInput.value = informacion
         nombreInput.value = nombre
@@ -32,7 +29,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
         localStorage.setItem("Cantidad",cantidad); 
         localStorage.setItem("Informacion",informacion)
-        localStorage.setItem("Nombre",nombre)
+        localStorage.setItem("Suministro",nombre)
         localStorage.setItem("Costo",costo)
         localStorage.setItem("Estado",estado)
         localStorage.setItem("Categoria",categoria)
@@ -40,14 +37,14 @@ document.addEventListener("DOMContentLoaded",function(){
     }else if(Number(cantidadInput.value) !== cantidad || informacionInput.value !== informacion || nombreInput.value !== nombre || Number(costoInput.value) !== costo || estadoInput != estado || categoriaInput.value != categoria){
         cantidadInput.value = localStorage.getItem("Cantidad");
         informacionInput.value = localStorage.getItem("Informacion")
-        nombreInput.value = localStorage.getItem("Nombre")
+        nombreInput.value = localStorage.getItem("Suministro")
         costoInput.value = localStorage.getItem("Costo")
         document.getElementById('estado').value = Number(localStorage.getItem("Estado"))
         categoriaInput.value = Number(localStorage.getItem("Categoria"))
     }else{
         localStorage.setItem("Cantidad",cantidad); 
         localStorage.setItem("Informacion",informacion); 
-        localStorage.setItem("Nombre",nombre);
+        localStorage.setItem("Suministro",nombre);
         localStorage.setItem("Costo",costo);
         localStorage.setItem("Estado",estado);
         localStorage.setItem("Categoria",categoria);
