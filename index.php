@@ -71,7 +71,7 @@
                             require_once "_controller/ListaInventarioController.php";
                             $ctrl = new ListaInventarioController();
                         }else if($accion == "agregar"){
-                            require_once "_controller/MtoInventarioController.php";
+                            require_once "_controller/agregarAlmacenController.php";
                             $ctrl = new MtoInventarioController();
                         }else if($accion == 'editar'){
                             if($id != ''){

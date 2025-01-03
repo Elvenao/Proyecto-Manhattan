@@ -10,7 +10,7 @@
     </div>
     <div class="input-group mb-3 w-50">
         <label for="informacion" class="input-group-text" id="basic-addon1">Informacion</label>
-        <input name="informacion" id="informacion" type="text" class="form-control" placeholder="<?php $info = isset($this->datos[0]["Informacion"]) ? "Informacion":"Sin informacion"; echo $info; ?>" aria-label="Username" aria-describedby="basic-addon1" value="">
+        <input name="informacion" id="informacion" type="text" class="form-control" placeholder="<?php $info = isset($this->datos[0]["Informacion"]) ? "Informacion":"Sin informacion"; echo $info; ?>" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Informacion"]?>">
     </div>
     <div class="input-group mb-3 w-50">
         <label for="cantidad" class="input-group-text" id="basic-addon1">Cantidad</label>
@@ -46,14 +46,22 @@
         <button type="button" class="btn btn-success" onclick="editarBtn()">Editar</button>
         <button type="button" class="btn btn-primary" onclick="reestablecerBtn()">Reestablecer</button>
         <button type="button" class="btn btn-danger" onclick="regresarBtn()">Regresar</button>
+        <button type="button" class="btn btn-warning end" onclick="borrarBtn()">Borrar <i class="bi bi-trash-fill"></i></button>
     </div>
 </div>
 
 <style>
+    .end{
+        position:relative;
+        left: 18%;
+    }
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
+    }
+    input[type=number] {
+        -moz-appearance: textfield;
     }
 
     #plus-button{

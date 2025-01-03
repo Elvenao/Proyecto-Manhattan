@@ -1,0 +1,48 @@
+
+<h1 class="h1">Agregar Suministro nuevo</h1>
+<form id="formulario">
+    <input type="hidden" id="action" value="mto">
+    <div class="input-group mb-3 w-50" >
+        <label for="Id_Suministro" class="input-group-text">Id</label>
+        <input name="Id_Suministro" id="Id_Suministro" type="text" class="form-control" placeholder="Id_Suministro" aria-describedby="basic-addon1" value="<?php $id = $this->datos[0]['ID']; echo $id + 1;?>" readonly>
+    </div>
+    <div class="input-group mb-3 w-50" >
+        <label for="nombre" class="input-group-text">Nombre</label>
+        <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Nombre"  aria-describedby="basic-addon1">
+    </div>
+    
+    <div class="input-group mb-3 w-50">
+        <label for="cantidad" class="input-group-text">Stock</label>
+        <input name="cantidad" id="cantidad" type="number" class="form-control" placeholder="Stock"  aria-describedby="basic-addon1">
+        
+    </div>
+    <div class="input-group mb-3 w-50" >
+        <label for="informacion" class="input-group-text">Informacion</label>
+        <input name="informacion" id="informacion" type="text" class="form-control" placeholder="Informacion" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3 w-50" >
+        <label for="costo" class="input-group-text">Costo</label>
+        <input name="costo" id="costo" type="number" class="form-control" placeholder="Costo" aria-describedby="basic-addon1">
+        
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="status" class="input-group-text">Estado</label>
+        <select name="status" id="status" class="form-select form-select-sm ms-2"  style="padding-left: 30px;">
+            <option value="0">No Disponible</option>
+            <option value="1">Disponible</option>
+        </select>
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="categoria" class="input-group-text" id="Precio">Categoria</label>
+        <select name="categoria" id="categoria" class="form-select form-select-sm ms-2"  style="padding-left: 30px;">
+            <?php foreach($this->categorias as $categoria): ?>
+            <?php echo '<option value="'.$categoria["ID"].'">'.$categoria["Categoria"].'</option>'?>
+            <?php endforeach ?>
+        </select>
+    </div>
+    
+    <button type="button" class="btn btn-success" onclick="agregarBtn()">Agregar</button>
+    <button type="button" class="btn btn-danger" onclick="regresarBtn()">Regresar</button>
+
+</form>
+

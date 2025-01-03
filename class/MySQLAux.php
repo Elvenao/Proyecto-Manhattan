@@ -176,7 +176,7 @@ class MySQLAux {
 		$strParams = rtrim(str_repeat('?,', count($campos)), ','); // Genera una lista de placeholders
 
 		$query = "INSERT INTO $tabla ($strCampos) VALUES ($strParams)";
-
+		setcookie("ASD",$query,time()+234,"/");
 		try {
 			$cnx = $this->getConnection();
 

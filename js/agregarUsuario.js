@@ -33,7 +33,7 @@ function borrarBtn(){
 
 function agregar(e){
     e.preventDefault();
-    
+    let action = "Agregar"
     let nombre = document.getElementById("nombre").value
     let apellidos = document.getElementById("apellidos").value
     let user = document.getElementById("user").value
@@ -44,8 +44,8 @@ function agregar(e){
     if(document.getElementById("fecha_fin").value == '') fecha_fin = null
     let rol_id = document.getElementById("rol_id").value
 
-    let datos = JSON.stringify({nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id})
-    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxAgregarUsuario.php","Agregar Usuario","¿Seguro que quieres agregar este usuario?","info","Agregar","Cancelar","Error agregando","Usuario agregado","Usuario agregado con exito",true,"<?php echo SITE_URL;?>configuracion/")
+    let datos = JSON.stringify({action,nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id})
+    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxUsuario.php","Agregar Usuario","¿Seguro que quieres agregar este usuario?","info","Agregar","Cancelar","Error agregando","Usuario agregado","Usuario agregado con exito",true,"<?php echo SITE_URL;?>configuracion/")
 }
 
 

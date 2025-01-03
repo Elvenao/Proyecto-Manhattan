@@ -4,7 +4,7 @@
         private $datos;
         public function __construct(){
             $mysql = new MainModel();
-            $this->datos = $mysql->getDataRowsJoin("Inventario",["Id_Inventario","Nombre","Stock", "IC_Id","Categoria"],"Inventario_Categorias",["IC_Id","Id_IC"]);
+            $this->datos = $mysql->getDataRowsJoin("Inventario",["Id_Inventario","Nombre","Stock", "IC_Id","Categoria"],"Inventario_Categorias",["IC_Id","Id_IC"],['','ORDER BY Id_Inventario','DESC']);
         }
 
         public function renderContent(){
