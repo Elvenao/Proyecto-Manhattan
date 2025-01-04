@@ -75,7 +75,7 @@ class MySQLAux {
 			return null;
 		}
     }
-
+	
 	public function selectRowsJoin($tabla, $campos,$joinTable,$foreignKeys, $condicion = null, $params = null) {
         $res = [];
 
@@ -412,6 +412,28 @@ class MySQLAux {
 			}
 			error_log("Error al eliminar la fila: " . $ex->getMessage());
 			return false;
+		}
+	}
+	public function specialQuery($query){
+		$res = [];
+        try{
+            $cnx = $this->getConnection();
+            $pcmd = $cnx->prepare($query);
+            
+            
+            $pcmd->execute();
+
+			while ($row = $pcmd->fetch(PDO::FETCH_ASSOC)) {
+				$res[] = $row; // Cada fila es un arreglo asociativo
+			}
+
+			$pcmd = null; // Cierra el statement/command
+			$cnx = null; // Cierra la conexión
+
+			return $res;
+		} catch (PDOException $ex) {
+			error_log("Error al ejecutar la consulta: " . $ex->getMessage());
+			return null;
 		}
 	}
 }

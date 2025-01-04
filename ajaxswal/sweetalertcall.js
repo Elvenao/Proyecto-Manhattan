@@ -40,8 +40,14 @@ function llamadaASweetAlert(
                 }
 
                 const data = await response.json();
+                resultado = data.resultado
+                tituloResultado = data.titulo
+                mensajeResultado = data.mensaje
                 if (data.resultado === 0) {
                     Swal.showValidationMessage(errorResult+" "+data.mensaje);
+                    resultado = data.resultado
+                    tituloResultado = data.titulo
+                    mensajeResultado = data.mensaje
                     
                 }else if(data.resultado === 2){
                     resultado = data.resultado
@@ -61,6 +67,7 @@ function llamadaASweetAlert(
         },
         allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
+        console.log(resultado)
         if (result.isConfirmed && resultado == 1) {
             Swal.fire({
                 icon: "success",
@@ -74,11 +81,11 @@ function llamadaASweetAlert(
 				}
 			})
             
-        }else{
+        }else if(resultado == 2){
             Swal.fire({
                 title: tituloResultado,
                 text: mensajeResultado,
-                icon: "error"
+                icon: "success"
             })
         }
     });

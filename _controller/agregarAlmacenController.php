@@ -4,9 +4,9 @@
         private $datos;
         private $categorias;
         public function __construct(){
-            $model = new MainModel();
-            $this->datos = $model->getDataRows("Inventario",['MAX(Id_Inventario) AS ID']);
-            $this->categorias = $model->getDataRows("Inventario_Categorias",['Id_IC AS ID','Categoria']);
+            $mysql = new MainModel();
+            $this->datos = $mysql->specialQuery("SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'basedatos' AND TABLE_NAME = 'Inventario'");
+            $this->categorias = $mysql->getDataRows("Inventario_Categorias",['Id_IC AS ID','Categoria']);
         }
 
         public function renderContent(){

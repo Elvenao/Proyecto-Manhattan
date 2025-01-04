@@ -43,6 +43,12 @@
             $datos = $mysql->deleteRow($tabla,$condicion,$params);
             return $datos;
         }
+
+        public function specialQuery($query){
+            $mysql = new MySQLAux("10.0.1.3", "basedatos","Zoroark","renamon");
+            $datos = $mysql->specialQuery($query);
+            return $datos;
+        }
     }
     
 

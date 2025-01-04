@@ -102,7 +102,7 @@ function reestablecerBtn(){
     let nombre = "<?php echo $this->datos[0]["Nombre"];?>"
     let informacion = "<?php echo $this->datos[0]["Informacion"];?>"
     let costo = "<?php echo $this->datos[0]["Costo"];?>"
-    let estado = "<?php echo $this->datos[0]["status"];?>"
+    let estado = "<?php if($this->datos[0]["status"] === 'TRUE') echo 1; else echo 0;?>"
     let categoria = "<?php echo $this->datos[0]["IC_Id"];?>"
 
     localStorage.setItem("Nombre",nombre)

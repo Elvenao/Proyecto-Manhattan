@@ -9,7 +9,7 @@
         public function __construct(){
             $mysql = new MainModel();
             $this->categorias = $mysql->getDataRowsJoin("Productos",["PC_Id", "Categoria"],'Productos_Categorias',['PC_Id','Id_PC'],[null,"GROUP BY PC_Id"],);
-            $this->nextId = $mysql->getDataRows('Productos', ['MAX(Id_Productos) AS ID']);
+            $this->nextId = $mysql->specialQuery("SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'basedatos' AND TABLE_NAME = 'Inventario';");
             
         }
 
