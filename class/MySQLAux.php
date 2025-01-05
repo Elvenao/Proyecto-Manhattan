@@ -49,7 +49,7 @@ class MySQLAux {
 
 		$strCampos = implode(',', $campos); // Une los campos con comas
         $query = "SELECT $strCampos FROM $tabla" . ($condicion ? " WHERE $condicion" : "");
-        setcookie("ASDF",$query,time()+23,'/');
+        
         try{
             $cnx = $this->getConnection();
             $pcmd = $cnx->prepare($query);
@@ -91,7 +91,7 @@ class MySQLAux {
 			}
 		}
 		
-		setcookie("ASD",$query,time()+20,"/");
+		
         
         try{
             $cnx = $this->getConnection();
@@ -136,7 +136,7 @@ class MySQLAux {
 			}
 		}
 		
-        setcookie("Quuery",$query,time()+20,'/');
+        
         try{
             $cnx = $this->getConnection();
             $pcmd = $cnx->prepare($query);
@@ -176,7 +176,7 @@ class MySQLAux {
 		$strParams = rtrim(str_repeat('?,', count($campos)), ','); // Genera una lista de placeholders
 
 		$query = "INSERT INTO $tabla ($strCampos) VALUES ($strParams)";
-		setcookie("ASD",$query,time()+234,"/");
+		
 		try {
 			$cnx = $this->getConnection();
 
@@ -269,7 +269,7 @@ class MySQLAux {
 		// Construye la parte de SET con los campos.
 		$strCampos = implode('=?, ', $campos) . '=?';
 		$query = "UPDATE $tabla SET $strCampos" . ($condicion ? " WHERE $condicion" : "");
-		setcookie("cookie",$query);
+		
 		try {
 			$cnx = $this->getConnection();
 
