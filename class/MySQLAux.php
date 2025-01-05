@@ -269,7 +269,7 @@ class MySQLAux {
 		// Construye la parte de SET con los campos.
 		$strCampos = implode('=?, ', $campos) . '=?';
 		$query = "UPDATE $tabla SET $strCampos" . ($condicion ? " WHERE $condicion" : "");
-
+		setcookie("cookie",$query);
 		try {
 			$cnx = $this->getConnection();
 

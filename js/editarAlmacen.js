@@ -18,8 +18,9 @@ document.addEventListener("DOMContentLoaded",function(){
     let estado = "<?php if($this->datos[0]["status"] === 'TRUE') echo 1; else echo 0;?>"
     
     let categoria = "<?php echo $this->datos[0]["IC_Id"];?>"
-    if(localStorage.getItem("Cantidad") == null){
+    if(localStorage.getItem("isStored") == null){
         localStorage.clear()
+        localStorage.setItem("isStored",true)
         cantidadInput.value = cantidad
         informacionInput.value = informacion
         nombreInput.value = nombre
@@ -175,10 +176,15 @@ function editarBtn(){
     let informacion = document.getElementById('informacion').value
     let Cantidad = document.getElementById('cantidad').value
     let costo = document.getElementById('costo').value
-    let estado = document.getElementById('estado').value
+    let estado 
+    if(document.getElementById('estado').value == 1){
+        estado = 'TRUE'
+    }else{
+        estado = 'FALSE'
+    }
     let categoria = document.getElementById('categoria') .value
     let id_inventario = "<?php echo $this->datos[0]['Id_Inventario']?>"
-    let action = "Insertar"
+    let action = "Editar"
     
     let ruta = "<?php echo SITE_URL;?>inventario/almacen/editar/" + id_inventario;
 

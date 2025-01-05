@@ -6,7 +6,7 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Usuario</th>
-                    <th class="column">Contraseña</th>
+                    
                     <th>Fecha de Nacimiento</th>
                     <th>Fecha de Inicio</th>
                     <th>Fecha de Termino</th>
@@ -19,7 +19,6 @@
                 <tr>
                     <td class="column"><?php echo $registro["nombre"]." ".$registro["apellidos"]?></td>
                     <td class="column"><?php echo $registro["user"]?></td>
-                    <td class="column"><input class="pass-label" type="password" value="<?php echo $registro["password"]?>" disabled></td>
                     <td class="column"><?php echo $registro["fecha_nacimiento"]?></td>
                     <td class="column"><?php echo $registro["fecha_inicio"]?></td>
                     <td class="column"><?php $fecha = isset($registro["fecha_fin"]) ? $registro["fecha_fin"] : "En vigencia"; echo $fecha;?></td>
@@ -51,3 +50,7 @@
     }
     
 </style>
+
+<script>
+    localStorage.clear()
+</script>

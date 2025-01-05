@@ -30,14 +30,15 @@ document.addEventListener('DOMContentLoaded',function(){
     let nombre = "<?php echo $this->datos[0]['nombre'];?>" 
     let apellidos = "<?php echo $this->datos[0]['apellidos']?>"
     let user = "<?php echo $this->datos[0]['user']?>"
-    let password = "<?php echo $this->datos[0]['password']?>"
+    let password = ""
     let fecha_nacimiento = "<?php echo $this->datos[0]['fecha_nacimiento']?>"
     let fecha_inicio = "<?php echo $this->datos[0]['fecha_inicio']?>"
     let fecha_fin = "<?php $fecha = isset($this->datos[0]["fecha_fin"]) ? $this->datos[0]["fecha_fin"] : ""; echo $fecha;?>"
     let rol_id = "<?php echo $this->datos[0]['rol_id']; ?>"
 
-    if(localStorage.getItem("Nombre") == null || localStorage.getItem("Apellidos") == null || localStorage.getItem("User") == null || localStorage.getItem("Password") == null || localStorage.getItem("Fecha_Nacimiento") == null || localStorage.getItem("Fecha_Inicio") == null || localStorage.getItem("Fecha_Fin") == null || localStorage.getItem("Rol") == null){
+    if(localStorage.getItem("isStored") == null){
         localStorage.clear()
+        localStorage.setItem("isStored",true)
         nombreInput.value = nombre
         apellidosInput.value = apellidos
         userInput.value = user
@@ -118,7 +119,7 @@ function restablecerBtn(){
     nombre.value = "<?php echo $this->datos[0]['nombre'];?>" 
     apellidos.value = "<?php echo $this->datos[0]['apellidos']?>"
     user.value = "<?php echo $this->datos[0]['user']?>"
-    password.value = "<?php echo $this->datos[0]['password']?>"
+    password.value = ""
     fecha_nacimiento.value = "<?php echo $this->datos[0]['fecha_nacimiento']?>"
     fecha_inicio.value = "<?php echo $this->datos[0]['fecha_inicio']?>"
     fecha_fin.value = "<?php $fecha = isset($this->datos[0]["fecha_fin"]) ? $this->datos[0]["fecha_fin"] : "En vigencia"; echo $fecha;?>"

@@ -9,7 +9,7 @@ function llamadaASweetAlert(
     errorResult,
     titleSuccess,
     textSuccess,
-    locationReplace = null,
+    locationReplace = false,
     locationUrl = null
 ) { 
     let resultado
@@ -85,7 +85,7 @@ function llamadaASweetAlert(
             Swal.fire({
                 title: tituloResultado,
                 text: mensajeResultado,
-                icon: "success"
+                icon: "error"
             })
         }
     });

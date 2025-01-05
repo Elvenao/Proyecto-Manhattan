@@ -14,15 +14,14 @@ try {
         echo json_encode(["resultado" => 0, "mensaje" => "Faltan datos"]);
         exit;
     }
-
+    
     $user = $input['user'];
+
     $pass = $input['pass'];
-
-
     $model = new MainModel();
     $usuario = $model->getDataRows("usuario", ["user", "password","rol_id"], "user = ?;", [$user]);
-
-    if ($usuario && $usuario[0]['user'] === $user && $usuario[0]['password'] === $pass) {
+    $hash = $usuario[0]['password'];
+    if ($usuario && $usuario[0]['user'] === $user && password_verify($pass, $hash)) {
         echo json_encode(["resultado" => 1, "mensaje" => "Inicio de sesion exitoso"]);
         $_SESSION["usr"] = $usuario[0]['user'];
         $_SESSION["LoggedIn"] = CLAVE_SECRETA;

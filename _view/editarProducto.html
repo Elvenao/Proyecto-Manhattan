@@ -3,27 +3,34 @@
         
     <div class="input-group mb-3 w-50">
         <label for="Id_producto" class="input-group-text" id="basic-addon1">Id</label>
-        <input name="Id_producto" id="nombre" type="text" class="form-control" placeholder="Id" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Id_Productos"]?>">
+        <input name="Id_producto" id="Id_producto" type="text" class="form-control" placeholder="Id" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Id_Productos"]?>" readonly>
     </div>
     <div class="input-group mb-3 w-50">
         <label for="producto" class="input-group-text" id="basic-addon1">Producto</label>
         <input name="producto" id="producto" type="text" class="form-control" placeholder="Producto" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Nombre"]?>">
     </div>
     <div class="input-group mb-3 w-50">
-        <label for="categoria" class="input-group-text" id="basic-addon1">Precio</label>
-        <input name="producto" id="producto" type="number" class="form-control" placeholder="Precio" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Precio"] ?>">
+        <label for="precio" class="input-group-text" id="basic-addon1">Precio</label>
+        <input name="precio" id="precio" type="number" class="form-control" placeholder="Precio" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Precio"] ?>">
     </div>
     <div class="input-group mb-3 w-50">
-        <label for="categoria" class="input-group-text" id="basic-addon1">Costo</label>
-        <input name="producto" id="producto" type="number" class="form-control" placeholder="Costo" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Costo"] ?>">
+        <label for="costo" class="input-group-text" id="basic-addon1">Costo</label>
+        <input name="costo" id="costo" type="number" class="form-control" placeholder="Costo" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Costo"] ?>">
     </div>
     <div class="input-group mb-3 w-50">
-        <label for="categoria" class="input-group-text" id="basic-addon1">Informacion</label>
-        <input name="producto" id="producto" type="text" class="form-control" placeholder="<?php $info = isset($this->datos[0]["Informacion"]) ? "Informacion":"Sin informacion"; echo $info; ?>" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Informacion"]?>">
+        <label for="informacion" class="input-group-text" id="basic-addon1">Informacion</label>
+        <input name="informacion" id="informacion" type="text" class="form-control" placeholder="<?php $info = isset($this->datos[0]["Informacion"]) ? "Informacion":"Sin informacion"; echo $info; ?>" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["Informacion"]?>">
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="status" class="input-group-text" id="basic-addon1">Estado</label>
+        <select name="status" id="status" class="form-select">
+            <option value="0">No Disponible</option>
+            <option value="1">Disponible</option>
+        </select>
     </div>
     <div class="input-group mb-3 w-50">
         <label for="categoria" class="input-group-text" id="basic-addon1">Categoria</label>
-        <select name="" id="categoria" class="form-select">
+        <select name="categoria" id="categoria" class="form-select">
             <?php foreach($this->categorias as $categoria): ?>
             <?php echo '<option value="'.$categoria["PC_Id"].'">'.$categoria["Categoria"].'</option>'?>
             <?php endforeach ?>
@@ -32,7 +39,24 @@
     
     
     <div>
-        <button type="button" class="btn btn-primary">Editar</button>
+        <button type="button" class="btn btn-success" onclick="editarBtn()">Editar</button>
+        <button type="button" class="btn btn-primary" onclick="reestablecerBtn()">Reestablecer</button>
         <button type="button" class="btn btn-danger" onclick="regresarBtn()">Regresar</button>
+        <button type="button" class="btn btn-warning end" onclick="borrarBtn()" >Borrar <i class="bi bi-trash-fill"></i></button>
     </div>
 </div>
+<style>
+    .end{
+        position: relative;
+        left: 18%;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+</style>

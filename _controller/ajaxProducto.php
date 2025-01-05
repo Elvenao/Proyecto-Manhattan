@@ -4,35 +4,35 @@
     try{
         $input = json_decode(file_get_contents("php://input"),true);
         if($input["action"] === "Editar"){
-            if (!isset($input['id_inventario']) || !isset($input['nombre']) || !isset($input['Cantidad']) || !isset($input['estado']) || !isset($input['categoria'])) {
+            if (!isset($input['id']) || !isset($input['producto']) || !isset($input['precio']) || !isset($input['costo']) || !isset($input['informacion']) || !isset($input['status']) || !isset($input['categoria'])) {
                 echo json_encode(["resultado" => 0, "mensaje" => "Faltan datos"]);
-                exit;
+                exit();
             }
-            $Id = $input["id_inventario"];
-            $nombre = $input["nombre"];
-            $Stock = $input["Cantidad"];
-            $informacion = ($input["informacion"] == '')? null: $input["informacion"];
+            $Id = $input["id"];
+            $producto = $input["producto"];
+            $precio = $input["precio"];
             $costo = ($input["costo"] == '')? null : $input["costo"];
-            $status = $input["estado"];
-            $IC_Id = $input["categoria"];
+            $informacion = ($input["informacion"] == '')? null: $input["informacion"];
+            $status = $input["status"];
+            $PC_Id = $input["categoria"];
 
             $model = new MainModel();
-            $resultado = $model->updateData('Inventario',['Nombre','Stock','Informacion','Costo','status','IC_Id'],'Id_Inventario = ?',[$nombre,$Stock,$informacion,$costo,$status,$IC_Id,$Id]);
+            $resultado = $model->updateData('Productos',['Nombre','Informacion','Precio','Costo','status','PC_Id'],'Id_Productos = ?',[$producto,$informacion,$precio,$costo,$status,$PC_Id,$Id]);
             if($resultado){
                 echo json_encode(["resultado" => 1, "mensaje" => "Edicion exitosa"]);
-                exit;
+                exit();
             }else{
                 echo json_encode(["resultado" => 0, "mensaje" => "No se pudo editar"]);
-                exit;
+                exit();
             }
         }else if($input["action"] === "Borrar"){
-            if(!isset($input['id_inventario'])){
+            if(!isset($input['id'])){
                 echo json_encode(["resultado" => 0, "mensaje" => "Faltan datos"]);
                 exit;
             }
-            $ID = $input['id_inventario'];
+            $ID = $input['id'];
             $model = new MainModel();
-            $resultado = $model->deleteRow('Inventario','Id_Inventario = ?',[$ID]);
+            $resultado = $model->deleteRow('Productos','Id_Productos = ?',[$ID]);
             if($resultado){
                 echo json_encode(["resultado" => 1, "mensaje" => "Borrado exitoso"]);
                 exit;
@@ -41,21 +41,19 @@
                 exit;
             }
         }else if($input["action"] === "Agregar"){
-            if (empty($input['nombre']) || empty($input['stock']) || !isset($input['status']) || !isset($input['categoria'])) {
+            if (empty($input['producto']) || empty($input['informacion']) || !isset($input['precio']) || !isset($input['costo']) || !isset($input['status']) || !isset($input['categoria'])) {
                 echo json_encode(["resultado" => 0, "mensaje" => ": Faltan datos"]);
                 exit;
             }
-            $nombre = $input["nombre"];
-            $Stock = $input["stock"];
+            $producto = $input["producto"];
             $informacion = !empty($input['informacion']) ? $input['informacion'] : null;
+            $precio = $input["precio"];
             $costo = !empty($input['costo']) ? $input['costo'] : null;
             $status = intval($input["status"]);
-            if($status == 0) $status = 'TRUE';
-            else $status = 'FALSE';
-            $IC_Id = $input["categoria"];
-    
+            $PC_Id = $input["categoria"];
+            
             $model = new MainModel();
-            $resultado = $model->insertRow('Inventario',['Nombre','Stock','Informacion','Costo','IC_Id','status'],[$nombre,$Stock,$informacion,$costo,$IC_Id,$status]);
+            $resultado = $model->insertRow('Inventario',['Nombre','Informacion','Precio','Costo','Status','PC_Id'],[$producto,$informacion,$precio,$costo,$status,$PC_Id]);
             if($resultado){
                 echo json_encode(["resultado" => 1, "mensaje" => "Adicion exitosa"]);
                 exit;
