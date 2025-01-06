@@ -8,17 +8,22 @@ function cancelarBtn(){
     location.replace("<?php echo SITE_URL;?>configuracion/")
 }
 
-document.getElementById("eye-icon").addEventListener('click',function(){
-  if(this.classList.contains('bi-eye-slash')){
+function mostrarBtn(){
+  let eye = document.getElementById("eye-icon")
+  if(eye.classList.contains('bi-eye-slash')){
     document.getElementById("password").setAttribute('type',"text")
-    this.classList.remove('bi-eye-slash')
-    this.classList.add('bi-eye')
+    eye.classList.remove('bi-eye-slash')
+    eye.classList.add('bi-eye')
 
   }else{
     document.getElementById("password").setAttribute('type',"password")
-    this.classList.remove('bi-eye')
-    this.classList.add('bi-eye-slash')
+    eye.classList.remove('bi-eye')
+    eye.classList.add('bi-eye-slash')
   }
+}
+
+document.getElementById("eye-icon").addEventListener('click',function(){
+  
 })
 
 document.getElementById("nombre").addEventListener("input",function(){
@@ -104,8 +109,38 @@ function agregar(e){
     llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxUsuario.php","Agregar Usuario","¿Seguro que quieres agregar este usuario?","info","Agregar","Cancelar","Error agregando","Usuario agregado","Usuario agregado con exito",true,"<?php echo SITE_URL;?>configuracion/")
 }
 
+function generarPassBtn(){
+  let longitud = 11
+  const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<>?';
+    let contrasena = '';
+    for (let i = 0; i < longitud; i++) {
+        const indiceAleatorio = Math.floor(Math.random() * caracteres.length);
+        contrasena += caracteres[indiceAleatorio];
+    }
+    document.getElementById('password').value = contrasena
+}
 
+function eliminarAcentos(texto) {
+  return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 
-
-
-
+function generarUserBtn(){
+  let nombre = document.getElementById('nombre').value
+  let apellidos = document.getElementById('apellidos').value
+  let nacimiento = document.getElementById('fecha_nacimiento').value
+  if(nombre == '' || apellidos == '' || nacimiento == ''){
+    Swal.fire({
+      icon: "error",
+      title: 'No es posible <i class="bi bi-person-circle"></i>',
+      text: "Escribe el nombre, apellidos y fecha de nacimiento"
+      
+    });
+  }else{
+    let user = nombre.slice(0,4)
+    user += apellidos.slice(0,4)
+    user += nacimiento.slice(0,4)
+    user = eliminarAcentos(user)
+    document.getElementById('user').value = user
+  }
+  
+}

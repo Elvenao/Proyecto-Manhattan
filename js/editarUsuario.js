@@ -126,17 +126,52 @@ function restablecerBtn(){
     rol_id.value = "<?php echo $this->datos[0]['rol_id']; ?>"
 }
 
-let mostrarPassword = document.getElementById("eye-icon")
-mostrarPassword.addEventListener('click',function(){
-    let password = document.getElementById("password")
-
-    if (this.classList.contains("bi-eye")) {
-        this.classList.add("bi-eye-slash");
-        this.classList.remove("bi-eye");
-        password.setAttribute("type","password")
-    } else {
-        this.classList.remove("bi-eye-slash");
-        this.classList.add("bi-eye");
-        password.setAttribute("type","text")
+function mostrarBtn(){
+    let eye = document.getElementById("eye-icon")
+    if(eye.classList.contains('bi-eye-slash')){
+      document.getElementById("password").setAttribute('type',"text")
+      eye.classList.remove('bi-eye-slash')
+      eye.classList.add('bi-eye')
+  
+    }else{
+      document.getElementById("password").setAttribute('type',"password")
+      eye.classList.remove('bi-eye')
+      eye.classList.add('bi-eye-slash')
     }
-})
+}
+
+function generarPassBtn(){
+    let longitud = 11
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<>?';
+      let contrasena = '';
+      for (let i = 0; i < longitud; i++) {
+          const indiceAleatorio = Math.floor(Math.random() * caracteres.length);
+          contrasena += caracteres[indiceAleatorio];
+      }
+      document.getElementById('password').value = contrasena
+}
+
+function eliminarAcentos(texto) {
+    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+  
+  function generarUserBtn(){
+    let nombre = document.getElementById('nombre').value
+    let apellidos = document.getElementById('apellidos').value
+    let nacimiento = document.getElementById('fecha_nacimiento').value
+    if(nombre == '' || apellidos == '' || nacimiento == ''){
+      Swal.fire({
+        icon: "error",
+        title: 'No es posible <i class="bi bi-person-circle"></i>',
+        text: "Escribe el nombre, apellidos y fecha de nacimiento"
+        
+      });
+    }else{
+      let user = nombre.slice(0,4)
+      user += apellidos.slice(0,4)
+      user += nacimiento.slice(0,4)
+      user = eliminarAcentos(user)
+      document.getElementById('user').value = user
+    }
+    
+  }

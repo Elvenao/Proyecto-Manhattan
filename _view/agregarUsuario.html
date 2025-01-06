@@ -12,15 +12,14 @@
     <div class="input-group mb-3 w-50">
         <label for="user" class="input-group-text" id="basic-addon1">Usuario</label>
         <input name="user" id="user" type="text" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1" value="" required>
+        <button type="button" class="btn btn-secondary" onclick="generarUserBtn()">Generar Usuario</button>
     </div>
-    <div class="input-group">
-        <div class="input-group mb-3 w-50">
-            <label for="password" class="input-group-text" id="basic-addon1">Contraseña</label>
-        <input id="password" id="password" name="password" type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" value="" required>
-        </div>
-        <i id="eye-icon" class="bi bi-eye-slash"></i>
+    <div class="input-group mb-3 w-50">
+        <label for="password" class="input-group-text" id="basic-addon1">Contraseña</label>
+        <input id="password" id="password" name="password" type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" value="" required style="border-right: none;">
+        <button type="button" class="btn btn-outline-secondary" onclick="mostrarBtn()" style="border: 1px solid #CED4DA; border-left:none; border-right:none"><i id="eye-icon" class="bi bi-eye-slash"></i></button>
+        <button type="button" class="btn btn-secondary" onclick="generarPassBtn()">Generar Contraseña</button>
     </div>
-    
     <div class="input-group mb-3 w-50">
         <label for="fecha_nacimiento" class="input-group-text" id="basic-addon1">Fecha de Nacimiento</label>
         <input name="fecha_nacimiento" id="fecha_nacimiento" type="date" class="form-control" placeholder="Fecha de Nacimiento" aria-label="Username" aria-describedby="basic-addon1" value="" required>
@@ -51,13 +50,7 @@
         .end-29{
             left: 29%;
         }
-        #eye-icon{
-            position:relative;
-            right: 3.6vw;
-            padding-top: 1vh;
-        }
-        #eye-icon:hover{
-            cursor: pointer;
-        }
+        
+        
     </style>
 </div>
