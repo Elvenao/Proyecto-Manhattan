@@ -1,7 +1,11 @@
 <?php
     require_once "../_model/MainModel.php";
     header("Content-Type: application/json");
-
+    $options = [
+        'memory_cost' => 1 << 18, 
+        'time_cost'   => 8,       
+        'threads'     => 2        
+    ];
     try{
         $input = json_decode(file_get_contents("php://input"),true);
         if($input["action"] == "Editar"){
@@ -9,11 +13,7 @@
                 echo json_encode(["resultado" => 0, "mensaje" => "Faltan datos"]);
                 exit;
             }
-            $options = [
-                'memory_cost' => 1 << 18, 
-                'time_cost'   => 8,       
-                'threads'     => 2        
-            ];
+           
             $id_usuario = $input['id_usuario'];
             $nombre = $input['nombre'];
             $apellidos = $input['apellidos'];
@@ -56,6 +56,7 @@
             $apellidos = $input['apellidos'];
             $user = $input['user'];
             $pass = $input['password'];
+            $password = password_hash($pass,PASSWORD_ARGON2ID,$options);
             $fecha_nacimiento = $input['fecha_nacimiento'];
             $fecha_inicio = $input['fecha_inicio'];
             $fecha_fin = isset($input['fecha_fin']) ? $input['fecha_fin'] : null;
@@ -65,17 +66,20 @@
             $model = new MainModel();
 
             $usuario = $model->getDataRows('usuario',["user"],'user = ?',[$user]);
-            setcookie("Holacomoestas",$usuario[0]['user']."==".$user);
-            if($usuario[0]['user'] == $user){
-                echo json_encode(["resultado" => 2,"titulo"=>"Usuario repetido", "mensaje" => "Usuario repetido, ingresa otro"]);
-                exit(1);
+            
+            if(isset($usuario[0]['user'])){
+                if($usuario[0]['user'] == $user){
+                    echo json_encode(["resultado" => 2,"titulo"=>"Usuario repetido", "mensaje" => "Usuario repetido, ingresa otro"]);
+                    exit();
+                }
             }
+            
 
-            $lastIdInserted = $model->insertRow('usuario',['nombre','apellidos','user','password','fecha_nacimiento','fecha_inicio','fecha_fin','rol_id'],[$nombre,$apellidos,$user,$pass,$fecha_nacimiento,$fecha_inicio,$fecha_fin,$rol_id]);
+            $lastIdInserted = $model->insertRow('usuario',['nombre','apellidos','user','password','fecha_nacimiento','fecha_inicio','fecha_fin','rol_id'],[$nombre,$apellidos,$user,$password,$fecha_nacimiento,$fecha_inicio,$fecha_fin,$rol_id]);
             if(!$lastIdInserted){
-                echo json_encode(["resultado" => 0, "mensaje" => "Error en la insercion"]);
+                echo json_encode(["resultado" => 0,"titulo"=>"Usuario repetido", "mensaje" => "Error en la insercion"]);
             }else{
-                echo json_encode(["resultado" => 1, "mensaje" => "Usuario insertado con id".$lastIdInserted]);
+                echo json_encode(["resultado" => 1,"titulo"=>"Usuario repetido", "mensaje" => "Usuario insertado con id".$lastIdInserted]);
             }
         }
 

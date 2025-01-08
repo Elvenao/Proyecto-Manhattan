@@ -18,8 +18,8 @@
         <button type="button" class="btn btn-outline-success" id="plus-button" onclick="incrementarBtn()">+</button>
         <button type="button" class="btn btn-outline-primary" id="minus-button" onclick="decrementarBtn()">-</button>
         <input type="number" placeholder="+/-" class="form-control" id="cantidadOpcional">
-        <button type="button" class="btn btn-outline-success fw-bold" onclick="agregarBtn()">Agregar</button>
-        <button type="button" class="btn btn-outline-primary fw-bold" onclick="restarBtn()">Restar</button>
+        <button type="button" class="btn btn-outline-success fw-bold agregarBtn" onclick="agregarBtn()" >Agregar</button>
+        <button type="button" class="btn btn-outline-primary fw-bold restarBtn" onclick="restarBtn()" >Restar</button>
     </div>
     <div class="input-group mb-3 w-50">
         <label for="costo" class="input-group-text" id="basic-addon1">Costo</label>
@@ -65,19 +65,30 @@
     }
 
     #plus-button{
-        margin-left: 10px;
+        margin-left: 2%;
         padding-left: 3%;
         padding-right: 3%;
         font-size: 100%;
         font-weight: bolder;
     }
     #minus-button{
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: 2%;
+        margin-right: 2%;
         padding-left: 3.5%;
         padding-right: 3.5%;
         font-size: 100%;
         font-weight: bolder;
+    }
+    .agregarBtn{
+       
+       width: 16%;
+       border-right: #E6E9EC 1px solid;
+    }
+
+    .restarBtn{
+        margin-left: 10%;
+        width: 18%;
+        border-left: none;
     }
     
 </style>

@@ -61,8 +61,8 @@ function llamadaASweetAlert(
                 }
                 return data; // Retorna los datos procesados
             } catch (error) {
-                Swal.showValidationMessage(`Error en la solicitud: ${error.message}`);
-                console.log(error.message);
+                Swal.showValidationMessage(`Error en la solicitud: ${error.mensaje}`);
+                console.log(error.mensaje);
             }
         },
         allowOutsideClick: () => !Swal.isLoading(),

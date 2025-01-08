@@ -19,7 +19,7 @@ try {
 
     $pass = $input['pass'];
     $model = new MainModel();
-    $usuario = $model->getDataRows("usuario", ["user", "password","rol_id"], "user = ?;", [$user]);
+    $usuario = $model->getDataRows("usuario", ["user", "password","rol_id"], "user = ?", [$user]);
     $hash = $usuario[0]['password'];
     if ($usuario && $usuario[0]['user'] === $user && password_verify($pass, $hash)) {
         echo json_encode(["resultado" => 1, "mensaje" => "Inicio de sesion exitoso"]);
