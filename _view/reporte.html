@@ -12,7 +12,49 @@
         color: #333;
     }
 </style>
+<!-- Encabezado -->
+<div class="row align-items-center border-bottom" style="padding: 2vh;">
+    <!-- Etiqueta Notas -->
+    <div class="col-6">
+        <h4 class="fw-bold m-0">Punto de Venta</h4>
+        
+    </div>
+    <!-- Selector Filtrar -->
+    <div class="col-6 text-end">
+        <div class="d-flex justify-content-end align-items-center filter-container">
+            <div class="col-6 header-date">
+                <span id="fecha"></span>
+                <span id="reloj"></span>
+                <script>
+                    function actualizarReloj() {
+                        const fecha = new Date();
+                        
+                        const horas = String(fecha.getHours()).padStart(2, '0');
+                        const minutos = String(fecha.getMinutes()).padStart(2, '0');
+                        const segundos = String(fecha.getSeconds()).padStart(2, '0');
+                        
+                        // Actualizar el reloj con la hora
+                        document.getElementById('reloj').textContent = `${horas}:${minutos}:${segundos}`;
+                        
+                        // Obtener la fecha
+                        const dia = fecha.getDate();
+                        const mes = fecha.getMonth() + 1; // Los meses comienzan en 0
+                        const año = fecha.getFullYear();
+                        
+                        // Actualizar la fecha
+                        document.getElementById('fecha').textContent = `${dia}/${mes}/${año}`;
+                    }
+                    
+                    // Llamar a la función cada segundo
+                    setInterval(actualizarReloj, 1000);
 
+                    // Llamar a la función al cargar la página para mostrar la hora y fecha inicial
+                    actualizarReloj();
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container mt-3">
     <!-- Reporte del día -->
     <div class="reporte-container">
@@ -20,21 +62,19 @@
             <div class="col-6">
                 <h5 class="fw-bold">Reporte del día</h5>
             </div>
-            <div class="col-6 header-date">
-                12-12-24 13:00
-            </div>
         </div>
         <div class="mb-2">
             <label for="ventas-dia" class="form-label">Total de ventas:</label>
             <div class="input-group">
                 <span class="input-group-text">$</span>
-                <input type="text" id="ventas-dia" class="form-control" value="1,000" readonly>
+                <input type="text" id="ventas-dia" class="form-control" value="<?php echo $this->datos[0]['Total_Dia']; ?>" readonly>
             </div>
-        </div>
+             
+        </div> <!--
         <div>
             <label for="producto-dia" class="form-label">Producto más vendido:</label>
             <input type="text" id="producto-dia" class="form-control" value="Manzanas" readonly>
-        </div>
+        </div> -->
     </div>
 
     <!-- Reporte de la semana -->
@@ -44,14 +84,15 @@
             <label for="ventas-semana" class="form-label">Total de ventas:</label>
             <div class="input-group">
                 <span class="input-group-text">$</span>
-                <input type="text" id="ventas-semana" class="form-control" value="5,000" readonly>
+                <input type="text" id="ventas-semana" class="form-control" value="<?php echo $this->datos[0]['Total_Semana']; ?>" readonly>
             </div>
         </div>
+      <!--
         <div>
             <label for="producto-semana" class="form-label">Producto más vendido:</label>
             <input type="text" id="producto-semana" class="form-control" value="Naranjas" readonly>
-        </div>
-    </div>
+        </div> -->
+    </div> 
 
     <!-- Reporte del mes -->
     <div class="reporte-container">
@@ -60,12 +101,13 @@
             <label for="ventas-mes" class="form-label">Total de ventas:</label>
             <div class="input-group">
                 <span class="input-group-text">$</span>
-                <input type="text" id="ventas-mes" class="form-control" value="20,000" readonly>
+                <input type="text" id="ventas-mes" class="form-control" value="<?php echo $this->datos[0]['Total_Mes']; ?>" readonly>
             </div>
         </div>
+          <!--
         <div>
             <label for="producto-mes" class="form-label">Producto más vendido:</label>
             <input type="text" id="producto-mes" class="form-control" value="Uvas" readonly>
-        </div>
+        </div> -->
     </div>
 </div>

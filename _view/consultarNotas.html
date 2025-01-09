@@ -19,9 +19,9 @@
     <div class="row align-items-center border-bottom">
         <!-- Etiqueta Notas -->
         <div class="col-6">
-            <h4 class="fw-bold m-0">Inventario</h4>
+            <h4 class="fw-bold m-0">Notas</h4>
         </div>
-        <!-- Selector Filtrar -->
+        <!-- Selector Filtrar 
         <div class="col-6 text-end">
             <div class="d-flex justify-content-end align-items-center filter-container">
                 <label for="filtro" class="mb-0">Filtrar</label>
@@ -31,7 +31,7 @@
                     <option value="3">Opción 3</option>
                 </select>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- Contenido de las notas -->
@@ -58,7 +58,11 @@
                 </tbody>
             </table>
             <button type="button" class="btn btn-primary" id="conBtn" name="conBtn" onclick="consultar()" disabled>Consultar</button>
-            <button type="button" class="btn btn-danger" id="delBtn" name="delBtn"  onclick="eliminarNota()" disabled>Eliminar</button>
+            <?php
+                if($this->rol[0]["rol_id"] == 1){
+                    echo '<button type="button" class="btn btn-danger" id="delBtn" name="delBtn"  onclick="eliminarNota()" disabled>Eliminar</button>';
+                }
+            ?>
             <button onclick="regresar()" class="btn btn-secondary" >Regresar</button>
         </div>
     </div>
