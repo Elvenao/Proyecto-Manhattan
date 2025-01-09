@@ -58,6 +58,14 @@ document.getElementById("rol_id").addEventListener("change",function(){
   localStorage.setItem("Rol",this.value)
 })
 
+document.getElementById("genero").addEventListener("change",function(){
+  localStorage.setItem("Genero",this.value)
+})
+
+document.getElementById("telefono").addEventListener("input",function(){
+  localStorage.setItem("Telefono",this.value)
+})
+
 document.addEventListener("DOMContentLoaded",function(){
   if(localStorage.getItem('isStored') == null){
     localStorage.setItem('isStored',true)
@@ -69,6 +77,8 @@ document.addEventListener("DOMContentLoaded",function(){
     localStorage.setItem("FechaF",'')
     localStorage.setItem("FechaI",'')
     localStorage.setItem("Rol",'1')
+    localStorage.setItem("Genero",'1')
+    localStorage.setItem("Telefono",'')
   }else{
     document.getElementById("nombre").value = localStorage.getItem("Nombre")
     document.getElementById("apellidos").value = localStorage.getItem("Apellidos")
@@ -78,6 +88,8 @@ document.addEventListener("DOMContentLoaded",function(){
     document.getElementById("fecha_inicio").value = localStorage.getItem("FechaI")
     document.getElementById("fecha_fin").value = localStorage.getItem("FechaF")
     document.getElementById("rol_id").value = localStorage.getItem("Rol")
+    document.getElementById("genero").value = localStorage.getItem("Genero")
+    document.getElementById("telefono").value = localStorage.getItem("Telefono")
   }
 })
 
@@ -90,6 +102,8 @@ function borrarBtn(){
     document.getElementById("fecha_inicio").value = ''
     document.getElementById("fecha_fin").value = ''
     document.getElementById("rol_id").value = '1'
+    document.getElementById("genero").value = '1'
+    document.getElementById("telefono").value = ''
     localStorage.clear()
 }
 
@@ -105,8 +119,10 @@ function agregar(e){
     let fecha_fin
     if(document.getElementById("fecha_fin").value == '') fecha_fin = null
     let rol_id = document.getElementById("rol_id").value
+    let genero = document.getElementById("genero").value
+    let telefono =  document.getElementById("telefono").value
 
-    let datos = JSON.stringify({action,nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id})
+    let datos = JSON.stringify({action,nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id,genero,telefono})
     llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxUsuario.php","Agregar Usuario","¿Seguro que quieres agregar este usuario?","info","Agregar","Cancelar","Error agregando","Usuario agregado","Usuario agregado con exito",true,"<?php echo SITE_URL;?>configuracion/")
 }
 

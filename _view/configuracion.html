@@ -10,11 +10,12 @@
                     <th>Fecha de Inicio</th>
                     <th>Fecha de Termino</th>
                     <th>Rol</th>
-
+                    <th>Genero</th>
+                    <th>Telefono</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($this->datos as $registro): ?>
+                <?php $index = 0; $genero = $this->generos; foreach($this->datos as $registro): ?>
                 <tr>
                     <td class="column"><?php echo $registro["nombre"]." ".$registro["apellidos"]?></td>
                     <td class="column"><?php echo $registro["user"]?></td>
@@ -22,6 +23,8 @@
                     <td class="column"><?php echo $registro["fecha_inicio"]?></td>
                     <td class="column"><?php $fecha = isset($registro["fecha_fin"]) ? $registro["fecha_fin"] : "En vigencia"; echo $fecha;?></td>
                     <td class="column"><?php echo $registro["descripcion"]?></td>
+                    <td class="column"><?php echo $genero[$index]["genero"]; $index++;?></td>
+                    <td class="column"><?php if($registro["telefono"] == null) echo "Sin telefono"; else echo $registro['telefono'];?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>

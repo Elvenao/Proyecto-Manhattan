@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function (){
-    let insert = document.getElementById("insert")
+    
     let fecha_nacimiento = document.getElementById("fecha").value
     let fechas = fecha_nacimiento.split('-')
     let algo = Date()
@@ -32,6 +32,10 @@ document.addEventListener('DOMContentLoaded', function (){
     }
     let AnioEdad = anioHoy - Number(year)
 
-    document.getElementById("insert").value = AnioEdad
-    document.getElementById("insert2").value = document.getElementById("fecha_inicio").value
+    document.getElementById("edad").value = "Edad: " +  AnioEdad
+    
 })
+
+function editarBtn(){
+   let 
+}
