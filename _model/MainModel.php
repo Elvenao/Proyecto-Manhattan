@@ -49,6 +49,7 @@
             $datos = $mysql->specialQuery($query);
             return $datos;
         }
+        
     }
     
 

@@ -10,13 +10,19 @@ $(document).ready(function() {
         if ($(this).hasClass('onClick')) {
             $(this).removeClass('onClick');
             document.getElementById("conBtn").setAttribute("disabled","");
-            document.getElementById("delBtn").setAttribute("disabled","");
+            if(document.getElementById("delBtn") != null ){
+                document.getElementById("delBtn").setAttribute("disabled","");
+            }
+            
         } else {
             // Quita la clase de otras filas y añade a la fila actual
             table.$('tr.onClick').removeClass('onClick');
             selectedRow = $(this).addClass('onClick');
             document.getElementById("conBtn").removeAttribute("disabled")
-            document.getElementById("delBtn").removeAttribute("disabled")
+            if(document.getElementById("delBtn") != null ){
+                document.getElementById("delBtn").removeAttribute("disabled");
+            }
+            
         }
         var data = table.row(this).data(); // Obtiene los datos de la fila clicada
         selectedTable = data[0]

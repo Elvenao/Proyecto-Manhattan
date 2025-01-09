@@ -9,7 +9,12 @@
         }
         
         public function renderContent(){
-            include "_view/verNota.html";
+            if($this->datos == null){
+                include "_view/404.html";
+            }else {
+                include "_view/verNota.html";
+            }
+            
         }
         public function renderCSS(){
             

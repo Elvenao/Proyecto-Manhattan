@@ -1,4 +1,63 @@
+<script> window.onload = function() { document.getElementById("miSelect").selectedIndex = 0;}</script>
+<style>
+    .reporte-container {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+    .header-date {
+        text-align: right;
+        font-weight: bold;
+        color: #333;
+    }
+    .dataTables_empty { display: none; }
+</style>
 <div class="container-fluid">
+    <!-- Encabezado -->
+    <div class="row align-items-center border-bottom" style="padding: 2vh;">
+        <!-- Etiqueta Notas -->
+        <div class="col-6">
+            <h4 class="fw-bold m-0">Punto de Venta</h4>
+            
+        </div>
+        <!-- Selector Filtrar -->
+        <div class="col-6 text-end">
+            <div class="d-flex justify-content-end align-items-center filter-container">
+                <div class="col-6 header-date">
+                    <span id="fecha"></span>
+                    <span id="reloj"></span>
+                    <script>
+                        function actualizarReloj() {
+                            const fecha = new Date();
+                            
+                            const horas = String(fecha.getHours()).padStart(2, '0');
+                            const minutos = String(fecha.getMinutes()).padStart(2, '0');
+                            const segundos = String(fecha.getSeconds()).padStart(2, '0');
+                            
+                            // Actualizar el reloj con la hora
+                            document.getElementById('reloj').textContent = `${horas}:${minutos}:${segundos}`;
+                            
+                            // Obtener la fecha
+                            const dia = fecha.getDate();
+                            const mes = fecha.getMonth() + 1; // Los meses comienzan en 0
+                            const año = fecha.getFullYear();
+                            
+                            // Actualizar la fecha
+                            document.getElementById('fecha').textContent = `${dia}/${mes}/${año}`;
+                        }
+                        
+                        // Llamar a la función cada segundo
+                        setInterval(actualizarReloj, 1000);
+
+                        // Llamar a la función al cargar la página para mostrar la hora y fecha inicial
+                        actualizarReloj();
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Fila principal -->
     <div class="row vh-100">
         <!-- Columna izquierda -->
@@ -6,18 +65,19 @@
             <!-- Selector de categoría -->
             <div class="p-2">
                 <label for="categoria" class="form-label fw-bold">Seleccionar Productos</label>
+
                 <!-- Las Categorias deben ser dinamicas -->
-                <select class="form-select" id="categoria">
-                    <option value="1">Categoría 1</option>
-                    <option value="2">Categoría 2</option>
+                <select class="form-select" id="categoria" onchange="selProductos(this.value)">
+                    <option value="carga">Categoria</option>
+                    <?php foreach($this->categorias as $opcion): ?>
+                    <option value='<?php echo $opcion["Id_PC"]?>'><?php echo $opcion["Categoria"]?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
 
             <!-- Espacio para botones de productos -->
-            <div class="mt-3">
+            <div class="mt-3" id="prodBtn">
                 <!-- Ejemplo de botones (dinámicos) -->
-                <button class="btn btn-light w-100 mb-2 text-start">Producto 1</button>
-                <button class="btn btn-light w-100 mb-2 text-start">Producto 2</button>
             </div>
         </div>
 
@@ -29,18 +89,12 @@
                         <th>ID</th>
                         <th>Descripcion</th>
                         <th>Cantidad</th>
-                        <th>Total Prodcuto</th>
+                        <th>Precio</th>
+                        <th>Importe</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Nose</td>
-                        <td>1</td>
-                        <td>23</td>
-                        <td><a href="#">añadir </a><a href="#"> restar</a></td>
-                    </tr>
                 </tbody>
             </table>
 
@@ -48,10 +102,13 @@
             
             <!-- Total y campo de precio -->
             <div class="d-flex justify-content-between align-items-center p-3 border-top">
+                <div class="d-flex justify-content-end align-items-center filter-container">
+                    <button onclick="finalizar()" class="btn btn-success" >Finalizar Nota</button>
+                </div>
                 <h3 class="fw-bold mb-0">Total:</h3>
                 <div class="input-group" style="width: 150px;">
-                    <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" placeholder="0.00" disabled="">
+                    <span class="input-group-text" id="totalNota">$</span>
+                    <input type="text" id="total" class="form-control" placeholder="0.00" disabled="">
                 </div>
             </div>
         </div>
