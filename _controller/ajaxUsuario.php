@@ -30,14 +30,14 @@
             if($resultado){
                 echo json_encode(["resultado" => 1, "mensaje" => "Usuario actualizado"]);
             }else{
-                echo json_encode(["resultado" => 0, "mensaje" => "Error en la actualizacion: ".$rol_id. ", ".$nombre. ", ".$apellidos. ", ".$user. ", ".$pass. ", ".$fecha_nacimiento. ", ".$fecha_inicio.  ", ".$fecha_fin. ", ".$id_usuario]);
+                echo json_encode(["resultado" => 0, "mensaje" => "Error en la actualizacion: "]);
             }
         }else if($input["action"] == "Borrar"){
             if (!isset($input['id_usuario'])) {
                 echo json_encode(["resultado" => 0, "mensaje" => "Faltan datos"]);
                 exit;
             }
-            setcookie("ID",$input['id_usuario'],time()+23,"/");
+            
             $model = new MainModel();
             $resultado = $model->deleteRow('usuario','id_usuario = ?;',[$input['id_usuario']]);
             if($resultado){

@@ -175,3 +175,12 @@ function eliminarAcentos(texto) {
     }
     
   }
+
+  let fechaI = document.getElementById('fecha_inicio')
+    let fechaF = document.getElementById('fecha_fin')
+    let fechaMax = new Date()
+    fechaMax.setDate(fechaMax.getDate() )
+    console.log(fechaMax.getDate() )
+    const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
+    fechaI.max = formatoFecha(fechaMax)
+    fechaF.max = formatoFecha(fechaMax)

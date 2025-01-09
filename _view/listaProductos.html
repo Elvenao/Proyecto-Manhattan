@@ -27,8 +27,11 @@
             
             <div class="d-flex justify-content-end align-items-center filter-container">
                 <label for="filtro" class="mb-0">Filtro</label>
-                <select id="filtro" class="form-select form-select-sm ms-2">
-                    
+                <select name="filtro" id="filtro" class="form-select form-select-sm ms-2">
+                    <option value="">Todos</option>
+                    <?php foreach($this->filtro as $categoria):?>
+                    <?php echo "<option value='".$categoria['Categoria']."'>".$categoria['Categoria']."</option>";?>
+                    <?php endforeach?>
                 </select>
             </div>
         </div>
@@ -37,8 +40,8 @@
     <!-- Contenido de las notas -->
     <div class="row">
         <div class="col-12 p-3" style="height: 81vh; overflow-y: auto; background-color: #f8f9fa;">
-            <table id="meinTable">
-                <thead>
+            <table id="meinTable" class="table table-bordered table-responsive">
+                <thead class="table-dark">
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
@@ -57,15 +60,16 @@
                         <td><?php echo $registro["Nombre"]?></td>
                         <td><?php $informacion = (isset($registro["Informacion"])) ? $registro["Informacion"] : "Sin Informacion"; echo $informacion;?></td>
                         <td><?php echo $registro["Precio"]?></td>
-                        <td><?php $costo = (isset($registro["Costo"])) ? $registro["Costo"] : "Sin Costo"; echo $costo;?></td>
+                        <td><?php $costo = (isset($registro["Costo"])) ? $registro["Costo"]. '$' : "Sin Costo"; echo $costo ;?></td>
                         <td><?php if($registro["status"] == TRUE){ $Status = "Disponible"; } {"Sin Existencias";} echo $Status;?></td>
                         <td><?php echo $registro["Categoria"]?></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
             </table>    
-            <button onclick="agregarBtn()" class="btn btn-success">Añadir Nuevo Producto</button>
-            <button type="button" class="btn btn-primary" id="editarBtn" onclick="editarBtn()" disabled>Editar</button>
+            <?php if($this->rol[0]['rol_id'] == 1) echo '<button onclick="agregarBtn()" class="btn btn-success">Añadir Nuevo Producto</button>';?>
+            <?php if($this->rol[0]['rol_id'] == 1) echo '<button type="button" class="btn btn-primary" id="editarBtn" onclick="editarBtn()" disabled>Editar</button>';?>
+            
             <button type="button" class="btn btn-danger" onclick="regresarBtn()">Regresar</button>
         </div>
     </div>

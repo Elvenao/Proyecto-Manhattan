@@ -54,12 +54,13 @@ document.getElementById("fecha_inicio").addEventListener("input",function(){
   localStorage.setItem("FechaI",this.value)
 })
 
-document.getElementById("rol_id").addEventListener("input",function(){
+document.getElementById("rol_id").addEventListener("change",function(){
   localStorage.setItem("Rol",this.value)
 })
 
 document.addEventListener("DOMContentLoaded",function(){
-  if(localStorage.getItem("Nombre") == null || localStorage.getItem("Apellidos") == null || localStorage.getItem("User") == null || localStorage.getItem("Password") == null || localStorage.getItem("FechaF") == null || localStorage.getItem("FechaN") == null || localStorage.getItem("FechaI") == null || localStorage.getItem("Rol") == null){
+  if(localStorage.getItem('isStored') == null){
+    localStorage.setItem('isStored',true)
     localStorage.setItem("Nombre",'')
     localStorage.setItem("Apellidos",'')
     localStorage.setItem("User",'')
@@ -67,7 +68,7 @@ document.addEventListener("DOMContentLoaded",function(){
     localStorage.setItem("FechaN",'')
     localStorage.setItem("FechaF",'')
     localStorage.setItem("FechaI",'')
-    localStorage.setItem("Rol",'')
+    localStorage.setItem("Rol",'1')
   }else{
     document.getElementById("nombre").value = localStorage.getItem("Nombre")
     document.getElementById("apellidos").value = localStorage.getItem("Apellidos")
@@ -144,3 +145,13 @@ function generarUserBtn(){
   }
   
 }
+
+    let fechaI = document.getElementById('fecha_inicio')
+    let fechaF = document.getElementById('fecha_fin')
+    let fechaMax = new Date()
+    fechaMax.setDate(fechaMax.getDate() )
+    console.log(fechaMax.getDate() )
+    const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
+    fechaI.max = formatoFecha(fechaMax)
+    fechaF.max = formatoFecha(fechaMax)
+    

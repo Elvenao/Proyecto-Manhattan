@@ -7,7 +7,7 @@
         <span class="input-group-text">Fecha de Inicio: </span> <input type="text" readonly id="insert2" class="form-control">
     </div>
     <div class="input-group mb-3 w-25">
-        <span class="input-group-text">Rol: </span> <input type="text" readonly id="insert2" class="form-control" value="<?php switch($this->datos[0]["rol_id"]){case 1: $rol = "Administrador";break;case 2: $rol="Empleado";break;} echo $rol;?>">
+        <span class="input-group-text">Rol: </span> <input type="text" readonly id="insert2" class="form-control" value="<?php echo $this->datos[0]['descripcion'];?>">
     </div>
     <input type="hidden" value="<?php echo $this->datos[0]['fecha_inicio'];?>" id="fecha_inicio">
     <input type="hidden" value="<?php echo $this->datos[0]['fecha_nacimiento'];?>" id="fecha">
