@@ -27,10 +27,12 @@
             
             <div class="d-flex justify-content-end align-items-center filter-container">
                 <label for="filtro" class="mb-0">Filtrar</label>
-                <select id="filtro" class="form-select form-select-sm ms-2">
-                    <option value="1">Opción 1</option>
-                    <option value="2">Opción 2</option>
-                    <option value="3">Opción 3</option>
+                <select name="filtro" id="filtro-categorias" class="form-select form-select-sm ms-2">
+                    <option value="">Todos</option>
+                    
+                    <?php foreach($this->filtro as $categoria):?>
+                    <?php echo "<option value='".$categoria['Categoria']."'>".$categoria['Categoria']."</option>";?>
+                    <?php endforeach?>
                 </select>
             </div>
         </div>
@@ -39,14 +41,13 @@
     <!-- Contenido de las notas -->
     <div class="row">
         <div class="col-12 p-3" style="height: 81vh; overflow-y: auto; background-color: #f8f9fa;">
-            <table id="meinTable">
+            <table id="meinTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
                         <th>Stock</th>
                         <th>Categoria</th>
-
                     </tr>
                 </thead>
                 <tbody>

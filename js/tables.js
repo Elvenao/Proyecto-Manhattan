@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#meinTable').DataTable({
-        searching: false, 
+        searching: true, 
         lengthChange: false, 
         info: false,
         order: []
@@ -8,14 +8,14 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
     $('#tablanotas').DataTable({
-        searching: false, 
+        searching: true, 
         lengthChange: false, 
         info: false
     });
 });
 $(document).ready(function () {
     $('#tablapos').DataTable({
-        searching: false, 
+        searching: true, 
         lengthChange: false, 
         info: false,
         ordering: false,

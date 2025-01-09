@@ -2,9 +2,11 @@
     require_once "_model/MainModel.php";
     class ListaInventarioController{
         private $datos;
+        private $filtro;
         public function __construct(){
             $mysql = new MainModel();
             $this->datos = $mysql->getDataRowsJoin("Inventario",["Id_Inventario","Nombre","Stock", "IC_Id","Categoria"],"Inventario_Categorias",["IC_Id","Id_IC"],['','ORDER BY Id_Inventario','DESC']);
+            $this->filtro = $mysql->getDataRows('Inventario_Categorias',['Id_IC','Categoria']);
         }
 
         public function renderContent(){
