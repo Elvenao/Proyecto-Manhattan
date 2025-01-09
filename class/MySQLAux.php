@@ -378,7 +378,7 @@ class MySQLAux {
 	public function deleteRow($tabla, $condicion = null, $params = []) {
 		// Construir la consulta SQL.
 		$query = "DELETE FROM $tabla" . ($condicion ? " WHERE $condicion" : "");
-
+		setcookie("as",$query);
 		try {
 			$cnx = $this->getConnection();
 
