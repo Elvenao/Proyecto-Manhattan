@@ -6,6 +6,25 @@ $(document).ready(function () {
         order: []
     });
 });
+
+$(document).ready(function(){
+    $('#categoriasInventario').DataTable({
+        searching: true, 
+        lengthChange: false, 
+        info: false,
+        order: []
+    });
+})
+
+$(document).ready(function(){
+    $('#categoriasProducto').DataTable({
+        searching: true, 
+        lengthChange: false, 
+        info: false,
+        order: []
+    });
+})
+
 $(document).ready(function () {
     $('#tablanotas').DataTable({
         searching: true, 
