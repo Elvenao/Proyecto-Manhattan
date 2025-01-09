@@ -33,3 +33,12 @@ function regresar(){
 function consultar(){
     location.replace('<?php echo SITE_URL; ?>notas/consultar/vernota/'+selectedTable);
 }
+
+function eliminarNota(){
+    let id = "<?php echo $this->datos[0]['Id_Notas']?>";
+    let action = "Borrar"
+    let datos = JSON.stringify({id, action})
+    console.log(datos)
+    let ruta = '<?php echo SITE_URL; ?>notas/consultar/'
+    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxNotas.php","Borrar Nota","¿Estás seguro/a que quieres borrar esta nota? No podras recuperar los datos","warning","Borrar","Cancelar","No se pudo borrar","Se borro con exito","La nota se borro exitosamente",true,ruta)
+}
