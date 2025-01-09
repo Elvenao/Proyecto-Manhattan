@@ -18,18 +18,27 @@
         <button type="button" class="btn btn-secondary" onclick="generarUserBtn()">Generar Usuario</button>
     </div>
     
-        <div class="input-group mb-3 w-50">
-            <label for="password" class="input-group-text" id="basic-addon1">Contraseña</label>
+    <div class="input-group mb-3 w-50">
+        <label for="password" class="input-group-text" id="basic-addon1">Contraseña</label>
         <input id="password" id="password" name="password" type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" value="">
         <button type="button" class="btn btn-outline-secondary" onclick="mostrarBtn()" style="border: 1px solid #CED4DA; border-left:none; border-right:none"><i id="eye-icon" class="bi bi-eye-slash"></i></button>
         <button type="button" class="btn btn-secondary" onclick="generarPassBtn()">Generar Contraseña</button>
-        </div>
-        
-    
-    
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="telefono" class="input-group-text" id="basic-addon1">Telefono</label>
+        <input id="telefono" id="telefono" name="telefono" type="tel" class="form-control" placeholder="Telefono" aria-label="Username" aria-describedby="basic-addon1" value="" required>
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="genero" class="input-group-text" id="basic-addon1">Genero</label>
+        <select name="genero" id="genero" class="form-select">
+            <?php foreach($this->generos as $genero):?>
+            <?php echo '<option value="'.$genero["id_genero"].'">'.$genero["genero"].'</option>'?>
+            <?php endforeach?>
+        </select>
+    </div>
     <div class="input-group mb-3 w-50">
         <label for="fecha_nacimiento" class="input-group-text" id="basic-addon1">Fecha de Nacimiento</label>
-        <input name="fecha_nacimiento" id="fecha_nacimiento" type="date" class="form-control" placeholder="Fecha de Nacimiento" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["fecha_nacimiento"]?>">
+        <input name="fecha_nacimiento" id="fecha_nacimiento" type="date" class="form-control" placeholder="Fecha de Nacimiento" aria-label="Username" aria-describedby="basic-addon1" min="1960-01-01" max="2007-01-01" value="<?php echo $this->datos[0]["fecha_nacimiento"]?>" >
     </div>
     <div class="input-group mb-3 w-50">
         <label for="fecha_inicio" class="input-group-text" id="basic-addon1">Fecha de Inicio</label>

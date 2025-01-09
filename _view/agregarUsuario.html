@@ -21,16 +21,28 @@
         <button type="button" class="btn btn-secondary" onclick="generarPassBtn()">Generar Contraseña</button>
     </div>
     <div class="input-group mb-3 w-50">
+        <label for="telefono" class="input-group-text" id="basic-addon1">Telefono</label>
+        <input id="telefono" id="telefono" name="telefono" type="tel" class="form-control" placeholder="Telefono" aria-label="Username" aria-describedby="basic-addon1" value="" required>
+    </div>
+    <div class="input-group mb-3 w-50">
+        <label for="genero" class="input-group-text" id="basic-addon1">Genero</label>
+        <select name="genero" id="genero" class="form-select">
+            <?php foreach($this->generos as $genero):?>
+            <?php echo '<option value="'.$genero["id_genero"].'">'.$genero["genero"].'</option>'?>
+            <?php endforeach?>
+        </select>
+    </div>
+    <div class="input-group mb-3 w-50">
         <label for="fecha_nacimiento" class="input-group-text" id="basic-addon1">Fecha de Nacimiento</label>
-        <input name="fecha_nacimiento" id="fecha_nacimiento" type="date" class="form-control" placeholder="Fecha de Nacimiento" aria-label="Username" aria-describedby="basic-addon1" value="" required>
+        <input name="fecha_nacimiento" id="fecha_nacimiento" min="1960-01-01" max="2007-01-01" type="date" class="form-control" placeholder="Fecha de Nacimiento" aria-label="Username" aria-describedby="basic-addon1" value="" required>
     </div>
     <div class="input-group mb-3 w-50">
         <label for="fecha_inicio" class="input-group-text" id="basic-addon1">Fecha de Inicio</label>
-        <input name="fecha_inicio" id="fecha_inicio" type="date" class="form-control" placeholder="Fecha de Inicio" aria-label="Username" aria-describedby="basic-addon1" value="" required>
+        <input name="fecha_inicio" id="fecha_inicio" type="date" min="2000-01-01" class="form-control" placeholder="Fecha de Inicio" aria-label="Username" aria-describedby="basic-addon1" value="" required>
     </div>
     <div class="input-group mb-3 w-50">
         <label for="fecha_fin" class="input-group-text" id="basic-addon1">Fecha de Terminación</label>
-        <input name="fecha_fin" id="fecha_fin" type="date" class="form-control" placeholder="Fecha de Terminación" aria-label="Username" aria-describedby="basic-addon1" value="">
+        <input name="fecha_fin" id="fecha_fin" type="date" min="2000-01-01" class="form-control" placeholder="Fecha de Terminación" aria-label="Username" aria-describedby="basic-addon1" value="">
     </div>
     <div class="input-group mb-3 w-50">
         <label for="rol_id" class="input-group-text" id="basic-addon1">Rol</label>

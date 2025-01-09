@@ -92,6 +92,7 @@ class MySQLAux {
 		}
 		
 		
+		
         
         try{
             $cnx = $this->getConnection();

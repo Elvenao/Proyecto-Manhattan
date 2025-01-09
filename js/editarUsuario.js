@@ -9,9 +9,11 @@ function editarBtn(){
     let fecha_fin = document.getElementById("fecha_fin").value
     let rol_id = document.getElementById("rol_id").value
     let id_usuario = document.getElementById("id_usuario").value
+    let genero = document.getElementById('genero').value
+    let telefono = document.getElementById('telefono').value
 
     let ruta = "<?php echo SITE_URL;?>configuracion/editar/" + user
-    let datos = JSON.stringify({action,id_usuario,nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id})
+    let datos = JSON.stringify({action,id_usuario,nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id,genero,telefono})
     console.log(datos)
     llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxUsuario.php","Editar Usuario","¿Seguro que quieres realizar estos cambios?, no será posible deshacer los cambios.","warning","Confirmar","Cancelar","Errores editando","Usuario editado","Usuario editado con exito",true,ruta)
 }
@@ -26,6 +28,9 @@ document.addEventListener('DOMContentLoaded',function(){
     let fecha_inicioInput = document.getElementById("fecha_inicio")
     let fecha_finInput = document.getElementById("fecha_fin")
     let rol_idInput = document.getElementById("rol_id")
+    let generoInput = document.getElementById('genero')
+    let telefonoInput = document.getElementById('telefono')
+
 
     let nombre = "<?php echo $this->datos[0]['nombre'];?>" 
     let apellidos = "<?php echo $this->datos[0]['apellidos']?>"
@@ -33,8 +38,10 @@ document.addEventListener('DOMContentLoaded',function(){
     let password = ""
     let fecha_nacimiento = "<?php echo $this->datos[0]['fecha_nacimiento']?>"
     let fecha_inicio = "<?php echo $this->datos[0]['fecha_inicio']?>"
-    let fecha_fin = "<?php $fecha = isset($this->datos[0]["fecha_fin"]) ? $this->datos[0]["fecha_fin"] : ""; echo $fecha;?>"
+    let fecha_fin = "<?php $fecha = isset($this->datos[0]["fecha_fin"]) ? $this->datos[0]["fecha_fin"] : ""; echo $fecha;?>";
     let rol_id = "<?php echo $this->datos[0]['rol_id']; ?>"
+    let genero = "<?php echo $this->datos[0]['genero_id']; ?>"
+    let telefono = "<?php echo $this->datos[0]['telefono']; ?>"
 
     if(localStorage.getItem("isStored") == null){
         localStorage.clear()
@@ -47,7 +54,10 @@ document.addEventListener('DOMContentLoaded',function(){
         fecha_inicioInput.value = fecha_inicio
         fecha_finInput.value = fecha_fin
         rol_idInput.value = rol_id
-        
+        generoInput.value = genero
+        telefonoInput.value = telefono
+
+        localStorage.setItem("Genero",genero)
         localStorage.setItem("Nombre",nombre)
         localStorage.setItem("Apellidos",apellidos)
         localStorage.setItem("User",user)
@@ -56,6 +66,7 @@ document.addEventListener('DOMContentLoaded',function(){
         localStorage.setItem("Fecha_Inicio",fecha_inicio)
         localStorage.setItem("Fecha_Fin",fecha_fin)
         localStorage.setItem("Rol",rol_id)
+        localStorage.setItem("Telefono",telefono)
     }else{
         nombreInput.value = localStorage.getItem("Nombre")
         apellidosInput.value = localStorage.getItem("Apellidos")
@@ -65,6 +76,8 @@ document.addEventListener('DOMContentLoaded',function(){
         fecha_inicioInput.value = localStorage.getItem("Fecha_Inicio") 
         fecha_finInput.value = localStorage.getItem("Fecha_Fin")
         rol_idInput.value = localStorage.getItem("Rol")
+        generoInput.value = localStorage.getItem("Genero")
+        telefonoInput.value = localStorage.getItem("Telefono")
     }
     
 })
@@ -97,9 +110,18 @@ document.getElementById("fecha_fin").addEventListener('input',function(){
     localStorage.setItem("Fecha_Fin",this.value)
 })
 
+document.getElementById("genero").addEventListener('input',function(){
+    localStorage.setItem("Genero",this.value)
+})
+
 document.getElementById("rol_id").addEventListener('input',function(){
     localStorage.setItem("Rol",this.value)
 })
+
+document.getElementById("telefono").addEventListener('input',function(){
+    localStorage.setItem("Telefono",this.value)
+})
+
 
 function cancelarBtn(){
     localStorage.clear()
@@ -115,7 +137,16 @@ function borrarBtn(){
 
 
 function restablecerBtn(){
-    
+    let nombre = document.getElementById("nombre").value
+    let apellidos = document.getElementById("apellidos").value
+    let user = document.getElementById("user").value
+    let password = document.getElementById("password").value
+    let fecha_nacimiento = document.getElementById("fecha_nacimiento").value
+    let fecha_inicio = document.getElementById("fecha_inicio").value
+    let fecha_fin = document.getElementById("fecha_fin").value
+    let rol_id = document.getElementById("rol_id").value
+    let genero = document.getElementById('genero').value
+    let telefono = document.getElementById('telefono').value
     nombre.value = "<?php echo $this->datos[0]['nombre'];?>" 
     apellidos.value = "<?php echo $this->datos[0]['apellidos']?>"
     user.value = "<?php echo $this->datos[0]['user']?>"
@@ -124,6 +155,8 @@ function restablecerBtn(){
     fecha_inicio.value = "<?php echo $this->datos[0]['fecha_inicio']?>"
     fecha_fin.value = "<?php $fecha = isset($this->datos[0]["fecha_fin"]) ? $this->datos[0]["fecha_fin"] : "En vigencia"; echo $fecha;?>"
     rol_id.value = "<?php echo $this->datos[0]['rol_id']; ?>"
+    genero.value = "<?php echo $this->datos[0]['genero_id']; ?>"
+    telefono.value = "<?php echo $this->datos[0]['telefono']; ?>"
 }
 
 function mostrarBtn(){
@@ -175,3 +208,12 @@ function eliminarAcentos(texto) {
     }
     
   }
+
+  let fechaI = document.getElementById('fecha_inicio')
+    let fechaF = document.getElementById('fecha_fin')
+    let fechaMax = new Date()
+    fechaMax.setDate(fechaMax.getDate() )
+    console.log(fechaMax.getDate() )
+    const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
+    fechaI.max = formatoFecha(fechaMax)
+    fechaF.max = formatoFecha(fechaMax)

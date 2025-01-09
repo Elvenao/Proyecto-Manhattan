@@ -5,7 +5,17 @@ let selectedRow = null
 $(document).ready(function() {
     // Inicializa DataTable
     var table = $('#meinTable').DataTable();
-
+    $('#filtro').on('change', function() {
+        var selectedCategory = $(this).val();
+        // Si se selecciona una categoría, aplicar el filtro
+        if (selectedCategory) {
+            table.column(6).search('^' + selectedCategory + '$', true, false).draw();
+            
+        } else {
+            // Si no se selecciona ninguna categoría, mostrar todo
+            table.column(6).search('').draw();
+        }
+    });
     // Evento de clic en una fila
     $('#meinTable tbody').on('click', 'tr', function() {
         if ($(this).hasClass('onClick')) {
