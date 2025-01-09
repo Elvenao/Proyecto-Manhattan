@@ -5,7 +5,7 @@
         private $datos;
         public function __construct($id){
             $mysql = new MainModel();
-            $this->datos = $mysql->getDataRows("Notas",["Contenido", "Fecha", "Hora", "Total"], "Id_Notas = ?", [$id]);
+            $this->datos = $mysql->getDataRows("Notas",["Id_Notas", "Contenido", "Fecha", "Hora", "Total"], "Id_Notas = ?", [$id]);
         }
         
         public function renderContent(){
