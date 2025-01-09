@@ -56,6 +56,12 @@
                         if($accion == ""){
                             require_once "_controller/ConsultarNotasController.php";
                             $ctrl = new ConsultarNotasController();
+                        }else if($accion == "vernota"){
+                            if($id != ''){
+                                require_once "_controller/verNotaController.php";
+                                $ctrl = new verNotaController($id);
+                            }
+                            
                         }
                     break;
                 }
@@ -121,7 +127,7 @@
                 } else{
                    include "_view/404.html";
                         die();  
-                }  
+                }
             break;
             case "configuracion":
                 if($rol[0]['rol_id'] == 1){

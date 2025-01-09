@@ -41,21 +41,25 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Hora y Fecha</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
                         <th>Total</th>
-                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach($this->datos as $registro): ?>
                     <tr>
-                        <td>1</td>
-                        <td>Nose</td>
-                        <td>123.00</td>
-                         <!-- Eliminar solo se vera para los admins -->
-                        <td><a href="#">Ver </a><a href="#"> Elimiar</a></td>
+                        <td><?php echo $registro["Id_Notas"]?></td>
+                        <td><?php echo $registro["Fecha"]?></td>
+                        <td><?php echo $registro["Hora"]?></td>
+                        <td><?php echo $registro["Total"]?></td>
                     </tr>
+                    <?php endforeach ?>
                 </tbody>
-            </table> 
+            </table>
+            <button type="button" class="btn btn-primary" id="conBtn" name="conBtn" onclick="consultar()" disabled>Consultar</button>
+            <button type="button" class="btn btn-danger" id="delBtn" name="delBtn"  onclick="eliminarNota()" disabled>Eliminar</button>
+            <button onclick="regresar()" class="btn btn-secondary" >Regresar</button>
         </div>
     </div>
 </div>

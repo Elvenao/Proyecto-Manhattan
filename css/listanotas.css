@@ -1,0 +1,17 @@
+a{
+    list-style: none;
+    text-decoration: none;
+    color: #000;
+}
+a:hover{
+   color: #ff1f1f; 
+}
+
+#tablanotas tbody tr:hover {
+    background-color: #e0dede; /* Color de fondo cuando el mouse pase por la fila */
+    cursor: pointer; /* Cambia el cursor a pointer para indicar interactividad */
+}
+
+#tablanotas tbody tr.onClick{
+    background-color: #8f8f8d;
+}
