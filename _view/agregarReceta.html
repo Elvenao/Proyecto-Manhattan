@@ -19,7 +19,7 @@
     <div class="row align-items-center border-bottom" style="padding: 2vh;">
         <!-- Etiqueta Notas -->
         <div class="col-6">
-            <h4 class="fw-bold m-0">Punto de Venta</h4>
+            <h4 class="fw-bold m-0">Agregar Receta</h4>
             
         </div>
         <!-- Selector Filtrar -->
@@ -69,7 +69,7 @@
                 <select class="form-select" id="categoria" onchange="selProductos(this.value)">
                     <option value="carga">Categoria</option>
                     <?php foreach($this->categorias as $opcion): ?>
-                    <option value='<?php echo $opcion["Id_PC"]?>'><?php echo $opcion["Categoria"]?></option>
+                    <option value='<?php echo $opcion["Id_IC"]?>'><?php echo $opcion["Categoria"]?></option>
                     <?php endforeach ?>
                 </select>
             </div>

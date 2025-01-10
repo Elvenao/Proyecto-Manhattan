@@ -1,9 +1,9 @@
 function selProductos(value){
     if(value != "carga"){
         let action = "Select";
-    let datos = JSON.stringify({value, action});
-    let ruta = '<?php echo SITE_URL; ?>notas/pos/'
-    llamadaAjax(datos, "<?php echo SITE_URL;?>_controller/ajaxPOS.php", false, ruta);
+        let datos = JSON.stringify({value, action});
+        let ruta = '<?php echo SITE_URL; ?>notas/pos/'
+        llamadaAjax(datos, "<?php echo SITE_URL;?>_controller/ajaxPOS.php", false, ruta);
     }else {
         let sel = document.getElementById("prodBtn");
         sel.innerHTML = "";

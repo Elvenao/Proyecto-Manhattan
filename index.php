@@ -115,6 +115,18 @@
                             die();
                         }
                         break;
+                    case "recetas":
+                        if($accion == ""){
+                            require_once "_controller/listaRecetasController.php";
+                            $ctrl = new listaRecetasController();
+                        }else if($accion == 'agregar'){
+                            require_once "_controller/agregarRecetaController.php";
+                            $ctrl = new agregarRecetaController();
+                        }else{
+                            include "_view/404.html";
+                            die();
+                        }
+                        break;
                     default:
                         include "_view/404.html";
                         die();

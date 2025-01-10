@@ -1,0 +1,23 @@
+<div>
+    <h1>Recetas</h1>
+    <table id="meinTable" class="table table-bordered">
+        <thead>
+            <tr class="table table-dark">
+                <th>Id</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($this->datos as $registro):?>
+            <tr>
+                
+                <td><?php echo $registro['Id_Receta']?></td>
+                <td><?php echo $registro['Producto']?></td>
+                
+            </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-success" onclick="agregarBtn()">Agregar</button>
+    <button type="button" class="btn btn-danger" onclick="regresarBtn()">Regresar</button>
+</div>
