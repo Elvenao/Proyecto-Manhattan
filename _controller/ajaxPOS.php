@@ -24,7 +24,7 @@
                 exit;
             }
             
-            date_default_timezone_set('America/Mexico_City'); 
+            
             $fechaActual = date("Y-m-d");
             $horaActual = date("H:i:s");
             $json = $input["json"];
