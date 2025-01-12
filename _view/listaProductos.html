@@ -59,8 +59,8 @@
                         <td><?php echo $registro["Id_Productos"]?></td>
                         <td><?php echo $registro["Nombre"]?></td>
                         <td><?php $informacion = (isset($registro["Informacion"])) ? $registro["Informacion"] : "Sin Informacion"; echo $informacion;?></td>
-                        <td><?php echo $registro["Precio"]?></td>
-                        <td><?php $costo = (isset($registro["Costo"])) ? $registro["Costo"]. '$' : "Sin Costo"; echo $costo ;?></td>
+                        <td><?php $precio = (isset($registro["Precio"]))? '$'.$registro["Precio"] : "Sin Precio";echo $precio;?></td>
+                        <td><?php $costo = (isset($registro["Costo"])) ? '$'. $registro["Costo"] : "Sin Costo"; echo $costo ;?></td>
                         <td><?php if($registro["status"] == TRUE){ $Status = "Disponible"; } {"Sin Existencias";} echo $Status;?></td>
                         <td><?php echo $registro["Categoria"]?></td>
                     </tr>

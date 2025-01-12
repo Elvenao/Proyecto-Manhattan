@@ -6,7 +6,8 @@
         private $rol;
         public function __construct(){
             $mysql = new MainModel();
-            $this->datos = $mysql->getDataRowsJoin("Productos",["Id_Productos","Nombre","Informacion","Precio","Costo","status", "PC_Id","Categoria"],"Productos_Categorias",["PC_Id","Id_PC"]);
+            $this->datos = $mysql->getDataRowsJoin("Productos",["Id_Productos","Nombre","Informacion","Precio", "PC_Id","Categoria","Costo","Informacion","status"],"Productos_Categorias",["PC_Id","Id_PC"],['','ORDER BY Id_Productos','DESC']);
+            
             $this->filtro = $mysql->getDataRows('Productos_Categorias',['Id_PC','Categoria']);
             $this->rol = $mysql->getDataRows('usuario',['rol_id'],'user = ?',[$_SESSION['usr']]);
         }

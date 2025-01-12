@@ -59,7 +59,7 @@
                         <td><?php echo $registro["Nombre"]?></td>
                         <td><?php echo $registro["Stock"]?></td>
                         <td><?php if($registro["Informacion"] == null) echo "Sin información"; else echo $registro["Informacion"];?></td>
-                        <td><?php if($registro["Costo"] == null) echo "Sin costo";else echo $registro["Costo"]. "$"?></td>
+                        <td><?php $costo = (isset($registro["Costo"])) ? '$'. $registro["Costo"] : "Sin Costo"; echo $costo ;?></td>
                         <td><?php echo $registro["Categoria"]?></td>
                         <td><?php if($registro["status"] == 'TRUE') echo "Disponible";else echo "No Disponible";?></td>
                     </tr>
