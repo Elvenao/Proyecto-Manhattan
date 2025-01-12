@@ -18,8 +18,11 @@
             $nombre = $input['nombre'];
             $apellidos = $input['apellidos'];
             $user = $input['user'];
+            
             $unhashedPassword = $input['password'];
-            $password = password_hash($unhashedPassword,PASSWORD_ARGON2ID,$options);
+            if(!empty($unhashedPassword)){
+                $password = password_hash($unhashedPassword,PASSWORD_ARGON2ID,$options);
+            }
             $fecha_nacimiento = $input['fecha_nacimiento'];
             $fecha_inicio = $input['fecha_inicio'];
             $fecha_fin = ($input['fecha_fin'] == "") ? null : $input['fecha_fin'];
@@ -28,7 +31,12 @@
             $telefono = $input['telefono'];
 
             $model = new MainModel();
-            $resultado = $model->updateData('usuario',['nombre','apellidos','user','password','fecha_nacimiento','fecha_inicio','fecha_fin','rol_id','genero_id','telefono'],'id_usuario = ?;',[$nombre,$apellidos,$user,$password,$fecha_nacimiento,$fecha_inicio,$fecha_fin,$rol_id,$genero,$telefono,$id_usuario]);
+            if(!empty($unhashedPassword)){
+                $resultado = $model->updateData('usuario',['nombre','apellidos','user','password','fecha_nacimiento','fecha_inicio','fecha_fin','rol_id','genero_id','telefono'],'id_usuario = ?;',[$nombre,$apellidos,$user,$password,$fecha_nacimiento,$fecha_inicio,$fecha_fin,$rol_id,$genero,$telefono,$id_usuario]);
+            }else{
+                $resultado = $model->updateData('usuario',['nombre','apellidos','user','fecha_nacimiento','fecha_inicio','fecha_fin','rol_id','genero_id','telefono'],'id_usuario = ?;',[$nombre,$apellidos,$user,$fecha_nacimiento,$fecha_inicio,$fecha_fin,$rol_id,$genero,$telefono,$id_usuario]);
+            }
+            
             if($resultado){
                 echo json_encode(["resultado" => 1, "mensaje" => "Usuario actualizado"]);
             }else{

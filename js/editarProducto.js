@@ -58,7 +58,9 @@ document.getElementById('categoria').addEventListener('input',function(){
 
 
 function borrarBtn(){
-    let id = "<?php echo $this->datos[0]['Id_Productos']?>;"
+   
+    let id = "<?php echo $this->datos[0]['Id_Productos']?>"
+    console.log(id)
     let action = "Borrar"
     let datos = JSON.stringify({id,action})
     let ruta = '<?php echo SITE_URL; ?>inventario/productos/'
