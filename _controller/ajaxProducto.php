@@ -41,24 +41,24 @@
                 exit;
             }
         }else if($input["action"] === "Agregar"){
-            if (empty($input['producto']) || empty($input['informacion']) || !isset($input['precio']) || !isset($input['costo']) || !isset($input['status']) || !isset($input['categoria'])) {
-                echo json_encode(["resultado" => 0, "mensaje" => ": Faltan datos"]);
+            if (!isset($input['producto']) || !isset($input['informacion']) || !isset($input['precio']) || !isset($input['costo']) || !isset($input['status']) || !isset($input['categoria'])) {
+                echo json_encode(["resultado" => 0, "mensaje" => "Faltan datos"]);
                 exit;
             }
             $producto = $input["producto"];
             $informacion = !empty($input['informacion']) ? $input['informacion'] : null;
             $precio = $input["precio"];
             $costo = !empty($input['costo']) ? $input['costo'] : null;
-            $status = intval($input["status"]);
+            $status = $input["status"];
             $PC_Id = $input["categoria"];
             
             $model = new MainModel();
-            $resultado = $model->insertRow('Inventario',['Nombre','Informacion','Precio','Costo','Status','PC_Id'],[$producto,$informacion,$precio,$costo,$status,$PC_Id]);
+            $resultado = $model->insertRow('Productos',['Nombre','Informacion','Precio','Costo','Status','PC_Id'],[$producto,$informacion,$precio,$costo,$status,$PC_Id]);
             if($resultado){
                 echo json_encode(["resultado" => 1, "mensaje" => "Adicion exitosa"]);
                 exit;
             }else{
-                echo json_encode(["resultado" => 0, "mensaje" => ": Faltan datos"]);
+                echo json_encode(["resultado" => 0, "mensaje" => "No se pudo agregar"]);
                 exit;
             }
         }
