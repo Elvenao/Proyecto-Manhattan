@@ -1,10 +1,13 @@
 <?php
-    $dir = realpath(__DIR__.'\\.\\');
-    if(isset($_SESSION["LoggedIn"]) ){
-        require_once realpath(__DIR__.'\\..\\') . "\\class\\MySQLAux.php";
-    }else {
-        require_once realpath(__DIR__.'\\..\\') . "\\class\\MySQLAux.php";
-    }
+    $dir = __DIR__;
+    
+    $filePath = $dir . '/../class/MySQLAux.php';
+    
+    if (isset($_SESSION["LoggedIn"])) {
+        require_once $filePath;
+    } else {
+        require_once $filePath;
+    } 
     class MainModel{
         
         public function getDataRows($tabla, $campos, $condicion = null, $params = null){
