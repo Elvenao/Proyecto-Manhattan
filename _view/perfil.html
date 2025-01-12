@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container mt-5">
     <div class="col-md-11 text-center">
         <img src="https://via.placeholder.com/150" class="rounded-circle img-fluid shadow" alt="Foto de perfil">
@@ -44,3 +45,53 @@
     }
 </style>
 
+=======
+<div>
+    <h1><?php echo $this->datos[0]['nombre']. " " .$this->datos[0]['apellidos'] ;?></h1>
+    <p id="insert"></p>
+    <input type="hidden" value="<?php echo $this->datos[0]['fecha_nacimiento'];?>" id="fecha">
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function (){
+        let insert = document.getElementById("insert")
+        let fecha_nacimiento = document.getElementById("fecha").value
+        let fechas = fecha_nacimiento.split('-')
+        let algo = Date()
+        let fechaHoy = algo.split(' ')
+        let mesHoy = 0
+        let anioHoy = Number(fechaHoy[3])
+        let year = Number(fechas[0])
+        let month = Number(fechas[1])
+        let day = Number(fechas[2])
+        let MesEdad = 0
+        
+        let MesesArray = ['Jan', 'Feb', 'Mar','Apr' ,'May', 'Jun', 'Jul', 'Aug' , 'Sep', 'Oct', 'Nov', 'Dec']
+        for(let i = 0; i < 11; i++){
+            if(fechaHoy[1] == MesesArray[i]){
+                mesHoy = Number(i + 1)
+            }  
+        }
+        let diaEdad = Number(fechaHoy[2]) - Number(day)
+
+        if(diaEdad < 0 ){
+            diaEdad = 31 + diaEdad
+            mesHoy--
+        }
+
+        MesEdad = Number(mesHoy) - Number(month)
+
+        if(MesEdad < 0){
+            MesEdad = 12 + MesEdad
+            anioHoy--
+        }
+        let AnioEdad = anioHoy - Number(year)
+
+        document.getElementById("insert").innerHTML = "Edad: " + AnioEdad
+    })
+
+    
+    
+    
+</script>
+>>>>>>> origin/Altern

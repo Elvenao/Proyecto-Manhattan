@@ -19,6 +19,7 @@ try {
 
     $pass = $input['pass'];
     $model = new MainModel();
+<<<<<<< HEAD
     $usuario = $model->getDataRows("usuario", ["user", "password","rol_id"], "user = ?", [$user]);
     
     if($usuario != null){
@@ -33,6 +34,16 @@ try {
             echo json_encode(["resultado" => 0, "mensaje" => "Credenciales incorrectas"]);
         }
     }else{
+=======
+    $usuario = $model->getDataRows("usuario", ["user", "password"], "user = ?;", [$user]);
+
+    if ($usuario && $usuario[0]['user'] === $user && $usuario[0]['password'] === $pass) {
+        echo json_encode(["resultado" => 1, "mensaje" => "Inicio de sesion exitoso"]);
+        setcookie("LoggedIN", "true", time()+7200, "/");
+        $_SESSION["LoggedIN"] = $user;
+        exit;
+    } else {
+>>>>>>> origin/Altern
         echo json_encode(["resultado" => 0, "mensaje" => "Credenciales incorrectas"]);
     }
     

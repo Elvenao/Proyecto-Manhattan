@@ -66,6 +66,7 @@
                     break;
                 }
             break;
+<<<<<<< HEAD
             case "inventario":
                 switch($lista){
                     case "" :
@@ -173,6 +174,14 @@
                     die(); 
                 }
                 break;
+=======
+            case "perfil":
+                if($accion == ""){
+                    require_once "_controller/perfilController.php";
+                    $ctrl = new perfilController();
+                }
+            break;
+>>>>>>> origin/Altern
             default:
                 include "_view/404.html";
                 die();
