@@ -1,7 +1,7 @@
 <?php 
 session_start();
-require_once realpath(__DIR__.'\\..\\') .'\\_model\\MainModel.php';
-require_once realpath(__DIR__.'\\..\\') . '\\config\\global.php';
+require_once __DIR__ . '/../_model/MainModel.php';
+require_once __DIR__ . '/../config/global.php';
 
 header("Content-Type: application/json");
 
