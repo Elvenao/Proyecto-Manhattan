@@ -16,22 +16,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="icon" href="<?php echo SITE_URL; ?>img/Logo.png">
     <style>
+        html{
+            font-size: 16px;
+            max-width: 100%;
+        }
         body {
             background-color: #d9d7d7;
             margin: 0;
             padding: 0;
         }
         .login-logo {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 5.5%;
+            
         }
         .login-container {
-            position: absolute;
-            top: 35%;
-            left: 50%;
-            transform: translateX(-50%);
+            
             width: 90%; /* Ocupa el 90% de la pantalla en móviles */
             max-width: 400px; /* Máximo en pantallas grandes */
             padding: 2vh 3vw; /* Padding adaptativo */
@@ -42,98 +40,65 @@
             font-size: 1rem; /* Tamaño base del texto */
         }
         #logo{
-            width: 30vh;
+            width: 15rem;
             height: auto;
         }
-        @media (max-width: 768px) {
-            .login-logo {
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                top: 13%;
-            }
-            .Titulo-container{
-                font-size: 5vw; /* Texto más pequeño en pantallas pequeñas */
-                text-align: center;
-            }
-            .login-container {
-                font-size: 1rem; /* Reduce el tamaño de texto */
-                padding: 3vh 5vw; /* Más padding en pantallas pequeñas */
-            }
-            #logo{
-                width: 30vh;
-                height: auto;
-            }
-        }
-<<<<<<< HEAD
         
-=======
-
->>>>>>> origin/Altern
-        @media (max-width: 576px) {
-            #logo{
-                width: 20vh;
-                height: auto;
-                top: 35%;
-            }
-            .Titulo-container{
-                font-size: 6vw;
-            }
-            .login-container {
-                font-size: 0.9rem;
-            }
-        }
         
         .Titulo-container{
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 2%;
-            font-size: 4.5vh;
+            font-size: 2rem;
             font-weight: bold;
-        
         }
         
         input[type="checkbox"]:checked{
             background-color: #363636; /* Fondo al marcar */
             border-color: #363636;
         }  
+        .container{
+            
+            
+            
+        }
         
     </style>
 </head>
 <body>
     <!-- Logo -->
-    <div class="login-logo">
-        <img src="<?php SITE_URL;?>img/Logo.png" alt="Logo" id="logo">
-        
-    </div>
-    <div class="Titulo-container">
-        El Gato Hambriento
-    </div>
+    
 
     <!-- Contenedor del formulario -->
-    <div class="login-container shadow-lg">
-        <h3 class="mb-4 text-center">Iniciar Sesión</h3>
-        <form id="formulario">
-            <div class="mb-3">
-                <label for="user" class="form-label left">Usuario:</label>
-                <input type="text" class="form-control" id="user" placeholder="Usuario" name="user" required>
-            </div>
-            <div class="mb-3">
-                <label for="pass" class="form-label">Contraseña:</label>
-                <input type="password" class="form-control" id="pass" placeholder="Contraseña" name="pass" required>
-            </div>
-            <div class="mb-3">
-                <input type="checkbox" class="form-check-input" id="showPasswd">
-                <label class="form-label" id="showPasswdLbl">Mostrar Contraseña</label>
-            </div>
-            
-            <div class="mb-3 text-end">
-                <a href="#" class="small text-muted" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">¿Olvidaste tu contraseña?</a>
-            </div>
-            <input type="submit" class="btn btn-dark w-100" value="Iniciar Sesión">
-        </form>
+    <div class="container d-flex align-items-center justify-content-center flex-column">
+        <div class="Titulo-container">
+            El Gato Hambriento
+        </div>
+        <div class="login-logo">
+            <img src="<?php SITE_URL;?>img/Logo.png" alt="Logo" id="logo">
+        </div>
+        
+        <div class="login-container shadow-lg">
+            <h3 class="mb-4 text-center">Iniciar Sesión</h3>
+            <form id="formulario">
+                <div class="mb-3">
+                    <label for="user" class="form-label left">Usuario:</label>
+                    <input type="text" class="form-control" id="user" placeholder="Usuario" name="user" required>
+                </div>
+                <div class="mb-3">
+                    <label for="pass" class="form-label">Contraseña:</label>
+                    <input type="password" class="form-control" id="pass" placeholder="Contraseña" name="pass" required>
+                </div>
+                <div class="mb-3">
+                    <input type="checkbox" class="form-check-input" id="showPasswd">
+                    <label class="form-label" id="showPasswdLbl">Mostrar Contraseña</label>
+                </div>
+                
+                <div class="mb-3 text-end">
+                    <a href="#" class="small text-muted" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">¿Olvidaste tu contraseña?</a>
+                </div>
+                <input type="submit" class="btn btn-dark w-100" value="Iniciar Sesión">
+            </form>
+        </div>
     </div>
+    
 
     <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
