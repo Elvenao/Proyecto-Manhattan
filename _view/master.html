@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Gato Hambriento</title>
+    <title><?php echo $titulo;?></title>
     <!-- Bootstrap -->
     <link href="<?php echo SITE_URL; ?>utils/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo SITE_URL; ?>utils/sweetAlert2/sweetalert2.min.css"  rel="stylesheet">
@@ -20,8 +20,9 @@
     </style>
         
     <style>
-        
-        
+        html{
+            font-size: 16px;
+        }
         body {
             font-family: Arial, sans-serif;
         }
@@ -31,14 +32,20 @@
             position: fixed; /* Fijo en el lado izquierdo */
             top: 0;
             left: 0;
-            padding-top: 20px;
+            
         }
         .content {
             margin-left: 250px; /* Espacio reservado para el menú lateral */
             margin-top: 60px; /* Ajuste por el menú superior */
         }
+        .bar button{
+            text-align: ;
+        }
         .logo {
             text-align: center;
+        }
+        .logo:hover{
+            cursor: pointer;
         }
         .logo img {
             width: 80px;
@@ -64,11 +71,18 @@
             padding: 0 15px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+        .bar button{
+            text-align: center;
+        }
         @media (max-width: 768px) {
+            .logo{
+                position: relative;
+                left: -0.5rem;  
+            }
             .sidebar {
                 position: static;
                 height: auto;
-                width: 100%;
+                width: 140%;
             }
             .content {
                 margin-left: 0;
@@ -89,7 +103,7 @@
     <div class="">
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center bg-light p-2 border-bottom">
-            <div class="d-flex align-items-center btn" onclick="javascript:location.replace('<?php echo SITE_URL; ?>')">
+            <div class="d-flex align-items-center logo" onclick="javascript:location.replace('<?php echo SITE_URL; ?>')">
                 <img src="<?php echo SITE_URL; ?>img/Logo.png" alt="G" class="me-2" style="width: 50px; height: 50px; border-radius: 50%;">
 
                 <h1 class="fs-4 m-0">Gato Hambriento</h1>
@@ -113,16 +127,14 @@
         <!-- Sidebar and Content -->
         <div class="row vh-100">
             <!-- Sidebar -->
-            <div class="col-2 border-end bg-light">
-                <div class="d-flex flex-column h-200">
-                    <button class="btn btn-light  text-start py-4" onclick="javascript:location.replace('<?php echo SITE_URL; ?>reportes/')">Reportes</button>
-                    <button class="btn btn-light  text-start py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>notas/')">Notas</button>
-                    <button class="btn btn-light  text-start py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inventario/')">Inventario</button>
-                    <?php if ($rol[0]['rol_id'] == 1) echo "<button class='btn btn-light text-start py-3' onclick=\"javascript:location.replace('" . SITE_URL . "configuracion/')\">Configuración</button>";?>
-
+            <div class="col-2 border-end bg-light ">
+                <div class="d-flex flex-column bar">
+                    <button class="btn btn-light py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>reportes/')" style="text-align:center;" >Reportes</button>
+                    <button class="btn btn-light py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>notas/')">Notas</button>
+                    <button class="btn btn-light py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inventario/')">Inventario</button>
+                    <?php if ($rol[0]['rol_id'] == 1) echo "<button class='btn btn-light py-3' onclick=\"javascript:location.replace('" . SITE_URL . "configuracion/')\">Configuración</button>";?>
                 </div>
             </div>
-
             <!-- Main Content Area -->
             <div class="col-10" >
                 <?php $ctrl->renderContent(); ?>

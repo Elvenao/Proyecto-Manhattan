@@ -14,9 +14,16 @@
 </head>
 <body>
     <h1 class="h1 shadow-lg p-3 mb-5 bg-body rounded position-absolute  top-50 translate-middle d-sm-grid">ERROR 404 - Pagina no Encontrada</h1>
+    <button class="btn btn-dark position-absolute top-70 translate-middle d-sm-grid" onclick="javascript:location.replace('<?php echo SITE_URL;?>')">Regresar</button>
     <script src="<?php echo SITE_URL; ?>utils/jquery/jquery-3.7.1.js"></script>
     <script src="<?php echo SITE_URL; ?>utils/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="<?php echo SITE_URL; ?>utils/datatables/datatables.min.js"></script>
     <script src="<?php echo SITE_URL; ?>utils/sweetAlert2/sweetalert2.min.js"></script>
 </body>
+<style>
+    .top-70{
+        top: 70vh;
+        left: 50%;
+    }
+</style>
 </html>
