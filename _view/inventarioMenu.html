@@ -23,8 +23,8 @@
 </style>
 
 <div class="d-flex justify-content-around align-items-center vh-100">
-    <?php $almacen = $this->almacen; $productos = $this->productos;?>
+    <?php $almacen = $this->almacen; $productos = $this->productos; $receta = $this->recetas?>
     <?php if($almacen == '2' || $almacen == '3')echo '<button class="custom-button" onclick="almacenBtn()">Almacen</button>';?>
-    <!--<button class="custom-button" onclick="javascript:location.replace('<?php echo SITE_URL;?>inventario/recetas/')">Recetas</button>-->
+    <?php if($receta == '2' || $receta == '3')echo '<button class="custom-button" onclick="recetasBtn()">Recetas</button>';?>
     <?php if($productos == '2' || $productos == '3')echo '<button class="custom-button" onclick="productosBtn()">Productos</button>'?>
 </div>

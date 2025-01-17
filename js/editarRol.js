@@ -21,7 +21,8 @@ function editarBtn(){
     let categoriaProductos = document.getElementById('categoriaProductos').value
     let usuarios = document.getElementById('usuarios').value 
     let roles = document.getElementById('roles').value
-    let permisos = Number(almacen.toString() + productos.toString() + categoriaAlmacen.toString() + categoriaProductos.toString() + usuarios.toString() + roles.toString())
+    let recetas = document.getElementById('recetas').value
+    let permisos = Number(almacen.toString() + productos.toString() + categoriaAlmacen.toString() + categoriaProductos.toString() + usuarios.toString() + roles.toString() + recetas.toString())
     let datos = JSON.stringify({action,id,rol,permisos})
     let ruta = "<?php echo SITE_URL;?>configuracion/roles/editar/" + id
     llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxRoles.php","Editar rol","¿Seguro que quieres realizar estos cambios?, no será posible deshacer los cambios.","question","Editar","Cancelar","Error en Editando","Rol editado","Rol editado con exito",true,ruta)
@@ -35,6 +36,7 @@ let categoriaAlmacen = Number(permisos.toString()[2])
 let categoriaProductos = Number(permisos.toString()[3])
 let usuarios = Number(permisos.toString()[4])
 let roles = Number(permisos.toString()[5])
+let recetas = Number(permisos.toString()[6])
 
 function restablecerBtn(){
     document.getElementById('rol').value = rol
@@ -44,6 +46,7 @@ function restablecerBtn(){
     document.getElementById('categoriaProductos').value = categoriaProductos
     document.getElementById('usuarios').value = usuarios
     document.getElementById('roles').value = roles
+    document.getElementById('recetas').value = recetas
 }
 
 document.addEventListener('DOMContentLoaded',function(){
@@ -56,6 +59,7 @@ document.addEventListener('DOMContentLoaded',function(){
         localStorage.setItem('Categoria-Productos',categoriaProductos)
         localStorage.setItem('Usuarios',usuarios)
         localStorage.setItem('Roles',roles)
+        localStorage.setItem('Recetas',recetas)
         document.getElementById('rol').value = rol
         document.getElementById('almacen').value = almacen
         document.getElementById('productos').value = productos
@@ -63,6 +67,7 @@ document.addEventListener('DOMContentLoaded',function(){
         document.getElementById('categoriaProductos').value = categoriaProductos
         document.getElementById('usuarios').value = usuarios
         document.getElementById('roles').value = roles
+        document.getElementById('recetas').value = recetas
     }else{
         document.getElementById('rol').value = localStorage.getItem('Rol')
         document.getElementById('almacen').value = localStorage.getItem('Almacen')
@@ -71,6 +76,7 @@ document.addEventListener('DOMContentLoaded',function(){
         document.getElementById('categoriaProductos').value = localStorage.getItem('Categoria-Productos')
         document.getElementById('usuarios').value = localStorage.getItem('Usuarios')
         document.getElementById('roles').value = localStorage.getItem('Roles')
+        document.getElementById('recetas').value = localStorage.getItem('Recetas')
     }
 })
 document.getElementById('rol').addEventListener('input',function(){
@@ -93,4 +99,7 @@ document.getElementById('usuarios').addEventListener('change',function(){
 })
 document.getElementById('roles').addEventListener('change',function(){
     localStorage.setItem('Roles',this.value)
+})
+document.getElementById('recetas').addEventListener('change',function(){
+    localStorage.setItem('Recetas',this.value)
 })

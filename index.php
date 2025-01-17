@@ -45,6 +45,7 @@
         $categoriaProductos = strval($permiso)[3];
         $usuarios = strval($permiso)[4];
         $roles = strval($permiso)[5];
+        $recetas = strval($permiso)[6];
         
         switch($controlador){
             case "reportes":
@@ -82,7 +83,7 @@
                 }
             break;
             case "inventario":
-                if($almacen == '2' || $almacen == '3' || $productos == '2' || $productos == '3'){
+                if($almacen == '2' || $almacen == '3' || $productos == '2' || $productos == '3' || $recetas == '2' || $recetas =='3'){
                     switch($lista){
                         case "" :
                             $titulo = "Inventario";
@@ -90,7 +91,7 @@
                             $ctrl = new InventarioMenuController();
                         break;
                         case "almacen":
-                            if($accion == ""){
+                            if($accion == "" && ($almacen == '3' || $almacen == '2')){
                                 $titulo = "Almacen";
                                 require_once "_controller/ListaInventarioController.php";
                                 $ctrl = new ListaInventarioController();
@@ -107,7 +108,6 @@
                                     include "_view/404.html";
                                     die();
                                 }
-                               
                             }
                             else{
                                 include "_view/404.html";
@@ -115,7 +115,7 @@
                             }
                         break;
                         case "productos":
-                            if($accion == ""){
+                            if($accion == "" && ($productos == '3' || $productos == '2')){
                                 $titulo = "Productos";
                                 require_once "_controller/ListaProductosController.php";
                                 $ctrl = new ListaProductosController();
@@ -139,10 +139,10 @@
                             }
                             break;
                         case "recetas":
-                            if($accion == ""){
+                            if($accion == "" && ($recetas == '2' || $recetas == '3')){
                                 require_once "_controller/listaRecetasController.php";
                                 $ctrl = new listaRecetasController();
-                            }else if($accion == 'agregar'){
+                            }else if($accion == 'agregar' && $recetas == '3'){
                                 require_once "_controller/agregarRecetaController.php";
                                 $ctrl = new agregarRecetaController();
                             }else{
