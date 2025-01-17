@@ -4,8 +4,7 @@ let selectedRow1 = null
 $(document).ready(function() {
     
     var table = $('#meinTable').DataTable();
-    var table2 = $('#categoriasInventario').DataTable();
-    var table3 = $('#categoriasProducto').DataTable();
+    
     
     $('#meinTable tbody').on('click', 'tr', function() {
         if ($(this).hasClass('onClick')) {
@@ -31,4 +30,8 @@ function editarBtn(){
 
 function agregarBtn(){
     location.replace("agregar/")
+}
+
+function regresarBtn(){
+    location.replace("<?php echo SITE_URL;?>configuracion/")
 }

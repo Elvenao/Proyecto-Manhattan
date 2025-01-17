@@ -186,9 +186,31 @@
                             }  
                         }
                     }elseif($lista == "roles"){
-                        $titulo = "Configurar Roles";
-                        require_once "_controller/configurarRolesController.php";
-                        $ctrl = new configurarRolesController();
+                        
+                        if($accion == ""){
+                            $titulo = "Configurar Roles";
+                            require_once "_controller/configurarRolesController.php";
+                            $ctrl = new configurarRolesController();
+                        }elseif($accion == 'editar'){
+                            if($id != ""){
+                                $titulo = "Editar Rol";
+                                require_once "_controller/editarRolController.php";
+                                $ctrl = new editarUsuario($id);
+                            }else{
+                                include "_view/404.html";
+                                die(); 
+                            } 
+                        }elseif($accion == "agregar"){
+                            if($id == ""){
+                                $titulo = "Agregar Rol";
+                                require_once "_controller/agregarRolController.php";
+                                $ctrl = new agregarRolController();
+                            }else{
+                                include "_view/404.html";
+                                die(); 
+                            }  
+                        }
+                        
                     }elseif($lista == "categorias"){
                         $titulo = "Configurar Categorias";
                         require_once "_controller/configurarCategoriasController.php";

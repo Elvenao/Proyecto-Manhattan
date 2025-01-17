@@ -44,7 +44,9 @@ $(document).ready(function() {
     });
 });
 
-
+function regresarBtn(){
+  location.replace("<?php echo SITE_URL;?>configuracion/")
+}
 
 function editarCategoriaIBtn(){
     let action = "Editar"

@@ -1,10 +1,8 @@
 <div>
-    
     <input type="hidden" id="id_usuario" value="<?php echo $this->datos[0]["id_usuario"]?>">
     <form id="formEdit" class="">
     <h1 class="">Editar a <?php echo $this->datos[0]["user"]?></h1>
     <div class="input-group mb-3 w-50">
-        
         <label for="nombre" class="input-group-text" id="basic-addon1">Nombre</label>
         <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->datos[0]["nombre"]?>">
     </div>
@@ -51,6 +49,7 @@
     <div class="input-group mb-3 w-50">
         <label for="rol_id" class="input-group-text" id="basic-addon1">Rol</label>
         <select name="rol_id" id="rol_id" class="form-select">
+            <option selected disabled>Seleccionar</option>
             <?php foreach($this->categorias as $categoria):?>
             <?php echo '<option value="'.$categoria["id_rol"].'">'.$categoria["descripcion"].'</option>'?>
             <?php endforeach?>

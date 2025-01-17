@@ -3,12 +3,12 @@
 
     class configurarRolesController{
         private $permisos;
-        private $permisosRol;
+        private $Roles;
 
         public function __construct(){
             $model = new MainModel();
             $this->permisos = $model->getDataRows('permisos',["id_permisos","permiso"]);
-            $this->permisosRol = $model->getDataRows('roles',['id_rol','descripcion','permisos AS permisoRol']);
+            $this->Roles = $model->getDataRows('roles',['id_rol','descripcion','permisos AS permisoRol']);
         }
         public function renderContent(){
             include "_view/configurarRoles.html";
@@ -19,6 +19,6 @@
         }
 
         public function renderCSS(){
-            
+            include "css/configurarRoles.css";
         }
     }

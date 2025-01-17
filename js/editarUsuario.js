@@ -125,7 +125,7 @@ document.getElementById("telefono").addEventListener('input',function(){
 
 function cancelarBtn(){
     localStorage.clear()
-    location.replace("<?php echo SITE_URL;?>configuracion/")
+    location.replace("<?php echo SITE_URL;?>configuracion/usuarios/")
 }
 
 function borrarBtn(){
