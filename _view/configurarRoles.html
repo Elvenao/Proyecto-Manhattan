@@ -1,0 +1,126 @@
+
+<style>
+    .custom-select {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .custom-select select {
+      appearance: none; /* Elimina la flecha predeterminada */
+      -webkit-appearance: none; /* Safari y Chrome */
+      -moz-appearance: none; /* Firefox */
+      display: block;
+      width: 100%;
+      height: 50px;
+      padding: 10px 15px;
+      font-size: 16px;
+      color: #495057;
+      background-color: #f8f9fa;
+      border: 2px solid #ced4da;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .custom-select select:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      outline: none;
+    }
+
+    .custom-select::after {
+      content: "▼";
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      color: #6c757d;
+      pointer-events: none;
+    }
+    .w-15{
+        width: 100px;
+    }
+  </style>
+<div>
+    <div class="container mt-4">
+        <div class="w-15">
+            <label class="">Almacen</label>
+        </div>
+        <div class="custom-select w-25">
+          <select>
+            <option selected disabled>Selecciona una opción</option>
+            <option value="1">Opción 1</option>
+            <option value="2">Opción 2</option>
+            <option value="3">Opción 3</option>
+          </select>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div>
+            <label class="mb-4">Productos</label>
+        </div>
+        <div class="custom-select w-25">
+          <select>
+            <option selected disabled>Selecciona una opción</option>
+            <option value="1">Opción 1</option>
+            <option value="2">Opción 2</option>
+            <option value="3">Opción 3</option>
+          </select>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div>
+            <label class="mb-4">Categorias de Almacen</label>
+        </div>
+        <div class="custom-select w-25">
+          <select>
+            <option selected disabled>Selecciona una opción</option>
+            <option value="1">Opción 1</option>
+            <option value="2">Opción 2</option>
+            <option value="3">Opción 3</option>
+          </select>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div>
+            <label class="mb-4">Categorias de Productos</label>
+        </div>
+        <div class="custom-select w-25">
+          <select>
+            <option selected disabled>Selecciona una opción</option>
+            <option value="1">Opción 1</option>
+            <option value="2">Opción 2</option>
+            <option value="3">Opción 3</option>
+          </select>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div>
+            <label class="mb-4">Usuarios</label>
+        </div>
+        <div class="custom-select w-25">
+          <select>
+            <option selected disabled>Selecciona una opción</option>
+            <option value="1">Opción 1</option>
+            <option value="2">Opción 2</option>
+            <option value="3">Opción 3</option>
+          </select>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div>
+            <label class="mb-4">Roles</label>
+        </div>
+        <div class="custom-select w-25">
+          <select>
+            <option selected disabled>Selecciona una opción</option>
+            <option value="1">Opción 1</option>
+            <option value="2">Opción 2</option>
+            <option value="3">Opción 3</option>
+          </select>
+        </div>
+    </div>
+
+</div>
+

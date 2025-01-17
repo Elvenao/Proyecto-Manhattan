@@ -1,0 +1,80 @@
+.tables-container {
+    display: flex;
+}
+
+
+.ml-2 {
+    margin-left: 12%; /* Ajusta el espacio entre las tablas */
+}
+.ml-6{
+    margin-left: 20%;
+}
+
+
+#meinTable thead th {
+    text-align: center;
+    vertical-align: middle; /* Asegura que esté centrado verticalmente */
+}
+
+#categorias thead th {
+    text-align: center;
+    vertical-align: middle; /* Asegura que esté centrado verticalmente */
+}
+
+.pass-label{
+    border: none;
+    width: 40%;
+    text-align: center;
+}
+
+#meinTable tbody td {
+    text-align: center;
+    vertical-align: middle; /* Opcional para centrado vertical */
+}
+
+#categoriasInventario tbody td {
+    text-align: center;
+    vertical-align: middle; /* Opcional para centrado vertical */
+}
+
+#categoriasProducto tbody td {
+    text-align: center;
+    vertical-align: middle; /* Opcional para centrado vertical */
+}
+
+a{
+    list-style: none;
+    text-decoration: none;
+    color: #000;
+}
+a:hover{
+   color: #ff1f1f; 
+}
+
+#meinTable tbody tr:hover {
+    background-color: #e0dede; /* Color de fondo cuando el mouse pase por la fila */
+    cursor: pointer; /* Cambia el cursor a pointer para indicar interactividad */
+}
+
+#meinTable tbody tr.onClick{
+    background-color: #8f8f8d;
+}
+
+#categoriasInventario tbody tr:hover {
+    background-color: #e0dede; /* Color de fondo cuando el mouse pase por la fila */
+    cursor: pointer; /* Cambia el cursor a pointer para indicar interactividad */
+}
+
+#categoriasInventario tbody tr.onClick{
+    background-color: #8f8f8d;
+}
+#categoriasProducto tbody tr:hover {
+    background-color: #e0dede; /* Color de fondo cuando el mouse pase por la fila */
+    cursor: pointer; /* Cambia el cursor a pointer para indicar interactividad */
+}
+
+#categoriasProducto tbody tr.onClick{
+    background-color: #8f8f8d;
+}
+
+

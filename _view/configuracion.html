@@ -1,143 +1,35 @@
+
 <style>
-    @media (max-width: 768px) {
-        .dn{
-            display: none;
-        }
+    .custom-button {
+        width: 20vw; /* Ancho de los botones */
+        height: 20vw; /* Altura de los botones */
+        background-color: #e0e0e0; /* Fondo gris */
+        border: 1px solid #ccc; /* Borde suave */
+        border-radius: 10px; /* Bordes redondeados */
+        display: flex; /* Centrar contenido */
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        transition: background-color 0.3s, transform 0.2s; /* Transiciones */
+    }
+
+    .custom-button:hover {
+        background-color: #d6d6d6; /* Color más oscuro al pasar el mouse */
+        transform: translateY(-3px); /* Efecto de elevación */
+        cursor: pointer;
     }
 </style>
-<div>
-    <h1 class="h1">Configuracion</h1>
-    <div>
-        <table id="meinTable" class="table table-bordered table-responsive">
-            
-            <thead class="table-dark">
-                <tr>
-                    
-                    <th>Nombre</th>
-                    <th>Usuario</th>
-                    <th class="dn">Fecha de Nacimiento</th>
-                    <th class="dn">Fecha de Inicio</th>
-                    <th class="dn">Fecha de Termino</th>
-                    <th class="dn">Rol</th>
-                    <th class="dn">Genero</th>
-                    <th class="dn">Telefono</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $index = 0; $genero = $this->generos; foreach($this->datos as $registro): ?>
-                <tr>
-                    <td class="column"><?php echo $registro["nombre"]." ".$registro["apellidos"]?></td>
-                    <td class="column"><?php echo $registro["user"]?></td>
-                    <td class="column dn"><?php echo $registro["fecha_nacimiento"]?></td>
-                    <td class="column dn"><?php echo $registro["fecha_inicio"]?></td>
-                    <td class="column dn"><?php $fecha = isset($registro["fecha_fin"]) ? $registro["fecha_fin"] : "En vigencia"; echo $fecha;?></td>
-                    <td class="column dn"><?php echo $registro["descripcion"]?></td>
-                    <td class="column dn"><?php echo $genero[$index]["genero"]; $index++;?></td>
-                    <td class="column dn"><?php if($registro["telefono"] == null) echo "Sin telefono"; else echo $registro['telefono'];?></td>
-                </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table> 
-    </div>
-    <button class="btn btn-primary" id="editarBtn" onclick="editarBtn()" disabled>Editar</button>
-    <button class="btn btn-success" onclick="agregarBtn()">Agregar</button>
-    
-</div>
-<div class="tables-container">
-    <div class="w-25 mt-5 ml-2 ">
-        <table id="categoriasInventario" class="table table-bordered table-responsive">
-            <thead class="table-dark">
-                <tr>
-                    <th>Id</th>
-                    <th>Categoria</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($this->categoriasI as $registro): ?>
-                <tr>
-                    <td class="column"><?php echo $registro["Id_IC"]?></td>
-                    <td class="column"><?php echo $registro["Categoria"]?></td>
-                </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table> 
-        <button type="button" class="btn btn-primary" id="editarCategoriaIBtn" onclick="editarCategoriaIBtn()" disabled>Editar</button>
-        <button type="button" class="btn btn-success" onclick="agregarCategoriaIBtn()">Agregar</button>
-        <button type="button" class="btn btn-danger" id="borrarCategoriaIBtn" onclick="borrarCategoriaIBtn()" disabled>Borrar <i class="bi bi-trash-fill"></i></button>
-    </div>
-    <div class="w-25 mt-5 ml-6">
-        <table id="categoriasProducto" class="table table-bordered table-responsive">
-            <thead class="table-dark">
-                <tr>
-                    <th>Id</th>
-                    <th>Categoria</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($this->categoriasP as $registro): ?>
-                <tr>
-                    <td class="column"><?php echo $registro["Id_PC"]?></td>
-                    <td class="column"><?php echo $registro["Categoria"]?></td>
-                </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table> 
-        <button type="button" class="btn btn-primary" id="editarCategoriaPBtn" onclick="editarCategoriaPBtn()" disabled>Editar</button>
-        <button type="button" class="btn btn-success" onclick="agregarCategoriaPBtn()">Agregar</button>
-        <button type="button" class="btn btn-danger" id="borrarCategoriaPBtn" onclick="borrarCategoriaPBtn()" disabled>Borrar <i class="bi bi-trash-fill"></i></button>
-    </div>
+<div class="d-flex justify-content-around align-items-center vh-100">
+    <button class="custom-button" onclick="javascript:location.replace('<?php echo SITE_URL; ?>configuracion/usuarios/')">Usuarios</button>
+    <button class="custom-button" onclick="javascript:location.replace('<?php echo SITE_URL; ?>configuracion/categorias/')">Categorias</button>
+    <button class="custom-button" onclick="javascript:location.replace('<?php echo SITE_URL; ?>configuracion/roles/')">Roles</button>
 </div>
 
 
-<style>
-    .tables-container {
-        display: flex;
 
-    }
-    
-    
-    .ml-2 {
-        margin-left: 12%; /* Ajusta el espacio entre las tablas */
-    }
-    .ml-6{
-        margin-left: 20%;
-    }
-    
-    
-    #meinTable thead th {
-        text-align: center;
-        vertical-align: middle; /* Asegura que esté centrado verticalmente */
-    }
-
-    #categorias thead th {
-        text-align: center;
-        vertical-align: middle; /* Asegura que esté centrado verticalmente */
-    }
-    
-    .pass-label{
-        border: none;
-        width: 40%;
-        text-align: center;
-    }
-
-    #meinTable tbody td {
-        text-align: center;
-        vertical-align: middle; /* Opcional para centrado vertical */
-    }
-
-    #categoriasInventario tbody td {
-        text-align: center;
-        vertical-align: middle; /* Opcional para centrado vertical */
-    }
-
-    #categoriasProducto tbody td {
-        text-align: center;
-        vertical-align: middle; /* Opcional para centrado vertical */
-    }
-    
-</style>
 
 <script>
     localStorage.clear()

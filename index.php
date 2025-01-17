@@ -161,25 +161,38 @@
                         $titulo = "Configuracion";
                         require_once "_controller/ConfiguracionController.php";
                         $ctrl = new configuracionController();
-                    }elseif($lista == "editar"){
-                        if($accion != $_SESSION["usr"] && $accion != ""){
-                            $titulo = "Editar ".$accion;
-                            require_once "_controller/editarUsuario.php";
-                            $ctrl = new editarUsuario($accion);
-                        }else{
-                            include "_view/404.html";
-                            die(); 
-                        } 
-                    }elseif($lista == "agregar"){
+                    }elseif($lista == "usuarios"){
                         if($accion == ""){
-                            $titulo = "Agregar Usuario";
-                            require_once "_controller/agregarUsuarioController.php";
-                            $ctrl = new agregarUsuarioController();
-                        }else{
-                            include "_view/404.html";
-                            die(); 
+                            $titulo = "Configurar Usuarios";
+                            require_once "_controller/configurarUsuariosController.php";
+                            $ctrl = new configurarUsuariosController();
+                        }elseif($accion == "editar"){
+                            if($id != $_SESSION["usr"] && $id != ""){
+                                $titulo = "Editar ".$id;
+                                require_once "_controller/editarUsuario.php";
+                                $ctrl = new editarUsuario($id);
+                            }else{
+                                include "_view/404.html";
+                                die(); 
+                            } 
+                        }elseif($accion == "agregar"){
+                            if($id == ""){
+                                $titulo = "Agregar Usuario";
+                                require_once "_controller/agregarUsuarioController.php";
+                                $ctrl = new agregarUsuarioController();
+                            }else{
+                                include "_view/404.html";
+                                die(); 
+                            }  
                         }
-                        
+                    }elseif($lista == "roles"){
+                        $titulo = "Configurar Roles";
+                        require_once "_controller/configurarRolesController.php";
+                        $ctrl = new configurarRolesController();
+                    }elseif($lista == "categorias"){
+                        $titulo = "Configurar Categorias";
+                        require_once "_controller/configurarCategoriasController.php";
+                        $ctrl = new configurarCategoriasController();
                     }
                     else{
                         include "_view/404.html";

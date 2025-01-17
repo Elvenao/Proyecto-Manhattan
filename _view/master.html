@@ -20,9 +20,21 @@
     </style>
         
     <style>
-        html{
-            font-size: 16px;
+        .txt-1{
+            margin-top: 20px;
+            margin-bottom:25px;
         }
+        
+        .txt-2{
+            margin-bottom:25px;
+        }
+        .txt-3{
+            margin-bottom: 25px;
+        }
+        .txt-1, .txt-2, .txt-3, .txt-4{
+            margin-left: 10px;
+        }
+        
         body {
             font-family: Arial, sans-serif;
         }
@@ -75,9 +87,81 @@
             text-align: center;
         }
         @media (max-width: 768px) {
+            .txt{
+                font-size: 0;
+                position: relative;
+            }
+            .txt-1{
+                margin-top: 20px;
+                margin-bottom:25px;
+            }
+            
+            .txt-2{
+                margin-bottom:25px;
+            }
+            .txt-3{
+                margin-bottom: 25px;
+            }
+            .txt-1, .txt-2, .txt-3, .txt-4{
+                margin-left: 10px;
+            }
+            .txt-1::before {
+                content: "\f4e1";
+                font-family: "bootstrap-icons";
+                font-size: 24px;
+                color: #000000; /* Color verde */
+                position: absolute;
+                top: 0;
+                left: 0;
+              }
+              
+              .txt-2::before {
+                content: "\f5c8"; /* Ícono de recibo */
+                font-family: "bootstrap-icons";
+                font-size: 24px;
+                color: #000000; /* Color verde */
+                position: absolute;
+                top: 0;
+                left: 0;
+              }
+              
+              .txt-3::before {
+                content: "\f4e1"; /* Ícono de caja */
+                font-family: "bootstrap-icons";
+                font-size: 24px;
+                color: #000000; /* Color verde */
+                position: absolute;
+                top: 0;
+                left: 0;
+              }
+              
+              .txt-4::before {
+                content: "\f013"; /* Ícono de engranaje (configuración) */
+                font-family: "bootstrap-icons";
+                font-size: 24px;
+                color: #000000; /* Color verde */
+                position: absolute;
+                top: 0;
+                left: 0;
+              }
+              
+              /* Estilos para Unicode */
+              .txt-1:nth-child(1)::before {
+                content: "\1F4CA"; /* Unicode para ícono de sobre (nota) */
+              }
+              
+              
+              
+              .txt-3:nth-child(3)::before {
+                content: "\1F4E6"; /* Unicode para ícono de caja */
+              }
+              
+              .txt-4:nth-child(4)::before {
+                content: "\2699"; /* Unicode para ícono de engranaje */
+              }
             .logo{
                 position: relative;
-                left: -0.5rem;  
+                left: -0.8rem;  
             }
             .sidebar {
                 position: static;
@@ -106,7 +190,7 @@
             <div class="d-flex align-items-center logo" onclick="javascript:location.replace('<?php echo SITE_URL; ?>')">
                 <img src="<?php echo SITE_URL; ?>img/Logo.png" alt="G" class="me-2" style="width: 50px; height: 50px; border-radius: 50%;">
 
-                <h1 class="fs-4 m-0">Gato Hambriento</h1>
+                <h1 class="fs-4 m-0">El Gato Hambriento</h1>
             </div>
             <div class="d-flex align-items-center">
                 
@@ -129,10 +213,10 @@
             <!-- Sidebar -->
             <div class="col-2 border-end bg-light ">
                 <div class="d-flex flex-column bar">
-                    <button class="btn btn-light py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>reportes/')" style="text-align:center;" >Reportes</button>
-                    <button class="btn btn-light py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>notas/')">Notas</button>
-                    <button class="btn btn-light py-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inventario/')">Inventario</button>
-                    <?php if ($rol[0]['rol_id'] == 1) echo "<button class='btn btn-light py-3' onclick=\"javascript:location.replace('" . SITE_URL . "configuracion/')\">Configuración</button>";?>
+                    <button class="btn btn-light py-3 text-start txt txt-1" onclick="javascript:location.replace('<?php echo SITE_URL; ?>reportes/')" style="text-align:center;" >Reportes</button>
+                    <button class="btn btn-light py-3 text-start txt txt-2" onclick="javascript:location.replace('<?php echo SITE_URL; ?>notas/')">Notas</button>
+                    <button class="btn btn-light py-3 text-start txt txt-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inventario/')">Inventario</button>
+                    <?php if ($rol[0]['rol_id'] == 1) echo "<button class='btn btn-light py-3 text-start txt txt-4'  onclick=\"javascript:location.replace('" . SITE_URL . "configuracion/')\">Configuración</button>";?>
                 </div>
             </div>
             <!-- Main Content Area -->

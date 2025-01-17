@@ -1,0 +1,46 @@
+<div class="tables-container">
+    <div class="w-25 mt-5 ml-2 ">
+        <table id="categoriasInventario" class="table table-bordered table-responsive">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Categoria</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($this->categoriasI as $registro): ?>
+                <tr>
+                    <td class="column"><?php echo $registro["Id_IC"]?></td>
+                    <td class="column"><?php echo $registro["Categoria"]?></td>
+                </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table> 
+        <button type="button" class="btn btn-primary" id="editarCategoriaIBtn" onclick="editarCategoriaIBtn()" disabled>Editar</button>
+        <button type="button" class="btn btn-success" onclick="agregarCategoriaIBtn()">Agregar</button>
+        <button type="button" class="btn btn-danger" id="borrarCategoriaIBtn" onclick="borrarCategoriaIBtn()" disabled>Borrar <i class="bi bi-trash-fill"></i></button>
+    </div>
+    <div class="w-25 mt-5 ml-6">
+        <table id="categoriasProducto" class="table table-bordered table-responsive">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Categoria</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($this->categoriasP as $registro): ?>
+                <tr>
+                    <td class="column"><?php echo $registro["Id_PC"]?></td>
+                    <td class="column"><?php echo $registro["Categoria"]?></td>
+                </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table> 
+        <button type="button" class="btn btn-primary" id="editarCategoriaPBtn" onclick="editarCategoriaPBtn()" disabled>Editar</button>
+        <button type="button" class="btn btn-success" onclick="agregarCategoriaPBtn()">Agregar</button>
+        <button type="button" class="btn btn-danger" id="borrarCategoriaPBtn" onclick="borrarCategoriaPBtn()" disabled>Borrar <i class="bi bi-trash-fill"></i></button>
+    </div>
+</div>

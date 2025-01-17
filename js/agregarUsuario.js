@@ -5,7 +5,7 @@ agregarForm.addEventListener("submit",agregar)
 
 function cancelarBtn(){
     localStorage.clear()
-    location.replace("<?php echo SITE_URL;?>configuracion/")
+    location.replace("<?php echo SITE_URL;?>configuracion/usuarios/")
 }
 
 function mostrarBtn(){
@@ -123,7 +123,7 @@ function agregar(e){
     let telefono =  document.getElementById("telefono").value
 
     let datos = JSON.stringify({action,nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id,genero,telefono})
-    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxUsuario.php","Agregar Usuario","¿Seguro que quieres agregar este usuario?","info","Agregar","Cancelar","Error agregando","Usuario agregado","Usuario agregado con exito",true,"<?php echo SITE_URL;?>configuracion/")
+    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxUsuario.php","Agregar Usuario","¿Seguro que quieres agregar este usuario?","info","Agregar","Cancelar","Error agregando","Usuario agregado","Usuario agregado con exito",true,"<?php echo SITE_URL;?>configuracion/usuarios/")
 }
 
 function generarPassBtn(){

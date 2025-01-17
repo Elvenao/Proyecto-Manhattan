@@ -12,7 +12,7 @@ function editarBtn(){
     let genero = document.getElementById('genero').value
     let telefono = document.getElementById('telefono').value
 
-    let ruta = "<?php echo SITE_URL;?>configuracion/editar/" + user
+    let ruta = "<?php echo SITE_URL;?>configuracion/usuarios/editar/" + user
     let datos = JSON.stringify({action,id_usuario,nombre,apellidos,user,password,fecha_nacimiento,fecha_inicio,fecha_fin,rol_id,genero,telefono})
     console.log(datos)
     llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxUsuario.php","Editar Usuario","¿Seguro que quieres realizar estos cambios?, no será posible deshacer los cambios.","warning","Confirmar","Cancelar","Errores editando","Usuario editado","Usuario editado con exito",true,ruta)
@@ -132,7 +132,7 @@ function borrarBtn(){
     let action = "Borrar"
     let id_usuario = document.getElementById("id_usuario").value
     let datos = JSON.stringify({action,id_usuario})
-    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxUsuario.php","Seguro que quieres borrar este usuario","No podras recuperar los datos borrados","warning","Borrar","Cancelar","Error en el Borrado","Usuario eliminado","Usuario borrado con exito",true,"<?php echo SITE_URL;?>configuracion/")
+    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxUsuario.php","Seguro que quieres borrar este usuario","No podras recuperar los datos borrados","warning","Borrar","Cancelar","Error en el Borrado","Usuario eliminado","Usuario borrado con exito",true,"<?php echo SITE_URL;?>configuracion/usuarios/")
 }
 
 
