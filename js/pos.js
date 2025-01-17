@@ -1,6 +1,7 @@
-function selProductos(value){
-    if(value != "carga"){
+document.getElementById('categoria').addEventListener('change',function(){
+    if(this.value != "carga"){
         let action = "Select";
+        let value = this.value
         let datos = JSON.stringify({value, action});
         let ruta = '<?php echo SITE_URL; ?>notas/pos/'
         llamadaAjax(datos, "<?php echo SITE_URL;?>_controller/ajaxPOS.php", false, ruta);
@@ -8,8 +9,7 @@ function selProductos(value){
         let sel = document.getElementById("prodBtn");
         sel.innerHTML = "";
     }
-    
-}
+})
 
 function addProducto(value) {
     const producto = JSON.parse(value);

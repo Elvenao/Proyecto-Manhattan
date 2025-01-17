@@ -140,9 +140,11 @@
                             break;
                         case "recetas":
                             if($accion == "" && ($recetas == '2' || $recetas == '3')){
+                                $titulo = "Recetas";
                                 require_once "_controller/listaRecetasController.php";
                                 $ctrl = new listaRecetasController();
                             }else if($accion == 'agregar' && $recetas == '3'){
+                                $titulo = "Agregar Receta";
                                 require_once "_controller/agregarRecetaController.php";
                                 $ctrl = new agregarRecetaController();
                             }else{
