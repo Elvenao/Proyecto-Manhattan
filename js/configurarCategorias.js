@@ -13,6 +13,7 @@ $(document).ready(function() {
         if ($(this).hasClass('onClick')) {
             $(this).removeClass('onClick');
             document.getElementById("editarCategoriaIBtn").setAttribute("disabled","")
+            document.getElementById("borrarCategoriaIBtn").setAttribute("disabled",'')
         } else {
             
             table2.$('tr.onClick').removeClass('onClick');
@@ -30,6 +31,7 @@ $(document).ready(function() {
         if ($(this).hasClass('onClick')) {
             $(this).removeClass('onClick');
             document.getElementById("editarCategoriaPBtn").setAttribute("disabled","")
+            document.getElementById("borrarCategoriaPBtn").setAttribute("disabled",'')
         } else {
             
             table3.$('tr.onClick').removeClass('onClick');

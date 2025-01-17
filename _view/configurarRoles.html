@@ -15,7 +15,8 @@
                 <?php endforeach ?>
         </tbody>
     </table>
-    <button class="btn btn-primary" id="editarBtn" onclick="editarBtn()" disabled>Editar</button>
-    <button class="btn btn-success" onclick="agregarBtn()">Agregar</button>
+    <?php $roles = $this->roles;?>
+    <?php if($roles == '3') echo'<button class="btn btn-primary" id="editarBtn" onclick="editarBtn()" disabled>Editar</button>';?>
+    <?php if($roles == '3') echo'<button class="btn btn-success" onclick="agregarBtn()">Agregar</button>';?>
     <button type="button" class="btn btn-danger" id="borrarCategoriaPBtn" onclick="regresarBtn()">Regresar</button>
 </div>

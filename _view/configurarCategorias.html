@@ -1,6 +1,46 @@
 <div class="tables-container">
+    <?php $categoriaAlmacen = $this->categoriaAlmacen;?>
+    <?php if($categoriaAlmacen == '2' || $categoriaAlmacen == '3'){
+        $tabla1 = ''; 
+        foreach ($this->categoriasI as $registro) {
+            $tabla1 .= '
+            <tr>
+                <td class="column">' . $registro["Id_IC"] . '</td>
+                <td class="column">' . $registro["Categoria"] . '</td>
+            </tr>
+            ';
+        }     
+    echo '
     <div class="w-25 mt-5 ml-2 ">
-        <table id="categoriasInventario" class="table table-bordered table-responsive">
+        <table id="categoriasInventario" class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                '.$tabla1.'
+            </tbody>
+        </table>';
+        if($categoriaAlmacen == '3') echo '<button type="button" class="btn btn-primary" id="editarCategoriaIBtn" onclick="editarCategoriaIBtn()" disabled>Editar</button>';
+        if($categoriaAlmacen == '3') echo'<button type="button" class="btn btn-success" onclick="agregarCategoriaIBtn()">Agregar</button>';
+        if($categoriaAlmacen == '3') echo '<button type="button" class="btn btn-danger" id="borrarCategoriaIBtn" onclick="borrarCategoriaIBtn()" disabled>Borrar <i class="bi bi-trash-fill"></i></button>';
+    echo '</div>
+    ';}?>
+
+    <?php $categoriaProductos = $this->categoriaProductos;?>
+    <?php if($categoriaProductos == '2' || $categoriaProductos == '3'){
+        $tabla2 = ''; 
+        foreach ($this->categoriasP as $registro) {
+            $tabla2 .= '<tr>
+                <td class="column">' . $registro["Id_PC"] . '</td>
+                <td class="column">' . $registro["Categoria"] . '</td>
+            </tr>';
+        }     
+    echo '
+    <div class="w-25 mt-5 ml-2 ">
+        <table id="categoriasProducto" class="table table-bordered ">
             <thead class="table-dark">
                 <tr>
                     <th>Id</th>
@@ -9,40 +49,14 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($this->categoriasI as $registro): ?>
-                <tr>
-                    <td class="column"><?php echo $registro["Id_IC"]?></td>
-                    <td class="column"><?php echo $registro["Categoria"]?></td>
-                </tr>
-                <?php endforeach ?>
+                '.$tabla2.'
             </tbody>
-        </table> 
-        <button type="button" class="btn btn-primary" id="editarCategoriaIBtn" onclick="editarCategoriaIBtn()" disabled>Editar</button>
-        <button type="button" class="btn btn-success" onclick="agregarCategoriaIBtn()">Agregar</button>
-        <button type="button" class="btn btn-danger" id="borrarCategoriaIBtn" onclick="borrarCategoriaIBtn()" disabled>Borrar <i class="bi bi-trash-fill"></i></button>
-    </div>
-    <div class="w-25 mt-5 ml-6">
-        <table id="categoriasProducto" class="table table-bordered table-responsive">
-            <thead class="table-dark">
-                <tr>
-                    <th>Id</th>
-                    <th>Categoria</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($this->categoriasP as $registro): ?>
-                <tr>
-                    <td class="column"><?php echo $registro["Id_PC"]?></td>
-                    <td class="column"><?php echo $registro["Categoria"]?></td>
-                </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table> 
-        <button type="button" class="btn btn-primary" id="editarCategoriaPBtn" onclick="editarCategoriaPBtn()" disabled>Editar</button>
-        <button type="button" class="btn btn-success" onclick="agregarCategoriaPBtn()">Agregar</button>
-        <button type="button" class="btn btn-danger" id="borrarCategoriaPBtn" onclick="borrarCategoriaPBtn()" disabled>Borrar <i class="bi bi-trash-fill"></i></button>
-    </div>
-    
+        </table>';
+        if($categoriaProductos == '3') echo '<button type="button" class="btn btn-primary" id="editarCategoriaPBtn" onclick="editarCategoriaIBtn()" disabled>Editar</button>';
+        if($categoriaProductos == '3') echo'<button type="button" class="btn btn-success" onclick="agregarCategoriaPBtn()">Agregar</button>';
+        if($categoriaProductos == '3') echo '<button type="button" class="btn btn-danger" id="borrarCategoriaPBtn" onclick="borrarCategoriaPBtn()" disabled>Borrar <i class="bi bi-trash-fill"></i></button>';
+    echo '</div>
+    ';}?>
+
 </div>
 <button type="button" class="btn btn-danger" id="borrarCategoriaPBtn" onclick="regresarBtn()">Regresar</button>

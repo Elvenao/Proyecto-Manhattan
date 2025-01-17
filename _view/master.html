@@ -215,8 +215,8 @@
                 <div class="d-flex flex-column bar">
                     <button class="btn btn-light py-3 text-start txt txt-1" onclick="javascript:location.replace('<?php echo SITE_URL; ?>reportes/')" style="text-align:center;" >Reportes</button>
                     <button class="btn btn-light py-3 text-start txt txt-2" onclick="javascript:location.replace('<?php echo SITE_URL; ?>notas/')">Notas</button>
-                    <button class="btn btn-light py-3 text-start txt txt-3" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inventario/')">Inventario</button>
-                    <?php if ($rol[0]['rol_id'] == 1) echo "<button class='btn btn-light py-3 text-start txt txt-4'  onclick=\"javascript:location.replace('" . SITE_URL . "configuracion/')\">Configuración</button>";?>
+                    <?php if($almacen == '2' || $almacen == '3' || $productos == '2' || $productos == '3') echo "<button class='btn btn-light py-3 text-start txt txt-3' onclick=\"javascript:location.replace('".SITE_URL."inventario/')\">Inventario</button>";?>
+                    <?php if ($categoriaAlmacen == '2' || $categoriaAlmacen == '3' || $categoriaProductos == '2' || $categoriaProductos == '3' || $usuarios == '2' || $usuarios == '3' || $roles == '2' || $roles == '3') echo "<button class='btn btn-light py-3 text-start txt txt-4'  onclick=\"javascript:location.replace('" . SITE_URL . "configuracion/')\">Configuración</button>";?>
                 </div>
             </div>
             <!-- Main Content Area -->

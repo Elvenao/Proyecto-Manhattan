@@ -37,6 +37,15 @@
     }else{
         $model = new MainModel();
         $rol = $model->getDataRows('usuario',['rol_id'],'user = ?',[$_SESSION["usr"]]);
+        $permisos = $model->getDataRowsJoin('usuario',['rol_id','permisos'],'roles',['rol_id','id_rol'],['user = ?'],[$_SESSION['usr']]);
+        $permiso = $permisos[0]['permisos'];
+        $almacen = strval($permiso)[0];
+        $productos = strval($permiso)[1];
+        $categoriaAlmacen = strval($permiso)[2];
+        $categoriaProductos = strval($permiso)[3];
+        $usuarios = strval($permiso)[4];
+        $roles = strval($permiso)[5];
+        
         switch($controlador){
             case "reportes":
                 $titulo = "Reportes";
@@ -73,77 +82,83 @@
                 }
             break;
             case "inventario":
-                switch($lista){
-                    case "" :
-                        $titulo = "Inventario";
-                        require_once "_controller/InventarioMenuController.php";
-                        $ctrl = new InventarioMenuController();
-                    break;
-                    case "almacen":
-                        if($accion == ""){
-                            $titulo = "Almacen";
-                            require_once "_controller/ListaInventarioController.php";
-                            $ctrl = new ListaInventarioController();
-                        }else if($accion == "agregar"){
-                            $titulo = "Agregar a Almacen";
-                            require_once "_controller/agregarAlmacenController.php";
-                            $ctrl = new MtoInventarioController();
-                        }else if($accion == 'editar'){
-                            if($id != ''){
-                                $titulo = "Editar Suministro - ". $id;
-                                require_once "_controller/editarAlmacenController.php";
-                                $ctrl = new editarAlmacen($id);
+                if($almacen == '2' || $almacen == '3' || $productos == '2' || $productos == '3'){
+                    switch($lista){
+                        case "" :
+                            $titulo = "Inventario";
+                            require_once "_controller/InventarioMenuController.php";
+                            $ctrl = new InventarioMenuController();
+                        break;
+                        case "almacen":
+                            if($accion == ""){
+                                $titulo = "Almacen";
+                                require_once "_controller/ListaInventarioController.php";
+                                $ctrl = new ListaInventarioController();
+                            }else if($accion == "agregar" && ($almacen == '3')){
+                                $titulo = "Agregar a Almacen";
+                                require_once "_controller/agregarAlmacenController.php";
+                                $ctrl = new MtoInventarioController();
+                            }else if($accion == 'editar' && ($almacen == '3')){
+                                if($id != ''){
+                                    $titulo = "Editar Suministro - ". $id;
+                                    require_once "_controller/editarAlmacenController.php";
+                                    $ctrl = new editarAlmacen($id);
+                                }else{
+                                    include "_view/404.html";
+                                    die();
+                                }
+                               
+                            }
+                            else{
+                                include "_view/404.html";
+                                die();
+                            }
+                        break;
+                        case "productos":
+                            if($accion == ""){
+                                $titulo = "Productos";
+                                require_once "_controller/ListaProductosController.php";
+                                $ctrl = new ListaProductosController();
+                            }else if($accion == "editar" && ($productos == '3')){
+                                if($id != ''){
+                                    $titulo = 'Editar Producto - '.$id;
+                                    require_once "_controller/editarProductoController.php";
+                                    $ctrl = new editarProducto($id);
+                                }else{
+                                    include "_view/404.html";
+                                    die();
+                                }
+                            }else if($accion == "agregar" && ($productos == '3')){
+                                $titulo = "Agregar Producto";
+                                require_once "_controller/agregarProductoController.php";
+                                $ctrl = new agregarProductoController();
+                            }
+                            else{
+                                include "_view/404.html";
+                                die();
+                            }
+                            break;
+                        case "recetas":
+                            if($accion == ""){
+                                require_once "_controller/listaRecetasController.php";
+                                $ctrl = new listaRecetasController();
+                            }else if($accion == 'agregar'){
+                                require_once "_controller/agregarRecetaController.php";
+                                $ctrl = new agregarRecetaController();
                             }else{
                                 include "_view/404.html";
                                 die();
                             }
-                           
-                        }
-                        else{
+                            break;
+                        default:
                             include "_view/404.html";
                             die();
-                        }
-                    break;
-                    case "productos":
-                        if($accion == ""){
-                            $titulo = "Productos";
-                            require_once "_controller/ListaProductosController.php";
-                            $ctrl = new ListaProductosController();
-                        }else if($accion == "editar"){
-                            if($id != ''){
-                                $titulo = 'Editar Producto - '.$id;
-                                require_once "_controller/editarProductoController.php";
-                                $ctrl = new editarProducto($id);
-                            }else{
-                                include "_view/404.html";
-                                die();
-                            }
-                        }else if($accion == "agregar"){
-                            $titulo = "Agregar Producto";
-                            require_once "_controller/agregarProductoController.php";
-                            $ctrl = new agregarProductoController();
-                        }
-                        else{
-                            include "_view/404.html";
-                            die();
-                        }
-                        break;
-                    case "recetas":
-                        if($accion == ""){
-                            require_once "_controller/listaRecetasController.php";
-                            $ctrl = new listaRecetasController();
-                        }else if($accion == 'agregar'){
-                            require_once "_controller/agregarRecetaController.php";
-                            $ctrl = new agregarRecetaController();
-                        }else{
-                            include "_view/404.html";
-                            die();
-                        }
-                        break;
-                    default:
-                        include "_view/404.html";
-                        die();
+                    }
+                }else{
+                    include "_view/404.html";
+                    die(); 
                 }
+                
             break;
             case "perfil":
                 if($lista == ""){
@@ -156,18 +171,18 @@
                 }
             break;
             case "configuracion":
-                if($rol[0]['rol_id'] == 1){
+                if($categoriaAlmacen == '2' || $categoriaAlmacen == '3' || $categoriaProductos == '2' || $categoriaProductos == '3' || $usuarios == '2' || $usuarios == '3' || $roles == '2' || $roles == '3'){
                     if($lista == ""){
                         $titulo = "Configuracion";
                         require_once "_controller/ConfiguracionController.php";
                         $ctrl = new configuracionController();
-                    }elseif($lista == "usuarios"){
+                    }elseif($lista == "usuarios" && ($usuarios == '2' || $usuarios == '3')){
                         if($accion == ""){
                             $titulo = "Configurar Usuarios";
                             require_once "_controller/configurarUsuariosController.php";
                             $ctrl = new configurarUsuariosController();
                         }elseif($accion == "editar"){
-                            if($id != $_SESSION["usr"] && $id != ""){
+                            if($id != $_SESSION["usr"] && $id != "" && $usuarios == '3'){
                                 $titulo = "Editar ".$id;
                                 require_once "_controller/editarUsuario.php";
                                 $ctrl = new editarUsuario($id);
@@ -176,7 +191,7 @@
                                 die(); 
                             } 
                         }elseif($accion == "agregar"){
-                            if($id == ""){
+                            if($id == "" && $usuarios == '3'){
                                 $titulo = "Agregar Usuario";
                                 require_once "_controller/agregarUsuarioController.php";
                                 $ctrl = new agregarUsuarioController();
@@ -185,13 +200,13 @@
                                 die(); 
                             }  
                         }
-                    }elseif($lista == "roles"){
+                    }elseif($lista == "roles" && ($roles == '2' || $roles == '3')){
                         
                         if($accion == ""){
                             $titulo = "Configurar Roles";
                             require_once "_controller/configurarRolesController.php";
                             $ctrl = new configurarRolesController();
-                        }elseif($accion == 'editar'){
+                        }elseif($accion == 'editar' && $roles == '3'){
                             if($id != ""){
                                 $titulo = "Editar Rol";
                                 require_once "_controller/editarRolController.php";
@@ -200,7 +215,7 @@
                                 include "_view/404.html";
                                 die(); 
                             } 
-                        }elseif($accion == "agregar"){
+                        }elseif($accion == "agregar" && $roles == '3'){
                             if($id == ""){
                                 $titulo = "Agregar Rol";
                                 require_once "_controller/agregarRolController.php";
@@ -209,9 +224,12 @@
                                 include "_view/404.html";
                                 die(); 
                             }  
+                        }else{
+                            include "_view/404.html";
+                            die();  
                         }
                         
-                    }elseif($lista == "categorias"){
+                    }elseif($lista == "categorias" && ($categoriaAlmacen == '2' || $categoriaAlmacen == '3' || $categoriaProductos == '2' || $categoriaProductos == '3')){
                         $titulo = "Configurar Categorias";
                         require_once "_controller/configurarCategoriasController.php";
                         $ctrl = new configurarCategoriasController();

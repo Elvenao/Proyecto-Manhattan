@@ -67,8 +67,8 @@
                     <?php endforeach ?>
                 </tbody>
             </table>    
-            <?php if($this->rol[0]['rol_id'] == 1) echo '<button onclick="agregarBtn()" class="btn btn-success">Añadir Nuevo Producto</button>';?>
-            <?php if($this->rol[0]['rol_id'] == 1) echo '<button type="button" class="btn btn-primary" id="editarBtn" onclick="editarBtn()" disabled>Editar</button>';?>
+            <?php if($this->productos == '3') echo '<button onclick="agregarBtn()" class="btn btn-success">Añadir Nuevo Producto</button>';?>
+            <?php if($this->productos == '3') echo '<button type="button" class="btn btn-primary" id="editarBtn" onclick="editarBtn()" disabled>Editar</button>';?>
             
             <button type="button" class="btn btn-danger" onclick="regresarBtn()">Regresar</button>
         </div>

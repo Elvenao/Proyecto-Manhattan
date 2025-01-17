@@ -4,9 +4,16 @@
         private $datos;
         private $filtro;
         private $rol;
+        private $permisos;
+        private $permiso;
+        private $productos;
         public function __construct(){
             $mysql = new MainModel();
             $this->datos = $mysql->getDataRowsJoin("Productos",["Id_Productos","Nombre","Informacion","Precio", "PC_Id","Categoria","Costo","Informacion","status"],"Productos_Categorias",["PC_Id","Id_PC"],['','ORDER BY Id_Productos','DESC']);
+            $this->permisos = $mysql->getDataRowsJoin('usuario',['rol_id','permisos'],'roles',['rol_id','id_rol'],['user = ?'],[$_SESSION['usr']]);
+            $this->permiso = $this->permisos[0]['permisos'];
+            
+            $this->productos = strval($this->permiso)[1];
             
             $this->filtro = $mysql->getDataRows('Productos_Categorias',['Id_PC','Categoria']);
             $this->rol = $mysql->getDataRows('usuario',['rol_id'],'user = ?',[$_SESSION['usr']]);
