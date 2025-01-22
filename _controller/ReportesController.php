@@ -33,7 +33,11 @@
         }
 
         public function renderCSS() {
-            // Aquí puedes agregar cualquier CSS necesario
+            
+        }
+
+        public function renderJS(){
+            include "js/reporte.js";
         }
     }
 ?>
