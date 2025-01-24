@@ -3,6 +3,7 @@
     
     class ReportesController {
         private $query;
+        
         private $datos;
 
         public function __construct() {

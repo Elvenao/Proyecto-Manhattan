@@ -1,122 +1,136 @@
 <style>
-    .custom-row {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
+  .custom-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
 
-    .custom-label {
-      background-color: #ccc; /* Color gris */
-      color: #000;
-      padding: 8px 15px;
-      border-radius: 5px;
-      text-align: center;
-      margin-right: 10px;
-      flex-shrink: 0; /* Asegura que las etiquetas no se reduzcan */
-      min-width: 14rem;
-    }
-    .o{
-      border-radius: 10px;
-    }
+  .custom-label {
+    background-color: #ccc; /* Color gris */
+    color: #000;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-align: center;
+    margin-right: 10px;
+    flex-shrink: 0; /* Asegura que las etiquetas no se reduzcan */
+    min-width: 14rem;
+  }
+  .o{
+    border-radius: 10px;
+  }
 
-    .custom-select {
-      flex-grow: 1; /* Permite que los selects ocupen el resto del espacio */
-    }
+  .custom-select {
+    flex-grow: 1; /* Permite que los selects ocupen el resto del espacio */
+  }
 </style>
-  <div class="container mt-5">
-    <h2 class="mb-4">Agregar Rol</h2>
+<div class="container mt-5">
+  <h2 class="mb-4">Agregar Rol</h2>
 
-    <div class="custom-row">
-      <div class="custom-label ">Rol</div>
-      <input name="Rol" id="rol" type="text" class="form-control" placeholder="Rol" aria-label="Username" aria-describedby="basic-addon1" value="">
-   </div>
-    <!-- Primera columna de etiquetas y selects -->
-    <div class="row">
-      <div class="col-md-6">
-        <div class="custom-row">
-          <div class="custom-label">Almacen</div>
-          <select class="form-select custom-select" id="almacen">
-            <option value="0" selected disabled>Seleccionar</option>
-            <?php foreach($this->permisos as $permiso):?>
-            <?php echo '<option value="'.$permiso["id_permisos"].'">'.$permiso["descripcion"].'</option>'?>
-            <?php endforeach?>
-          </select>
-        </div>
-
-        <div class="custom-row">
-          <div class="custom-label">Productos</div>
-          <select class="form-select custom-select" id="productos">
-            <option value="0" selected disabled>Seleccionar</option>
-            <?php foreach($this->permisos as $permiso):?>
-            <?php echo '<option value="'.$permiso["id_permisos"].'">'.$permiso["descripcion"].'</option>'?>
-            <?php endforeach?>
-          </select>
-        </div>
-
-        <div class="custom-row">
-          <div class="custom-label">Categorias de Almacen</div>
-          <select class="form-select custom-select" id="categoriaAlmacen">
-            <option value="0" selected disabled>Seleccionar</option>
-            <?php foreach($this->permisos as $permiso):?>
-            <?php echo '<option value="'.$permiso["id_permisos"].'">'.$permiso["descripcion"].'</option>'?>
-            <?php endforeach?>
-          </select>
-        </div>
-      </div>
-
-      <!-- Segunda columna de etiquetas y selects -->
-      <div class="col-md-6">
-        <div class="custom-row">
-          <div class="custom-label">Categorias de Productos</div>
-          <select class="form-select custom-select" id="categoriaProductos">
-            <option value="0" selected disabled>Seleccionar</option>
-            <?php foreach($this->permisos as $permiso):?>
-            <?php echo '<option value="'.$permiso["id_permisos"].'">'.$permiso["descripcion"].'</option>'?>
-            <?php endforeach?>
-          </select>
-        </div>
-
-        <div class="custom-row">
-          <div class="custom-label">Usuarios</div>
-          <select class="form-select custom-select" id="usuarios">
-            <option value="0" selected disabled>Seleccionar</option>
-            <?php foreach($this->permisos as $permiso):?>
-            <?php echo '<option value="'.$permiso["id_permisos"].'">'.$permiso["descripcion"].'</option>'?>
-            <?php endforeach?>
-          </select>
-        </div>
-
-        <div class="custom-row">
-          <div class="custom-label">Roles</div>
-          <select class="form-select custom-select" id="roles">
-            <option value="0" selected disabled>Seleccionar</option>
-            <?php foreach($this->permisos as $permiso):?>
-            <?php echo '<option value="'.$permiso["id_permisos"].'">'.$permiso["descripcion"].'</option>'?>
-            <?php endforeach?>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="w-50 position-relative end-24">
-      <button type="button" class="btn btn-success" onclick="agregarBtn()">Agregar</button>
-      <button type="button" class="btn btn-primary" onclick="restablecerBtn()">Restablecer</button>
-      <button type="button" class="btn btn-danger" onclick="cancelarBtn()">Regresar</button>
-      
-  </div>
-  </div>
-  <style>
-    .end{
-        position:relative;
-        left: 134%;
-    }
-    .end-24{
-        right: 0;
-    }
-    
-    .center{
-        position: relative;
-        left: 36vh;
-    }
-</style>
   
+  
+
+ <div class="container mt-5">
+
+  <div class="row">
+      <div class="custom-row">
+        <div class="custom-label ">Rol</div>
+        <input name="Rol" id="rol" type="text" class="form-control" placeholder="Rol" aria-label="Username" aria-describedby="basic-addon1" value="">
+      </div>
+      <!-- Primera columna (4 selects) -->
+      <div class="col-md-6">
+          <div class="custom-row">
+              <div class="custom-label">Almacen</div>
+              <select class="form-select custom-select" id="almacen">
+                  <option selected disabled  value="0">Seleccionar</option>
+                  <?php foreach ($this->permisos as $permiso): ?>
+                      <option value="<?php echo $permiso["id_permisos"]; ?>"><?php echo $permiso["descripcion"]; ?></option>
+                  <?php endforeach; ?>
+              </select>
+          </div>
+
+          <div class="custom-row">
+              <div class="custom-label">Productos</div>
+              <select class="form-select custom-select" id="productos">
+                  <option selected disabled  value="0">Seleccionar</option>
+                  <?php foreach ($this->permisos as $permiso): ?>
+                      <option value="<?php echo $permiso["id_permisos"]; ?>"><?php echo $permiso["descripcion"]; ?></option>
+                  <?php endforeach; ?>
+              </select>
+          </div>
+
+          <div class="custom-row">
+              <div class="custom-label">Categorias de Almacen</div>
+              <select class="form-select custom-select" id="categoriaAlmacen">
+                  <option selected disabled value="0">Seleccionar</option>
+                  <?php foreach ($this->permisos as $permiso): ?>
+                      <option value="<?php echo $permiso["id_permisos"]; ?>"><?php echo $permiso["descripcion"]; ?></option>
+                  <?php endforeach; ?>
+              </select>
+          </div>
+
+          <div class="custom-row">
+              <div class="custom-label">Categorias de Productos</div>
+              <select class="form-select custom-select" id="categoriaProductos">
+                  <option selected disabled value="0">Seleccionar</option>
+                  <?php foreach ($this->permisos as $permiso): ?>
+                      <option value="<?php echo $permiso["id_permisos"]; ?>"><?php echo $permiso["descripcion"]; ?></option>
+                  <?php endforeach; ?>
+              </select>
+          </div>
+      </div>
+
+      <!-- Segunda columna (3 selects) -->
+      <div class="col-md-6">
+          <div class="custom-row">
+              <div class="custom-label">Usuarios</div>
+              <select class="form-select custom-select" id="usuarios">
+                  <option selected disabled value="0">Seleccionar</option>
+                  <?php foreach ($this->permisos as $permiso): ?>
+                      <option value="<?php echo $permiso["id_permisos"]; ?>"><?php echo $permiso["descripcion"]; ?></option>
+                  <?php endforeach; ?>
+              </select>
+          </div>
+
+          <div class="custom-row">
+              <div class="custom-label">Roles</div>
+              <select class="form-select custom-select" id="roles">
+                  <option selected disabled value="0">Seleccionar</option>
+                  <?php foreach ($this->permisos as $permiso): ?>
+                      <option value="<?php echo $permiso["id_permisos"]; ?>"><?php echo $permiso["descripcion"]; ?></option>
+                  <?php endforeach; ?>
+              </select>
+          </div>
+
+          <div class="custom-row">
+              <div class="custom-label">Recetas</div>
+              <select class="form-select custom-select" id="recetas">
+                  <option selected disabled value="0">Seleccionar</option>
+                  <?php foreach ($this->permisos as $permiso): ?>
+                      <option value="<?php echo $permiso["id_permisos"]; ?>"><?php echo $permiso["descripcion"]; ?></option>
+                  <?php endforeach; ?>
+              </select>
+          </div>
+      </div>
+  </div>
+  <div class="w-50 position-relative end-24">
+    <button type="button" class="btn btn-success" onclick="agregarBtn()">Agregar</button>
+    <button type="button" class="btn btn-primary" onclick="restablecerBtn()">Restablecer</button>
+    <button type="button" class="btn btn-danger" onclick="cancelarBtn()">Regresar</button>
+  </div>
+</div>
+<style>
+  .end{
+      position:relative;
+      left: 134%;
+  }
+  .end-24{
+      right: 0;
+  }
+  
+  .center{
+      position: relative;
+      left: 36vh;
+  }
+</style>
+
 

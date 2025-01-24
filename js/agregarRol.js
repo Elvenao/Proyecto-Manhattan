@@ -12,7 +12,8 @@ function agregarBtn(){
     let categoriaProductos = document.getElementById('categoriaProductos').value
     let usuarios = document.getElementById('usuarios').value 
     let roles = document.getElementById('roles').value
-    let permisos = Number(almacen.toString() + productos.toString() + categoriaAlmacen.toString() + categoriaProductos.toString() + usuarios.toString() + roles.toString())
+    let recetas = document.getElementById('recetas').value
+    let permisos = Number(almacen.toString() + productos.toString() + categoriaAlmacen.toString() + categoriaProductos.toString() + usuarios.toString() + roles.toString() + recetas.toString())
     let datos = JSON.stringify({action,rol,permisos})
     let ruta = "<?php echo SITE_URL;?>configuracion/roles/" 
     llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxRoles.php","Agregar rol","¿Seguro que quieres agregar este rol?","question","Agregar","Cancelar","Error Agregando","Rol agregado","Rol agregado con exito",true,ruta)
@@ -28,6 +29,7 @@ function restablecerBtn(){
     document.getElementById('categoriaProductos').value = 0
     document.getElementById('usuarios').value = 0
     document.getElementById('roles').value = 0
+    document.getElementById('recetas').value = 0
 }
 
 document.addEventListener('DOMContentLoaded',function(){
@@ -40,6 +42,7 @@ document.addEventListener('DOMContentLoaded',function(){
         localStorage.setItem('Categoria-Productos',0)
         localStorage.setItem('Usuarios',0)
         localStorage.setItem('Roles',0)
+        localStorage.setItem('Recetas',0)
     }else{
         document.getElementById('rol').value = localStorage.getItem('Rol')
         document.getElementById('almacen').value = localStorage.getItem('Almacen')
@@ -48,6 +51,7 @@ document.addEventListener('DOMContentLoaded',function(){
         document.getElementById('categoriaProductos').value = localStorage.getItem('Categoria-Productos')
         document.getElementById('usuarios').value = localStorage.getItem('Usuarios')
         document.getElementById('roles').value = localStorage.getItem('Roles')
+        document.getElementById('recetas').value = localStorage.getItem('Recetas')
     }
 })
 document.getElementById('rol').addEventListener('input',function(){
@@ -70,4 +74,8 @@ document.getElementById('usuarios').addEventListener('change',function(){
 })
 document.getElementById('roles').addEventListener('change',function(){
     localStorage.setItem('Roles',this.value)
+})
+
+document.getElementById('recetas').addEventListener('change',function(){
+    localStorage.setItem('Recetas',this.value)
 })
