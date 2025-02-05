@@ -1,4 +1,3 @@
-<script> window.onload = function() { document.getElementById("miSelect").selectedIndex = 0;}</script>
 <style>
     .reporte-container {
         border: 1px solid #ccc;
@@ -13,7 +12,33 @@
         color: #333;
     }
     .dataTables_empty { display: none; }
+    .custom-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    
+    .custom-label {
+        background-color: #ccc; /* Color gris */
+        color: #000;
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-align: center;
+        margin-right: 10px;
+        flex-shrink: 0; /* Asegura que las etiquetas no se reduzcan */
+        min-width: 14rem;
+      }
+      .o{
+        border-radius: 10px;
+      }
+    
+      .custom-select {
+        flex-grow: 1; /* Permite que los selects ocupen el resto del espacio */
+        margin-right: 20px;
+      }
 </style>
+
 <div class="container-fluid">
     <!-- Encabezado -->
     <div class="row align-items-center border-bottom" style="padding: 2vh;">
@@ -25,36 +50,7 @@
         <!-- Selector Filtrar -->
         <div class="col-6 text-end">
             <div class="d-flex justify-content-end align-items-center filter-container">
-                <div class="col-6 header-date">
-                    <span id="fecha"></span>
-                    <span id="reloj"></span>
-                    <script>
-                        function actualizarReloj() {
-                            const fecha = new Date();
-                            
-                            const horas = String(fecha.getHours()).padStart(2, '0');
-                            const minutos = String(fecha.getMinutes()).padStart(2, '0');
-                            const segundos = String(fecha.getSeconds()).padStart(2, '0');
-                            
-                            // Actualizar el reloj con la hora
-                            document.getElementById('reloj').textContent = `${horas}:${minutos}:${segundos}`;
-                            
-                            // Obtener la fecha
-                            const dia = fecha.getDate();
-                            const mes = fecha.getMonth() + 1; // Los meses comienzan en 0
-                            const año = fecha.getFullYear();
-                            
-                            // Actualizar la fecha
-                            document.getElementById('fecha').textContent = `${dia}/${mes}/${año}`;
-                        }
-                        
-                        // Llamar a la función cada segundo
-                        setInterval(actualizarReloj, 1000);
-
-                        // Llamar a la función al cargar la página para mostrar la hora y fecha inicial
-                        actualizarReloj();
-                    </script>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -66,8 +62,8 @@
             <div class="p-2">
                 <label for="categoria" class="form-label fw-bold">Seleccionar Productos</label>
 
-                <select class="form-select" id="categoria" onchange="selProductos(this.value)">
-                    <option value="carga">Categoria</option>
+                <select class="form-select" id="categoria">
+                    <option value="0" selected disabled>Categoria</option>
                     <?php foreach($this->categorias as $opcion): ?>
                     <option value='<?php echo $opcion["Id_IC"]?>'><?php echo $opcion["Categoria"]?></option>
                     <?php endforeach ?>
@@ -82,14 +78,26 @@
 
         <!-- Columna derecha -->
         <div class="col-md-9 d-flex flex-column justify-content-between border-start">
-            <table id="tablapos">
+            <div class="custom-row">
+                <div class="custom-label">Almacen</div>
+                <select class="form-select custom-select" id="categoriaProducto">
+                    <option selected disabled  value="0">Categoria</option>
+                    <?php foreach ($this->productosCategorias as $permiso): ?>
+                        <option value="<?php echo $permiso["Id_PC"]; ?>"><?php echo $permiso["Categoria"]; ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <select class="form-select custom-select" id="productoSelect">
+                    <option selected disabled value="0">Producto</option>
+                    
+                </select>
+            </div>
+            <table id="tablaReceta">
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Nombre</th>
                         <th>Descripcion</th>
                         <th>Cantidad</th>
-                        <th>Precio</th>
-                        <th>Importe</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -102,7 +110,7 @@
             <!-- Total y campo de precio -->
             <div class="d-flex justify-content-between align-items-center p-3 border-top">
                 <div class="d-flex justify-content-end align-items-center filter-container">
-                    <button onclick="finalizar()" class="btn btn-success" >Finalizar Nota</button>
+                    <button onclick="finalizar()" class="btn btn-success" >Finalizar Receta</button>
                 </div>
                 <h3 class="fw-bold mb-0">Total:</h3>
                 <div class="input-group" style="width: 150px;">

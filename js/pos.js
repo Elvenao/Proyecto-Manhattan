@@ -70,11 +70,9 @@ function updateCantidad(element, delta) {
     rowData[2] = cantidad;
     rowData[4] = (cantidad * precio).toFixed(2);
 
-    // Actualiza la fila con los nuevos datos
     table.row(row).data(rowData).invalidate().draw();
 
     if (cantidad === 0) {
-        // Elimina la fila si la cantidad es cero
         table.row(row).remove().draw();
     }
 

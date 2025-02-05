@@ -40,3 +40,12 @@ $(document).ready(function () {
         ordering: false,
     });
 });
+
+$(document).ready(function () {
+    $('#tablaReceta').DataTable({
+        searching: true, 
+        lengthChange: false, 
+        info: false,
+        ordering: false,
+    });
+});
