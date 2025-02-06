@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded',function(){
     let fecha_inicio = "<?php echo $this->datos[0]['fecha_inicio']?>"
     let fecha_fin = "<?php $fecha = isset($this->datos[0]["fecha_fin"]) ? $this->datos[0]["fecha_fin"] : ""; echo $fecha;?>";
     let rol_id = "<?php echo $this->datos[0]['rol_id']; ?>"
+    if(rol_id == '8')rol_id = 0
     let genero = "<?php echo $this->datos[0]['genero_id']; ?>"
     let telefono = "<?php echo $this->datos[0]['telefono']; ?>"
 

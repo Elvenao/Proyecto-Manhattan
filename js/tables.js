@@ -33,6 +33,14 @@ $(document).ready(function () {
     });
 });
 $(document).ready(function () {
+    $('#tablaReceta').DataTable({
+        searching: true, 
+        lengthChange: false, 
+        info: false,
+        ordering: false,
+    });
+});
+$(document).ready(function () {
     $('#tablapos').DataTable({
         searching: true, 
         lengthChange: false, 
@@ -41,11 +49,3 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
-    $('#tablaReceta').DataTable({
-        searching: true, 
-        lengthChange: false, 
-        info: false,
-        ordering: false,
-    });
-});

@@ -25,6 +25,12 @@
             }
             $id = $input['id'];
             $model = new MainModel();
+            $removeFromExistentUsers = $model->updateData('usuario',['rol_id'],'rol_id = ?',['8',$id]);
+            if(!$removeFromExistentUsers){
+                echo json_encode(["resultado" => 0, "mensaje" => "Error reasignando"]);
+                exit();
+            }
+            
             $resultado = $model->deleteRow('roles','id_rol = ?',[$id]);
             if($resultado){
                 echo json_encode(["resultado" => 1, "mensaje" => "Rol Borrado"]);

@@ -47,6 +47,7 @@
     <div class="input-group mb-3 w-50">
         <label for="rol_id" class="input-group-text" id="basic-addon1">Rol</label>
         <select name="rol_id" id="rol_id" class="form-select">
+            <option value="0" selected disabled>Rol</option>
             <?php foreach($this->categorias as $categoria):?>
             <?php echo "<option value='".$categoria['id_rol']."'>".$categoria['descripcion']."</option>";?>
             <?php endforeach?>

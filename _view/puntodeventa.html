@@ -67,7 +67,7 @@
                 <label for="categoria" class="form-label fw-bold">Seleccionar Productos</label>
 
                 <select class="form-select" id="categoria" >
-                    <option value="carga">Categoria</option>
+                    <option value="carga" selected disabled>Categoria</option>
                     <?php foreach($this->categorias as $opcion): ?>
                     <option value='<?php echo $opcion["Id_PC"]?>'><?php echo $opcion["Categoria"]?></option>
                     <?php endforeach ?>

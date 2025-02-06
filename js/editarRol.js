@@ -8,7 +8,8 @@ function borrarBtn(){
     let action = "Borrar"
     let id = "<?php echo $this->rol[0]['id_rol']?>"
     let datos = JSON.stringify({action,id})
-    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxRoles.php","Seguro que quieres borrar este rol","No podras recuperar los datos borrados","warning","Borrar","Cancelar","Error en el Borrado","Rol eliminado","Rol borrado con exito",true,"<?php echo SITE_URL;?>configuracion/roles/")
+    let ruta = "<?php echo SITE_URL;?>configuracion/roles/"
+    llamadaASweetAlert(datos,"<?php echo SITE_URL;?>_controller/ajaxRoles.php","Seguro que quieres borrar este rol","No podras recuperar los datos borrados","warning","Borrar","Cancelar","Error en el Borrado","Rol eliminado","Rol borrado con exito",true,ruta)
 }
 
 function editarBtn(){

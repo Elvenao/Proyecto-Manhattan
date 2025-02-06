@@ -49,7 +49,6 @@ class MySQLAux {
 
 		$strCampos = implode(',', $campos); // Une los campos con comas
         $query = "SELECT $strCampos FROM $tabla" . ($condicion ? " WHERE $condicion" : "");
-        
         try{
             $cnx = $this->getConnection();
             $pcmd = $cnx->prepare($query);

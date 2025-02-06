@@ -15,7 +15,7 @@
             
             $this->roles = strval($this->permiso)[5];
             $this->permisos = $model->getDataRows('permisos',["id_permisos","permiso"]);
-            $this->Roles = $model->getDataRows('roles',['id_rol','descripcion','permisos AS permisoRol']);
+            $this->Roles = $model->getDataRows('roles',['id_rol','descripcion','permisos AS permisoRol'],'id_rol != ?',['8']);
         }
         public function renderContent(){
             include "_view/configurarRoles.html";
